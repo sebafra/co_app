@@ -1,0 +1,24 @@
+<div class="liContainer liContainerFeatured row">
+	<div class="featuredListImage col-xs-2">
+		<img src="assets/images/<%=type%>/<%= id %>/<%= image1 %>" class="img-rounded">
+	</div>
+	<div class="featuredListContent col-xs-10">
+		<div class="itemFirstLine">
+			<strong class="itemName" id="name"><%= name %></strong>
+		</div>
+		<div class="itemSecondLine">
+			<span class="itemData">
+				<span class="glyphicon glyphicon-home"></span>
+				<%= hotelType %>
+			</span>
+			<!-- <span class="itemData">
+				<span class="glyphicon glyphicon-map-marker"></span>
+				<%= address %>
+			</span> -->
+			<span class="itemData">
+				<span class="glyphicon glyphicon-phone-alt"></span>
+				<a href="tel:<%= phoneNumber %>"><%= phoneNumber %></a>
+			</span>
+		</div>
+	</div>
+</div>

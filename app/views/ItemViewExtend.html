@@ -1,0 +1,72 @@
+<div class="container">
+	<div class="row">
+		<div class="swiper-container">
+      <div class="swiper-wrapper">
+      	<% if (typeof(model.image1) != "undefined"){ %>
+        <div class="swiper-slide"> <img src="assets/images/<%=model.type%>/<%= model.id %>/<%= model.image1 %>"> </div>
+		<% } %>
+      	<% if (typeof(model.image2) != "undefined"){ %>
+        <div class="swiper-slide"> <img src="assets/images/<%=model.type%>/<%= model.id %>/<%= model.image2 %>"> </div>
+		<% } %>
+      	<% if (typeof(model.image3) != "undefined"){ %>
+        <div class="swiper-slide"> <img src="assets/images/<%=model.type%>/<%= model.id %>/<%= model.image3 %>"> </div>
+		<% } %>
+      	<% if (typeof(model.image4) != "undefined"){ %>
+        <div class="swiper-slide"> <img src="assets/images/<%=model.type%>/<%= model.id %>/<%= model.image4 %>"> </div>
+		<% } %>
+      	<% if (typeof(model.image5) != "undefined"){ %>
+        <div class="swiper-slide"> <img src="assets/images/<%=model.type%>/<%= model.id %>/<%= model.image5 %>"> </div>
+		<% } %>
+      </div>
+      <div class="pagination"></div>
+    </div>
+	</div>
+	<div class="well itemWell">
+		<div class="row">
+			<div class="col-xs-8 pull-left">
+				<span class="barTitle"><%= model.name %></span>
+				<span class="barAdress"><%= model.address %></span>
+				<span class="barTel"><%= model.phoneNumber %></span>
+			</div>
+			<div class="col-xs-4 pull-right barButtons">
+				<a href="tel:<%= model.phoneNumber %>" class="btn btn-default btn-sm" role="button"><span class="icon ion-ios7-telephone"></span></a>
+				<a href="geo:<%= model.latitude %>,<%= model.longitud %>?z=19" class="btn btn-default btn-sm" role="button"><span class="icon ion-location"></span></a>
+			</div>
+		</div>
+	</div>
+	<div class="itemDescription">
+		<p><%= model.description %></p>
+	</div>
+  <div class="row">
+
+<div class="panel panel-default itemInfo">
+  <div class="panel-body">
+    <div class="col-sm-2 col-xs-2">
+      <h1 class="glyphicon glyphicon-calendar"></h1>
+    </div>
+    <div class="col-sm-9 col-xs-9">
+      <h4>Horarios de Atenci&oacute;n</h4>
+      <span><%= model.scheduleOfAttentionWeek %></span>
+      <span><%= model.scheduleOfAttentionWeekend %></span>
+    </div>
+  </div>
+</div>
+  </div>
+
+</div>
+  <script>
+  var mySwiper = new Swiper('.swiper-container',{
+    pagination: '.pagination',
+    loop:true,
+    grabCursor: true,
+    paginationClickable: true
+  })
+  $('.arrow-left').on('click', function(e){
+    e.preventDefault()
+    mySwiper.swipePrev()
+  })
+  $('.arrow-right').on('click', function(e){
+    e.preventDefault()
+    mySwiper.swipeNext()
+  })
+  </script>
