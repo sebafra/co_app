@@ -221,6 +221,7 @@ body {
     height: 10em;
     text-align: center;
     margin: 0;
+    margin-bottom: .3em;
     /*position: relative;*/
     background-color: #000;
     background: rgba(0, 0, 0, .5);
