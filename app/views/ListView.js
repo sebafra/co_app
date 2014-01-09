@@ -24,7 +24,7 @@ window.ListView = Backbone.View.extend({
 
     render:function (eventName) {
         var template = _.template(templates.list);
-        this.$el.css("background", "white");
+        this.$el.css("background", "#333");
         this.$el.html(template( {labelPlural:this.model.labelPlural, items:this.model.items, adScreenFileName: this.adScreenFileName} ));
         var $list = this.$el.find("#list");
 
@@ -56,11 +56,11 @@ window.ListView = Backbone.View.extend({
            var view = new LoadItemView({model:item, labelSingular:this.model.labelSingular});
            // var view = new ItemView({model:item, labelSingular:this.model.labelSingular});
            window.ViewNavigatorUtil.pushView( view );
-        }  
+        }
 
-        
 
-    	
+
+
     },
     listItemClickOld: function( event ) {
         //console.log(event);

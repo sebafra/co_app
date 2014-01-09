@@ -12,12 +12,12 @@ function onDeviceReady() {
 	// $(".ftr").click(function(){
 	// 	alert("hola");
 	// });
-    hideArrow();
+    // hideArrow();
 
 	loadTemplates( appTemplatesLoaded );
 
     ModelManager.updateAll();
-    
+
 	if(App.isEnvironmentWeb() == false){
 		window.setTimeout(enableNotifications,10000);
 	}
@@ -44,8 +44,8 @@ function onBackKey( event ) {
     }
     navigator.app.exitApp();
 }
-function hideArrow () {
-    setTimeout(function(){$(".ftr").fadeOut("slow")},2500);
-}
+// function hideArrow () {
+//     setTimeout(function(){$(".ftr").fadeOut("slow")},2500);
+// }
 
 document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);

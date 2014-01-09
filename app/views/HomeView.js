@@ -11,7 +11,7 @@ window.HomeView = Backbone.View.extend({
     },
 
     events:{
-        "click .back1":"loadAttractions",
+        "click .administradorClick":"loadAttractions",
         // "click .back2":"loadOtherEvents",
         // "click .back3":"loadRestaurants",
         // "click .back4":"loadHotels",
@@ -31,31 +31,6 @@ window.HomeView = Backbone.View.extend({
 
     loadAttractions:function () {
         var view = new LoadItemsView({type:ModelManager.type.attraction.code});
-        //window.viewNavigator.pushView( view );
-        ViewNavigatorUtil.pushView( view );
-    },
-    loadHotels:function () {
-    	var view = new LoadItemsView({type:ModelManager.type.hotel.code});
-    	//window.viewNavigator.pushView( view );
-    	ViewNavigatorUtil.pushView( view );
-    },
-    loadRestaurants:function () {
-        var view = new LoadItemsView({type:ModelManager.type.restaurant.code});
-        //window.viewNavigator.pushView( view );
-        ViewNavigatorUtil.pushView( view );
-    },
-    loadOtherEvents:function () {
-        var view = new LoadItemsView({type:ModelManager.type.otherEvent.code});
-        //window.viewNavigator.pushView( view );
-        ViewNavigatorUtil.pushView( view );
-    },
-    loadService:function () {
-        var view = new LoadItemsView({type:ModelManager.type.service.code});
-        //window.viewNavigator.pushView( view );
-        ViewNavigatorUtil.pushView( view );
-    },
-    loadFestival:function () {
-        var view = new LoadItemsView({type:ModelManager.type.festival.code});
         //window.viewNavigator.pushView( view );
         ViewNavigatorUtil.pushView( view );
     },

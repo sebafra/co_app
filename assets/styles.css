@@ -1,4 +1,14 @@
+@font-face {
+    font-family: 'open_sanslight';
+    src: url('fonts/OpenSans-Light-webfont.eot');
+    src: url('fonts/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/OpenSans-Light-webfont.woff') format('woff'),
+         url('fonts/OpenSans-Light-webfont.ttf') format('truetype'),
+         url('fonts/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
+    font-weight: normal;
+    font-style: normal;
 
+}
 * {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -20,6 +30,7 @@ body {
     padding: 0px;
     margin: 0px;
     background-color:#FFF;
+    font-family: 'open_sanslight';
 }
 .subtext {
     font-size:0.85em;
@@ -35,7 +46,7 @@ body {
     user-select: none;
     overflow: hidden;
     position:relative;
-    background-color: #FFF;
+    background: rgba(255,255,255,0.1);
     min-height:100%;
     padding:0;
     margin:0;
@@ -102,12 +113,13 @@ body {
 /*ViewNavigator Styles*/
 
 .viewNavigator_header {
-    background:#f6f6f6;
-    color:#77AF28;
+    background:#333333;
+    color:#f59e01;
+    /*color:#f59e01;*/
 }
 
 .viewNavigator_header_title {
-    color:#999;
+    color:#f59e01;
     font-size:1.5em;
     max-width:75%;
 }
@@ -122,13 +134,13 @@ body {
     font-weight: bold;
     /*background: none;*/
     text-decoration: none;
-    color: #77AF28;
+    color: #f59e01;
 }
 
 .viewNavigator_backButton_active,
 .viewNavigator_backButton:active {
-    /*background: none;
-    -webkit-border-image: url("images/iOSbackButton_active.png") 0 4 0 12;*/
+    background-color: #f0f0f0;
+    /*-webkit-border-image: url("images/iOSbackButton_active.png") 0 4 0 12;*/
 }
 
 .viewNavigator_content {
@@ -138,8 +150,8 @@ body {
 }
 
 .viewNavigator_contentHolder {
-    color:#444;
-    background: #888;
+    color: #f0f0f0;
+    background: #111;
     border:none;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -150,7 +162,7 @@ body {
 
 .viewNavigator_contentHolder > div:first-child {
     min-height:100%;
-    background:#FFF;
+    background:#333;
     /*background-image:url('graphics/wheat_bg.png');
     background-position: top left;
     background-repeat:repeat;*/
@@ -163,65 +175,68 @@ body {
     transform: translate3d(0,0,0);
     -webkit-transform: translate3d(0,0,0);
 }
-    .viewNavigator_backButton {
-        background: none;
-        box-shadow: none;
-    }
+.viewNavigator_backButton {
+    background: none;
+    box-shadow: none;
+}
 
-    /*End ViewNavigator Styles*/
+/*End ViewNavigator Styles*/
 
+/***********************/
+/******* Home View *****/
+/***********************/
+
+#homeView {
+    width:100%;
+    margin:0px;
+    display: block;
+    text-align: center;
+    border:none;
+}
+
+@media screen and (max-device-width : 767px) {
     #homeView {
-        width:100%;
-        margin:0px;
-        display: block;
-        text-align: center;
-        border:none;
+        background: url('images/background_480.jpg');
     }
+}
 
-    @media screen and (max-device-width : 767px) {
-        #homeView {
-            background: url('images/background_480.jpg');
-        }
+@media screen and (min-device-width : 768px) {
+    #homeView {
+        background: url('images/background_1024.jpg');
     }
-
-    @media screen and (min-device-width : 768px) {
-        #homeView {
-            background: url('images/background_1024.jpg');
-        }
-    }
-    #homeView a {
-        background: rgba(255,255,255,0.1);
-        border-radius: 10px;
-        padding-top:5px;
-        padding-bottom:5px;
-    }
-    #homeView .container {
-        height: 100%;
-    }
-    .homeButton{
-        width:48%;
-        display: inline-block;
-        overflow: hidden;
-        height: 10em;
-        text-align: center;
-        margin: 0;
-        position: relative;
-        background-color: #000;
-        background: rgba(0, 0, 0, .5);
-    }
-    .homeButton p{
-        position: absolute;
-        bottom: 0;
-        left:1em;
-        color: #FFFFFF;
-        font-weight: bold;
-        text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
-    }
-    .container .homeButton:first-child p{
-        /*-webkit-backface-visibility: hidden;*/
-        color: #FFFFFF;
-        /*  padding: 0 1em;*/
-    }
+}
+#homeView a {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+#homeView .container {
+    padding-bottom: 100%;
+}
+.homeButton{
+    width:48%;
+    display: inline-block;
+    overflow: hidden;
+    height: 10em;
+    text-align: center;
+    margin: 0;
+    /*position: relative;*/
+    background-color: #000;
+    background: rgba(0, 0, 0, .5);
+}
+.homeButton p{
+    /*position: absolute;*/
+    bottom: 0;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+}
+.container .homeButton:first-child p{
+    /*-webkit-backface-visibility: hidden;*/
+    color: #FFFFFF;
+    /*  padding: 0 1em;*/
+}
 /*.back1{
     background-image:url('images/imagen1.jpg');
 }
@@ -246,10 +261,13 @@ body {
     }*/
     .homeButton:first-child{
         width: 98%;
-        height: 5em;
+        height: 10em;
+        background: none;
+        padding-top: 1em;
+        background: url(images/logo.png) center bottom no-repeat;
     }
-    .homeButton .glyphicon{
-        font-size: 1em;
+    .homeButton .icon{
+        font-size: 3em;
         color: #fff;
         margin-top: .8em;
         margin-right: .2em;
@@ -266,21 +284,27 @@ body {
 
     /* Load View Search */
 
-    .loadItems{
+   /* .loadItems{
         padding: 5em !important;
     }
     .loadItems .progress{
         margin-top: 5em;
     }
     .loadItems .progress-bar{
-        background-color: #77AF28;
+        background-color: #f59e01;
+    }*/
+    .loadItems .icon{
+        color: #f59e01;
+        font-size: 5em;
+        margin-top: 1em;
+        opacity: .7;
     }
 
-    .searchGraphic .activityIndicator {
+    /*.searchGraphic .activityIndicator {
         position:absolute;
         top: 104px;
         left: 174px;
-    }
+    }*/
 
     /* End Load View Search */
 
@@ -338,8 +362,8 @@ body {
         .data-list li .listSelected #overlay #name,
         .data-list .listSelected div #name,
         .data-list li .listSelected div #name{
-            text-shadow: 1px 1px #000;
-            color: #8CE200;
+            /*text-shadow: 1px 1px #000;*/
+            color: #333;
         }
 
         .green,
@@ -468,10 +492,6 @@ body {
           background: #fff;
       }
 
-      /***********************/
-      /******* Home View *****/
-      /***********************/
-
       a{
         color: inherit;
     }
@@ -496,7 +516,7 @@ body {
         bottom:0; left:0;
         width:100%;
         height:48px;
-        background-color:#77AF28;
+        background-color:#f59e01;
         padding:0;
         padding-top: 1em;
         border-top:1px solid #444;
@@ -597,7 +617,7 @@ body {
         background-image:url('images/more_disclosure_white.png');
         background-position:right center;
         background-repeat:no-repeat;
-        background-color: #77AF28;
+        background-color: #f59e01;
         color: #FFF;
         margin: 0;
     }
@@ -626,7 +646,7 @@ body {
     }
     .liContainerCronograma .itemFirstLine {
         margin-bottom: .5em;
-        background-color: #77AF28;
+        background-color: #f59e01;
         /*background-color: #f0f0f0;*/
         color: #fff;
     }
@@ -653,7 +673,7 @@ body {
     }
 /*.liContainerCronograma .badge {
     background-color: #FFF;
-    color: #77AF28;
+    color: #f59e01;
     font-size: .8em;
     }*/
     .liContainerCronograma .itemData button {
@@ -699,12 +719,14 @@ body {
     .ftr{
         width: 100%;
         height: 10em;
-        background: url("images/arrow_down.png") no-repeat bottom center;
+        background: red;
         z-index: 300;
         position: absolute;
-        top: 0;
+        bottom: 0;
         text-align: center;
         opacity: .7;
+        display: none;
+
     }
 
     /********************************/
@@ -719,23 +741,20 @@ body {
             height: 25em;
         }
         .homeButton{
-         width:49%;
-         height: 17em;
-     }
-     #thelist li{
-      height: 5em;
-      vertical-align: middle;
+           width:49%;
+           height: 17em;
+       }
+       #thelist li{
+          height: 5em;
+          vertical-align: middle;
+      }
+      .container {
+        width: 100%;
+    }
+    .swiper-container {
+      height: 30em;
   }
-  .container {
-    width: 100%;
-}
-.swiper-container {
-  height: 30em;
-}
-.data-list li {
-    font-size: 1.3em;
-}
-.btn-sm{
+  .btn-sm{
     padding: 10px 20px;
     font-size: 15px;
 }
