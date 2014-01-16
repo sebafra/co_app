@@ -1,29 +1,16 @@
 <div class="liContainer liContainerExtended">
-<div class="itemFirstLine">
-	<strong class="itemName" id="name"><%= name %></strong>
-</div>
-<div class="itemSecondLine">
-	<span class="itemData">
-		<span class="glyphicon glyphicon-home"></span>
-		<%= hotelType %>
-	</span>
-	<span class="itemData">
-		<span class="glyphicon glyphicon-map-marker"></span>
-		<%= address %>
-	</span>
-	<% if ((typeof(phoneNumber) !== "undefined") && (phoneNumber !== "") && (phoneNumber !== null)){ %>
-	<span class="itemData itemPhone">
-		<span class="glyphicon glyphicon-phone-alt"></span>
-		<a href="tel:<%= phoneNumber %>"><%= phoneNumber %></a>
-	</span>
-	<% } %>
+<div class="itemFirstLine row">
+	<div class="col-xs-9">
+		<span class="itemName" id="name"><%= name %></span>
 	</div>
-<div class="itemSecondLine">
-	<% if ((typeof(email) !== "undefined") && (email !== "")){ %>
-	<span class="itemData">
-		<span class="glyphicon glyphicon-envelope"></span>
-		<a href="mailto:<%= email %>"><%= email %></a>
-	</span>
-	<% } %>
+	<div class="col-xs-3">
+		<span class="itemDate" id="date"><%= date %></span>
+	</div>
 </div>
+<div class="itemSecondLine">
+		<span class="itemMessage"><%= subject %></span>
+	</div>
+<div class="itemThirdLine row">
+	<div class="col-xs-10"><span class="itemMessage"><%= message1 %></span></div>
+	</div>
 </div>

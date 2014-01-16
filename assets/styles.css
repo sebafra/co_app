@@ -19,6 +19,10 @@ textarea {
     -webkit-touch-callout: auto;
     -webkit-user-select: auto;
 }
+html{
+    height: 100%;
+    margin: 0;
+}
 
 body {
     position:absolute;
@@ -27,10 +31,11 @@ body {
     left:0px;
     right:0px;
     overflow: hidden;
-    padding: 0px;
-    margin: 0px;
+    padding: 0;
+    margin: 0;
     background-color:#FFF;
     font-family: 'open_sanslight';
+    height: 100%;
 }
 .subtext {
     font-size:0.85em;
@@ -104,7 +109,7 @@ body {
 .data-list li.listSelected {
     color:#FFF;
     border-top:1px solid #999;
-    background-color: #e8e8e8;
+    background-color: #6b6b6b;
     font-weight: bold;
     /*background-image:url('images/more_disclosure_white.png');*/
 }
@@ -192,17 +197,18 @@ body {
     display: block;
     text-align: center;
     border:none;
+    height: 100%;
 }
 
 @media screen and (max-device-width : 767px) {
     #homeView {
-        background: url('images/background_480.jpg');
+        background: url('images/background_480.jpg')  no-repeat center top;
     }
 }
 
 @media screen and (min-device-width : 768px) {
     #homeView {
-        background: url('images/background_1024.jpg');
+        background: url('images/background_1024.jpg') no-repeat center top;
     }
 }
 #homeView a {
@@ -212,19 +218,25 @@ body {
     padding-bottom:5px;
 }
 #homeView .container {
-    padding-bottom: 100%;
 }
+.homeSelect{
+        width: 98%;
+        height: 7em;
+        background: none;
+        padding-top: 1em;
+        background: url(images/logo.png) center bottom no-repeat;
+    }
 .homeButton{
     width:48%;
     display: inline-block;
     overflow: hidden;
-    height: 10em;
+    height: 7em;
     text-align: center;
     margin: 0;
-    margin-bottom: .3em;
     /*position: relative;*/
     background-color: #000;
     background: rgba(0, 0, 0, .5);
+    padding: 1em;
 }
 .homeButton p{
     /*position: absolute;*/
@@ -233,46 +245,20 @@ body {
     font-weight: bold;
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
 }
-.container .homeButton:first-child p{
-    /*-webkit-backface-visibility: hidden;*/
-    color: #FFFFFF;
-    /*  padding: 0 1em;*/
-}
-/*.back1{
-    background-image:url('images/imagen1.jpg');
-}
-.back2{
-    background-image:url('images/imagen2.jpg');
-}
-.back3{
-    background-image:url('images/imagen3.jpg');
-}
-.back4{
-    background-image:url('images/imagen4.jpg');
-}
-.back5{
-    background-image:url('images/imagen5.jpg');
-}
-.back6{
-    background-image:url('images/imagen6.jpg');
-}
-.back7{
-    background-image:url('images/imagen7.jpg');
-    opacity: .5;
-    }*/
-    .homeButton:first-child{
+    .expensesHomeButton{
         width: 98%;
-        height: 10em;
-        background: none;
+        height: 5em;
         padding-top: 1em;
-        background: url(images/logo.png) center bottom no-repeat;
+        /*background: url(images/logo.png) center bottom no-repeat;*/
     }
-    .homeButton .icon{
+    .expensesHomeButton p{
+        padding-top: 1em;
+    }
+    .homeButton .icon, .homeButton .glyphicon{
         font-size: 3em;
         color: #fff;
-        margin-top: .8em;
-        margin-right: .2em;
     }
+
 /*.img{
     padding: 0;
     margin: 0;
@@ -580,18 +566,31 @@ body {
         font-size: 2em;
         width: .5em;
     }
-    /*Estilos de itemView de hoteles y gastronomia*/
+
+    /********************************/
+    /****** List Item  *********/
+    /********************************/
 
     .itemType{
         font-size: .9em;
         font-style: italic;
     }
-    .itemSecondLine{
-        font-size: .8em;
-        color: #555;
+    .itemFirstLine{
+        font-size: .9em;
+        color: #cbcbcb;
     }
-    .itemSecondLine .itemData{
-        margin-right: .2em;
+    .itemFirstLine .itemDate{
+        font-size: .8em;
+        color: #999;
+        font-style: italic;
+    }
+    .itemSecondLine{
+        font-size: 1em;
+        color: #f0f0f0;
+    }
+    .itemThirdLine{
+        font-size: .8em;
+        color: #999;
     }
     .itemFeatured {
 
@@ -606,34 +605,73 @@ body {
         border-bottom:none;
         width: 100%;
     }
-    .liContainerNormal {
+    .liContainerExtended {
         background-image:url('images/more_disclosure.png');
         background-position:right center;
         background-repeat:no-repeat;
     }
-    .liContainerExtended .liContainerTempAccom {
-        background-image:none;
+     /********************************/
+    /****** Ventana Modal Login *********/
+    /********************************/
+
+    .modal-backdrop.in {
+    opacity: .05;
     }
-    .liContainerFeatured {
-        background-image:url('images/more_disclosure_white.png');
-        background-position:right center;
-        background-repeat:no-repeat;
+    .modal-backdrop {
+    visibility: hidden;
+    }
+    .modal-body{
+        padding: 10px;
+    }
+    .modal-footer{
+        margin-top: 0;
+    }
+    .modal-content{
+        color:#555;
+    }
+
+     /********************************/
+    /****** Item Conversación *********/
+    /********************************/
+
+    .messageContainer{
+        margin-top: .5em;
+        margin-bottom: .5em;
+    }
+    .messageContainerLeft{
+        text-align: left;
+        padding-left: 2em;
+    }
+     .messageContainerRight{
+        text-align: right;
+        padding-right: 2em;
+    }
+    .messageContainer .messageDate{
+        color: #b3b3b3;
+        font-size: .8em;
+        font-style: italic;
+    }
+    .messageContainer .messageText{
+        -webkit-border-radius: 10px;
+        padding: 1em;
+        font-size: .9em;
+    }
+    .messageContainerLeft .messageText{
         background-color: #f59e01;
-        color: #FFF;
-        margin: 0;
+        color: #111;
     }
-    .liContainerFeatured .itemSecondLine{
-        color: #FFF;
+    .messageContainerRight .messageText{
+        background-color: #555;
     }
-    .featuredListImage {
-        padding-left: 5px;
-        padding-right: 5px;
+    .messageSend{
+        width: 96%;
+        margin-left: 2%;
+        margin-right: 2%;
     }
-    .featuredListImage img {
-        width: 100%;
-    }
-    .liContainerTempAccom .itemFirstLine span{
-        margin-left: 1em;
+    .messageSend .btn{
+        color: #f0f0f0;
+        background-color: #555;
+        border-color: #444;
     }
 
     /********************************/
@@ -719,15 +757,14 @@ body {
 
     .ftr{
         width: 100%;
-        height: 10em;
-        background: red;
+        height: 3em;
+        background: #ebebeb;
         z-index: 300;
         position: absolute;
         bottom: 0;
         text-align: center;
-        opacity: .7;
+        padding-top: .2em;
         display: none;
-
     }
 
     /********************************/

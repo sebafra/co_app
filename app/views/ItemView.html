@@ -1,26 +1,59 @@
 <div class="container">
-  <% if (typeof(model.multiLanguage) != "undefined"){ %>
   <div class="row">
     <div class="col-xs-12">
       <div class="btn-group btn-group-justified">
-
-      	<% if (App.isLanguageSpanish()){ %>
-        <a id="btn-language-es" class="btn btn-default active" role="button">Espa&ntilde;ol</a>
-        <a id="btn-language-en" class="btn btn-default" role="button">Ingl&eacute;s</a>
-        <% } else {%>
-        <a id="btn-language-es" class="btn btn-default" role="button">Spanish</a>
-        <a id="btn-language-en" class="btn btn-default active" role="button">English</a>
-        <% } %>
-
+        <a id="btn-language-es" class="btn btn-default active" role="button">Acción 1</a>
+        <a id="btn-language-en" class="btn btn-default" role="button">Acción 2</a>
       </div>
     </div>
   </div>
-  <% } %>
-
   <div class="row">
+    <div class="col-xs-10 messageContainer messageContainerLeft">
+      <div class="messageDate">
+        <%= model.messageDate1 %>
+      </div>
+      <div class="messageText">
+        <%= model.message1 %>
+      </div>
+      </div>
+    <div class="col-xs-2"></div>
   </div>
-<div class="itemDescription">
-  <p><%= App.translate(model, "description") %></p>
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-10 messageContainer messageContainerRight">
+      <div class="messageDate">
+        <%= model.messageDate2 %>
+      </div>
+      <div class="messageText">
+        <%= model.message2 %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10 messageContainer messageContainerLeft">
+      <div class="messageDate">
+        <%= model.messageDate3 %>
+      </div>
+      <div class="messageText">
+        <%= model.message3 %>
+      </div>
+      </div>
+    <div class="col-xs-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-10 messageContainer messageContainerRight">
+      <div class="messageDate">
+        <%= model.messageDate4 %>
+      </div>
+      <div class="messageText">
+        <%= model.message4 %>
+      </div>
+    </div>
+  </div>
 </div>
+<script>
+$(".ftr").css("display","block");
+  $(".ftr").html("<div class='col-12 messageSend'><div class='input-group'><input type='text' class='form-control'><span class='input-group-btn'><button class='btn btn-default' type='button'>Enviar</button></span></div></div>");
 
-</div>
+</script>
