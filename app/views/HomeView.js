@@ -12,12 +12,6 @@ window.HomeView = Backbone.View.extend({
 
     events:{
         "click .administradorClick":"loadAttractions",
-        // "click .back2":"loadOtherEvents",
-        // "click .back3":"loadRestaurants",
-        // "click .back4":"loadHotels",
-        // "click .back5":"loadService",
-        // "click .back6":"loadFestival",
-        // "click .back7":"loadRecomendado"
     },
 
     render:function (eventName) {

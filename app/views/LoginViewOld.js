@@ -28,10 +28,7 @@ window.LoginView = Backbone.View.extend({
     },
 
     login:function () {
-        var view = new LoadHomeView({ usuario:this.inputEmail.val(), password:this.inputPassword.val() });
-        window.ViewNavigatorUtil.pushView( view );
-        
-//    	ServiceUser.login(this.inputEmail.val(),this.inputPassword.val(), this.loginOk, this.loginFail);
+    	ServiceUser.login(this.inputEmail.val(),this.inputPassword.val(), this.loginOk, this.loginFail);
     },
     
     loginOk: function(data){

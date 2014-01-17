@@ -2,7 +2,7 @@ window.ServiceUser = {
 
     login:function(usuario, password, loginOk, loginFail){
 
-    	var json = {
+		var json = {
     				usuario:usuario,
     				password:password,
     				rol:Constants.USER_TYPE

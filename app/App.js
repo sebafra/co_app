@@ -5,7 +5,7 @@ window.App = {
 	},
 
 	worksWithoutServer:function(){
-		return true;
+		return false;
 	},
 
 	isOnlineEnabled:function(){
