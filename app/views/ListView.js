@@ -32,6 +32,13 @@ window.ListView = Backbone.View.extend({
             $list.append(new ListItemView({model:item}).render().el);
         }, this);
 
+        this.headerActions = $("<div style='padding: 5px 5px;'><span class='ion-ios7-plus-outline'></span></div>");
+
+        var self = this;
+        this.headerActions.on( "click", function(event){
+            self.headerButtonClick(event);
+        } );
+
         return this;
     },
 
@@ -79,5 +86,10 @@ window.ListView = Backbone.View.extend({
         var itemView = new ItemView({model:item, labelSingular:this.model.labelSingular});
         window.ViewNavigatorUtil.pushView( itemView );
 
+    },
+    headerButtonClick: function (event) {
+
+        var view = new ItemViewNewConversation();
+        window.viewNavigator.pushView( view );
     }
 });

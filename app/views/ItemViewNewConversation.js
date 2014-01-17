@@ -1,8 +1,8 @@
-templates.aboutView = "app/views/AboutView.html";
+templates.itemViewNewConversation = "app/views/ItemViewNewConversation.html";
 
-window.AboutView = Backbone.View.extend({
+window.ItemViewNewConversation = Backbone.View.extend({
 
-    title: "Acerca de",
+    title: "Conversacion",
     backLabel: "Volver",
 
     initialize: function(options) {
@@ -15,7 +15,7 @@ window.AboutView = Backbone.View.extend({
     },
 
     render:function (eventName) {
-        this.$el.html(templates.aboutView);
+        this.$el.html(templates.itemViewNewConversation);
         return this;
     },
 

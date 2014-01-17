@@ -42,6 +42,10 @@ body {
     font-color: #888;
 }
 
+/***********************/
+/******* Data List *****/
+/***********************/
+
 .data-list {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -93,18 +97,8 @@ body {
 .data-list li {
     cursor:pointer;
     font-size:1em;
-    /*padding:1em;
-    padding-left:1em;
-    padding-right:1px;*/
     display:block;
-    /*border-top:1px solid #999;
-    border-bottom:none;
-    background-color: white;
-    background-image: none !important;
-    background-position:right center;
-    background-repeat:no-repeat;*/
 }
-/*TODO: Modificar esto y pasarlo al div del LI*/
 .data-list-lightweight li.listSelected,
 .data-list li.listSelected {
     color:#FFF;
@@ -115,7 +109,9 @@ body {
 }
 
 
-/*ViewNavigator Styles*/
+/***********************/
+/* ViewNavigator Styles */
+/***********************/
 
 .viewNavigator_header {
     background:#333333;
@@ -184,6 +180,10 @@ body {
     background: none;
     box-shadow: none;
 }
+.viewNavigator_headerActions span{
+    color: #f59e01;
+    font-size: 2em;
+}
 
 /*End ViewNavigator Styles*/
 
@@ -195,6 +195,25 @@ body {
     padding: 1em;
 }
 #loginView p{
+    color: #555;
+}
+/***********************/
+/******* About View *****/
+/***********************/
+
+#aboutView .container{
+    padding: 1em;
+    text-align: left;
+}
+#aboutView {
+    color: #555;
+}
+/***********************/
+/* New Conversation View */
+/***********************/
+
+#itemViewNewConversation .container{
+    padding: 1em;
     color: #555;
 }
 
