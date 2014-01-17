@@ -4,6 +4,10 @@ window.App = {
 		return true;
 	},
 
+	worksWithoutServer:function(){
+		return true;
+	},
+
 	isOnlineEnabled:function(){
 		return false;
 	},
@@ -50,5 +54,15 @@ window.App = {
 	getImagePath:function(type, fileName){
 		// TODO modificar
 		return "assets/model/adScreen/"+fileName;
+	},
+	
+	usuario:undefined,
+	password:undefined,
+	rol:undefined,
+	
+	saveUser:function(data){
+		this.usuario  = data.usuario;
+		this.password = data.password;
+		this.rol 	  = data.rol;
 	}
 };

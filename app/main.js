@@ -28,11 +28,11 @@ function appTemplatesLoaded() {
 
     $("body").empty();
 
-    var homeView = new HomeView();
+    var loginView = new LoginView();
 
     //Setup the ViewNavigator
     window.viewNavigator = new ViewNavigator( 'body' );
-    window.viewNavigator.pushView( homeView );
+    window.viewNavigator.pushView( loginView );
     document.addEventListener("backbutton", onBackKey, false);
 }
 
