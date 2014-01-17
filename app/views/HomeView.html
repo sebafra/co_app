@@ -1,15 +1,16 @@
 <div id="homeView">
+  <div class="homeSelect">
+      <p>Seleccionar Barrio
+        <select name="barrio" id="">
+          <option value="">Lomas de la carolina</option>
+          <option value="">Las Delicias</option>
+          <option value="">Fincas del Sur</option>
+        </select>
+      </p>
+    </div>
 	<div class="container">
-		<div class="homeSelect">
-			<p>Seleccionar Barrio
-				<select name="barrio" id="">
-					<option value="">Lomas de la carolina</option>
-					<option value="">Las Delicias</option>
-					<option value="">Fincas del Sur</option>
-				</select>
-			</p>
-		</div>
-    <div class="homeButton expensesHomeButton">
+    <div class="buttonLine">
+      <div class="homeButton expensesHomeButton">
       <div class="col-xs-2">
         <span class="glyphicon glyphicon-barcode"></span>
       </div>
@@ -17,6 +18,8 @@
         <p>Código de pago de expensas</p>
       </div>
     </div>
+  </div>
+    <div class="buttonLine">
 		<div class="homeButton administradorClick">
 			<span class="icon ion-clipboard"></span>
 			<p>Administrador</p>
@@ -25,6 +28,8 @@
 			<span class="icon ion-clock"></span>
 			<p>Reserva</p>
 		</div>
+    </div>
+    <div class="buttonLine">
 		<div class="homeButton">
 			<span class="icon ion-person-stalker"></span>
 			<p>Visita</p>
@@ -33,8 +38,9 @@
 			<span class="icon ion-pizza"></span>
 			<p>Delivery</p>
 		</div>
-
-		<!-- Modal -->
+  </div>
+	</div>
+      <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -45,7 +51,7 @@
       <div class="modal-body">
         <p>Ingrese con su teléfono o su dirección de correo electrónico</p>
         <form class="form-horizontal" role="form">
-        	<div class="form-group">
+          <div class="form-group">
     <div class="col-sm-10">
       <input type="tel" class="form-control" id="inputEmail3" placeholder="Teléfono">
     </div>
@@ -69,8 +75,12 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-	</div>
 </div>
 <script>
+  //Home View toma el alto del Content View
+  var headerHeight = $(".viewNavigator_contentHolder").height();
+  $("#homeView").css("height",headerHeight);
+
+  //Se muestra ventana modal con Login
 	$('#myModal').modal('show');
 </script>

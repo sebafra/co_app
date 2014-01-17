@@ -2,9 +2,9 @@
     font-family: 'open_sanslight';
     src: url('fonts/OpenSans-Light-webfont.eot');
     src: url('fonts/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/OpenSans-Light-webfont.woff') format('woff'),
-         url('fonts/OpenSans-Light-webfont.ttf') format('truetype'),
-         url('fonts/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
+    url('fonts/OpenSans-Light-webfont.woff') format('woff'),
+    url('fonts/OpenSans-Light-webfont.ttf') format('truetype'),
+    url('fonts/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -198,11 +198,15 @@ body {
     text-align: center;
     border:none;
     height: 100%;
+    position: relative;
 }
 
 @media screen and (max-device-width : 767px) {
     #homeView {
-        background: url('images/background_480.jpg')  no-repeat center top;
+        background-image: url('images/background_480.jpg');
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: cover;
     }
 }
 
@@ -218,14 +222,16 @@ body {
     padding-bottom:5px;
 }
 #homeView .container {
+    position: absolute;
+    bottom: 0;
 }
 .homeSelect{
-        width: 98%;
-        height: 7em;
-        background: none;
-        padding-top: 1em;
-        background: url(images/logo.png) center bottom no-repeat;
-    }
+    width: 98%;
+    height: 7em;
+    background: none;
+    padding-top: 1em;
+    background: url(images/logo.png) center bottom no-repeat;
+}
 .homeButton{
     width:48%;
     display: inline-block;
@@ -245,19 +251,30 @@ body {
     font-weight: bold;
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
 }
-    .expensesHomeButton{
-        width: 98%;
-        height: 5em;
-        padding-top: 1em;
-        /*background: url(images/logo.png) center bottom no-repeat;*/
-    }
-    .expensesHomeButton p{
-        padding-top: 1em;
-    }
-    .homeButton .icon, .homeButton .glyphicon{
-        font-size: 3em;
-        color: #fff;
-    }
+.buttonLine{
+}
+.buttonLine:first-child{
+    margin-top:0;
+    margin-bottom:0;
+}
+.buttonLine:last-child{
+    margin-top:.3em;
+    margin-bottom:.3em;
+}
+
+.expensesHomeButton{
+    width: 98%;
+    height: 5em;
+    padding-top: 1em;
+    /*background: url(images/logo.png) center bottom no-repeat;*/
+}
+.expensesHomeButton p{
+    padding-top: 1em;
+}
+.homeButton .icon, .homeButton .glyphicon{
+    font-size: 3em;
+    color: #fff;
+}
 
 /*.img{
     padding: 0;
@@ -279,21 +296,21 @@ body {
     }
     .loadItems .progress-bar{
         background-color: #f59e01;
-    }*/
-    .loadItems .icon{
-        color: #f59e01;
-        font-size: 5em;
-        margin-top: 1em;
-        opacity: .7;
-    }
+        }*/
+        .loadItems .icon{
+            color: #f59e01;
+            font-size: 5em;
+            margin-top: 1em;
+            opacity: .7;
+        }
 
     /*.searchGraphic .activityIndicator {
         position:absolute;
         top: 104px;
         left: 174px;
-    }*/
+        }*/
 
-    /* End Load View Search */
+        /* End Load View Search */
 
     /*.header {
         background: url('images/lettuce.jpg') no-repeat;
@@ -610,15 +627,15 @@ body {
         background-position:right center;
         background-repeat:no-repeat;
     }
-     /********************************/
+    /********************************/
     /****** Ventana Modal Login *********/
     /********************************/
 
     .modal-backdrop.in {
-    opacity: .05;
+        opacity: .05;
     }
     .modal-backdrop {
-    visibility: hidden;
+        visibility: hidden;
     }
     .modal-body{
         padding: 10px;
@@ -630,7 +647,7 @@ body {
         color:#555;
     }
 
-     /********************************/
+    /********************************/
     /****** Item Conversación *********/
     /********************************/
 
@@ -642,7 +659,7 @@ body {
         text-align: left;
         padding-left: 2em;
     }
-     .messageContainerRight{
+    .messageContainerRight{
         text-align: right;
         padding-right: 2em;
     }
@@ -779,20 +796,20 @@ body {
             height: 25em;
         }
         .homeButton{
-           width:49%;
-           height: 17em;
-       }
-       #thelist li{
-          height: 5em;
-          vertical-align: middle;
-      }
-      .container {
-        width: 100%;
-    }
-    .swiper-container {
-      height: 30em;
+         width:49%;
+         height: 17em;
+     }
+     #thelist li{
+      height: 5em;
+      vertical-align: middle;
   }
-  .btn-sm{
+  .container {
+    width: 100%;
+}
+.swiper-container {
+  height: 30em;
+}
+.btn-sm{
     padding: 10px 20px;
     font-size: 15px;
 }
