@@ -1,6 +1,10 @@
-<div id="homeView">
+<div id="loginView">
 	<div class="container">
-		<form class="form-horizontal" role="form">
+		<div class="panel panel-default">
+			<div class="panel-heading">Ingrese a la App</div>
+			<div class="panel-body">
+				 <p>Ingrese con su tel&eacute;fono o su direcci&oacute;n de correo electr&oacute;nico</p>
+			   <form class="form-horizontal" role="form">
 			<div class="form-group">
 				<div class="col-sm-10">
 					<input type="tel" class="form-control" id="inputPhone"
@@ -21,7 +25,13 @@
 				</div>
 			</div>
 		</form>
-        <button type="button" class="btn btn-warning" id="btnLogin">Ingresar</button>
-
+			</div>
+			<div class="panel-footer"><button type="button" class="btn btn-warning" id="btnLogin">Ingresar</button></div>
+		</div>
 	</div>
 </div>
+<script>
+  //Home View toma el alto del Content View
+  var headerHeight = $(".viewNavigator_contentHolder").height();
+  $("#homeLogin").css("height",headerHeight);
+</script>

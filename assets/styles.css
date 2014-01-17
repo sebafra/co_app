@@ -188,6 +188,17 @@ body {
 /*End ViewNavigator Styles*/
 
 /***********************/
+/******* Login View *****/
+/***********************/
+
+#loginView .container{
+    padding: 1em;
+}
+#loginView p{
+    color: #555;
+}
+
+/***********************/
 /******* Home View *****/
 /***********************/
 
