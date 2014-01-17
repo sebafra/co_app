@@ -56,13 +56,14 @@ window.App = {
 		return "assets/model/adScreen/"+fileName;
 	},
 	
-	usuario:undefined,
+	userName:undefined,
 	password:undefined,
-	rol:undefined,
+	role:undefined,
+	countries: undefined,
 	
 	saveUser:function(data){
-		this.usuario  = data.usuario;
+		this.userName  = data.userName;
 		this.password = data.password;
-		this.rol 	  = data.rol;
+		this.role 	  = data.role;
 	}
 };

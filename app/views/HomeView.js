@@ -18,6 +18,10 @@ window.HomeView = Backbone.View.extend({
         var template = _.template(templates.homeView);
         var model = {isTablet:NativeUtil.isTablet()};
         this.$el.html(template(model));
+        var $countries = this.$el.find("#countries");
+        _.each(App.countries, function (country) {
+            $countries.append("<option value=" + country.id + ">" + country.name + "</option>");
+        }, this);
 
 
         return this;

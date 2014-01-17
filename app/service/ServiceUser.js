@@ -1,11 +1,11 @@
 window.ServiceUser = {
 
-    login:function(usuario, password, loginOk, loginFail){
+    login:function(userName, password, loginOk, loginFail){
 
 		var json = {
-    				usuario:usuario,
+					userName:userName,
     				password:password,
-    				rol:Constants.USER_TYPE
+    				role:Constants.USER_TYPE
     				};
     	
     	if(App.worksWithoutServer()){

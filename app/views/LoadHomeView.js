@@ -54,6 +54,7 @@ window.LoadHomeView = Backbone.View.extend({
     	if(result.countries == undefined || result.countries.length == 0){
     		view = new MessageView({message:"No posee ningun country"});
 		} else {
+			App.countries = result.countries;
 			view = new HomeView({ model:{} });
 		}
     	

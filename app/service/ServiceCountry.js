@@ -3,7 +3,7 @@ window.ServiceCountry = {
     getByUser:function(success, fail){
 
     	var json = {
-    				usuario:App.usuario
+    				userName:App.userName
     				};
     	
     	if(App.worksWithoutServer()){
@@ -12,17 +12,16 @@ window.ServiceCountry = {
     				countries:[
     				 	{
     				 		id:"1",
-    				 		nombre:"c1"
+    				 		name:"c1"
     				 	},
     				 	{
     				 		id:"2",
-    				 		nombre:"c2"
+    				 		name:"c2"
     				 	}
     				 ]
     				};
 
     		success(countries);
-    		//fail("countries");
     		return;
     	}
     	
