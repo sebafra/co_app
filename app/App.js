@@ -5,7 +5,7 @@ window.App = {
 	},
 
 	worksWithoutServer:function(){
-		return true;
+		return false;
 	},
 
 	isOnlineEnabled:function(){
@@ -55,15 +55,17 @@ window.App = {
 		// TODO modificar
 		return "assets/model/adScreen/"+fileName;
 	},
-
+	
 	userName:undefined,
+	userId:undefined,
 	password:undefined,
 	role:undefined,
 	countries: undefined,
-
+	
 	saveUser:function(data){
+		this.userId    = data.userId;
 		this.userName  = data.userName;
-		this.password = data.password;
-		this.role 	  = data.role;
+		this.password  = data.password;
+		this.role 	   = data.role;
 	}
 };

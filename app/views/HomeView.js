@@ -22,7 +22,7 @@ window.HomeView = Backbone.View.extend({
         this.$el.html(template(model));
         var $countries = this.$el.find("#countries");
         _.each(App.countries, function (country) {
-            $countries.append("<option value=" + country.id + ">" + country.name + "</option>");
+            $countries.append("<option value=" + country.countryId + ">" + country.countryName + "</option>");
         }, this);
 
         this.headerActions = $("<div style='padding: 5px 5px;'><span class='icon ion-ios7-information-outline'></span></div>");
