@@ -14,6 +14,8 @@ function onDeviceReady() {
 	// });
     // hideArrow();
 
+    onInputFocus();
+
 	loadTemplates( appTemplatesLoaded );
 
     ModelManager.updateAll();
@@ -49,3 +51,18 @@ function onBackKey( event ) {
 // }
 
 document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+//Focus on inputs
+function onInputFocus(){
+      $(".form-group input").click(function(){
+      $(this).scroll();
+  });
+}
+function showHeader(){
+        $(".viewNavigator_header").css("display","block");
+        $(".viewNavigator_content").css("top","46");
+};
+function hideHeader(){
+        $(".viewNavigator_header").css("display","none");
+        $(".viewNavigator_content").css("top","0");
+};

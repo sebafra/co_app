@@ -1,11 +1,15 @@
 <div id="homeView">
   <div class="homeSelect">
-      <p>Seleccionar Barrio
-        <select name="barrio" id="countries">
+        <select class="form-control" name="barrio" id="countries">
         </select>
-      </p>
     </div>
 	<div class="container">
+    <div class="buttonLine">
+      <div class="col-12">
+        <img src="assets/images/cincolomas.jpg" alt="">
+      </div>
+
+  </div>
     <div class="buttonLine">
       <div class="homeButton expensesHomeButton">
       <div class="col-xs-2">
@@ -37,44 +41,9 @@
 		</div>
   </div>
 	</div>
-      <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Ingrese a la app</h4>
-      </div>
-      <div class="modal-body">
-        <p>Ingrese con su tel&eacute;fono o su direcci&oacute;n de correo electr&oacute;nico</p>
-        <form class="form-horizontal" role="form">
-          <div class="form-group">
-    <div class="col-sm-10">
-      <input type="tel" class="form-control" id="inputTel" placeholder="Telefono">
-    </div>
-  </div>
-  <hr>
-  <div class="form-group">
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
-    </div>
-  </div>
-</form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-warning">Ingresar</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 </div>
 <script>
   //Home View toma el alto del Content View
   var headerHeight = $(".viewNavigator_contentHolder").height();
   $("#homeView").css("height",headerHeight);
-</script>
+  //showHeader();
