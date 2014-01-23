@@ -11,7 +11,7 @@ window.HomeView = Backbone.View.extend({
     },
 
     events:{
-        "click .administradorClick":"loadAttractions",
+        "click .administradorClick":"loadConversations",
     },
 
 
@@ -21,8 +21,11 @@ window.HomeView = Backbone.View.extend({
         var model = {isTablet:NativeUtil.isTablet()};
         this.$el.html(template(model));
         var $countries = this.$el.find("#countries");
+        var idx = 0;
         _.each(App.countries, function (country) {
+        	if(idx == 0) App.country = country;
             $countries.append("<option value=" + country.countryId + ">" + country.countryName + "</option>");
+        	idx++;
         }, this);
 
         this.headerActions = $("<div style='padding: 5px 5px;'><span class='icon ion-ios7-information-outline'></span></div>");
@@ -36,6 +39,10 @@ window.HomeView = Backbone.View.extend({
         return this;
     },
 
+    loadConversations:function () {
+        var view = new LoadConversationsView();
+        ViewNavigatorUtil.pushView( view );
+    },
     loadAttractions:function () {
         var view = new LoadItemsView({type:ModelManager.type.attraction.code});
         //window.viewNavigator.pushView( view );

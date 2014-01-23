@@ -10,6 +10,7 @@ window.LoadHomeView = Backbone.View.extend({
 
     	this.usuario  = options.usuario;
     	this.password = options.password;
+    	this.role 	  = Constants.ROLE_USER; // TODO cambiar
     	
         this.render();
         this.view = this.$el;
@@ -34,7 +35,7 @@ window.LoadHomeView = Backbone.View.extend({
 
         //delay long enough for transition to complete
         setTimeout(function(){
-        	ServiceUser.login(self.usuario,self.password, self.onLogin, self.onLoginFail);
+        	ServiceUser.login(self.role, self.usuario,self.password, self.onLogin, self.onLoginFail);
         }, 401 );        
     },
 

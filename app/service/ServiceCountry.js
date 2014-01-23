@@ -12,11 +12,13 @@ window.ServiceCountry = {
     				countries:[
     				 	{
     				 		countryId:"1",
-    				 		countryName:"c1"
+    				 		countryName:"c1",
+    				 		countryAdministratorId:"1"
     				 	},
     				 	{
     				 		countryId:"2",
-    				 		countryName:"c2"
+    				 		countryName:"c2",
+    				 		countryAdministratorId:"1"
     				 	}
     				 ]
     				};

@@ -1,0 +1,14 @@
+
+<% if ((typeof(conversations) != "undefined") && conversations.length > 0) { %>
+    <ul class="data-list" id="list"></ul>
+<% } else { %>
+    <div style="padding:10px;">
+        <div class="alert alert-error" >
+            No hay conversaciones disponible
+        </div>
+    </div>
+
+<% } %>
+<script>
+	$(".ftr").css("display","none");
+</script>
