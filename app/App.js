@@ -5,7 +5,7 @@ window.App = {
 	},
 
 	worksWithoutServer:function(){
-		return true;
+		return false;
 	},
 
 	isOnlineEnabled:function(){
@@ -55,15 +55,28 @@ window.App = {
 		// TODO modificar
 		return "assets/model/adScreen/"+fileName;
 	},
-
-	userName:undefined,
-	password:undefined,
-	role:undefined,
-	countries: undefined,
-
+	
+	userName:		undefined,
+	userId:			undefined,
+	password:		undefined,
+	role:			undefined,
+	messageOrigin:	undefined,
+	countries: 		undefined,
+	country:		undefined,
+	countryId: 		undefined,
+	messages: 		undefined,
+	message: 		undefined,
+	lastMessage: 	undefined,
+	lastMessageRoot:undefined,
+	
 	saveUser:function(data){
+		this.userId    = data.userId;
 		this.userName  = data.userName;
-		this.password = data.password;
-		this.role 	  = data.role;
+		this.password  = data.password;
+		this.role 	   = data.role;
+		if(this.role == Constants.ROLE_USER)
+			this.messageOrigin = Constants.MESSAGE_ORIGIN_USER;
+		else
+			this.messageOrigin = Constants.MESSAGE_ORIGIN_ADMINISTRATOR;
 	}
 };

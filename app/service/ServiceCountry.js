@@ -11,12 +11,14 @@ window.ServiceCountry = {
         	var countries = {
     				countries:[
     				 	{
-    				 		id:"1",
-    				 		name:"c1"
+    				 		countryId:"1",
+    				 		countryName:"c1",
+    				 		countryAdministratorId:"1"
     				 	},
     				 	{
-    				 		id:"2",
-    				 		name:"c2"
+    				 		countryId:"2",
+    				 		countryName:"c2",
+    				 		countryAdministratorId:"1"
     				 	}
     				 ]
     				};

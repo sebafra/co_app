@@ -26,13 +26,16 @@
         }
     </script>
 </head>
+
 <body>
     <div id="viewNavigator_header" style="">
-        <div class="viewNavigator_header_title">Consorcio Mobile</div>
+        <div class="viewNavigator_header_title">Consorcio Digital</div>
     </div>
     <div id="homeView" style="height:100%; position:absolute; top:46px; padding: 0px; padding-top: 40px;">
         <div class="activityIndicator"></div>
     </div>
+
+
     <!-- USED FOR PRECACHING CSS STYLES AND ASSETS -->
     <div style="width:0px;height:0px;overflow: hidden; visibility: hidden">
         <div class="viewNavigator_backButton" />
@@ -69,13 +72,20 @@
 <script src="app/views/ListView.js"></script>
 <script src="app/views/ListItemView.js"></script>
 <script src="app/views/ItemView.js"></script>
+<!-- Comienza el HEAD del conflicto -->
 <script src="app/views/ItemViewNewConversation.js"></script>
 <script src="app/views/ItemViewNewBook.js"></script>
 <script src="app/views/ItemViewNewVisit.js"></script>
+<!-- Termina el conflicto  -->
 <script src="app/views/LoadItemView.js"></script>
+<script src="app/views/LoadConversationsView.js"></script>
 <script src="app/views/LoginView.js"></script>
 <script src="app/views/LoadHomeView.js"></script>
 <script src="app/views/MessageView.js"></script>
+<script src="app/views/ConversationsView.js"></script>
+<script src="app/views/ConversationView.js"></script>
+<script src="app/views/ConversationsItemView.js"></script>
+<script src="app/views/ConversationNewView.js"></script>
 <script src="app/util/NativeUtil.js"></script>
 <script src="app/util/GeoWatcher.js"></script>
 <script src="app/util/ViewNavigatorUtil.js"></script>
@@ -85,6 +95,7 @@
 <script src="app/model/ModelManager.js"></script>
 <script src="app/service/ServiceUser.js"></script>
 <script src="app/service/ServiceCountry.js"></script>
+<script src="app/service/ServiceMessage.js"></script>
 <script src="app/main.js"></script>
 <script src="app/Constants.js"></script>
 <script src="app/notifications.js"></script>
