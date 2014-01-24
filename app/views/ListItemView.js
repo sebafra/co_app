@@ -1,8 +1,8 @@
 templates.listItemView = "app/views/ListItemView.html";
 templates.listItemViewExtend = "app/views/ListItemViewExtend.html";
-templates.listItemViewFeatured = "app/views/ListItemViewFeatured.html";
-templates.listItemViewCronograma = "app/views/ListItemViewCronograma.html";
-templates.listItemViewTempAccom = "app/views/ListItemViewTempAccom.html";
+templates.listItemViewBook = "app/views/ListItemViewBook.html";
+templates.listItemViewVisit = "app/views/ListItemViewVisit.html";
+templates.listItemViewDelivery = "app/views/ListItemViewDelivery.html";
 
 window.ListItemView = Backbone.View.extend({
 
@@ -24,12 +24,12 @@ window.ListItemView = Backbone.View.extend({
             this.template = _.template( templates.listItemView );
        } else if (this.model.listItemViewType=="extended") {
             this.template = _.template( templates.listItemViewExtend );
-        } else if (this.model.listItemViewType=="featured") {
-            this.template = _.template( templates.listItemViewFeatured );
-        } else if (this.model.listItemViewType=="cronograma") {
-            this.template = _.template( templates.listItemViewCronograma );
-        } else if (this.model.listItemViewType=="temporaryAccommodation") {
-            this.template = _.template( templates.listItemViewTempAccom );
+        } else if (this.model.listItemViewType=="book") {
+            this.template = _.template( templates.listItemViewBook );
+        } else if (this.model.listItemViewType=="visit") {
+            this.template = _.template( templates.listItemViewVisit );
+        } else if (this.model.listItemViewType=="delivery") {
+            this.template = _.template( templates.listItemViewDelivery );
         }
         this.render();
         this.view = this.$el;

@@ -4,7 +4,6 @@ window.LoginView = Backbone.View.extend({
 
     title: "Consorcio Digital",
     destructionPolicy:'never',
-    backLabel: "Volver",
 
     initialize: function(options) {
         this.render();
@@ -30,17 +29,17 @@ window.LoginView = Backbone.View.extend({
     login:function () {
         var view = new LoadHomeView({ usuario:this.inputEmail.val(), password:this.inputPassword.val() });
         window.ViewNavigatorUtil.pushView( view );
-        
+
 //    	ServiceUser.login(this.inputEmail.val(),this.inputPassword.val(), this.loginOk, this.loginFail);
     },
-    
+
     loginOk: function(data){
     	App.saveUser(data);
         var view = new LoadHomeView({ model:{} });
         window.ViewNavigatorUtil.pushView( view );
-    	
+
     },
-    
+
     loginFail: function(message){
         var view = new MessageView({message:message});
         window.ViewNavigatorUtil.pushView( view );

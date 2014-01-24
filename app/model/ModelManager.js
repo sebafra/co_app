@@ -13,6 +13,25 @@ window.ModelManager = {
 			url:"/getAdScreens",
 			fileName:"adScreen.json",
 			folderName:"adScreen"
+		},
+		book:{
+			code:"book",
+			url:"/getBooks",
+			fileName:"book.json",
+			folderName:"book"
+		}
+		,
+		visit:{
+			code:"visit",
+			url:"/getVisit",
+			fileName:"visit.json",
+			folderName:"visit"
+		},
+		delivery:{
+			code:"delivery",
+			url:"/getDeliverys",
+			fileName:"delivery.json",
+			folderName:"delivery"
 		}
 	},
 	setup:{
@@ -74,6 +93,70 @@ window.ModelManager = {
 			labelSingular: "Mensaje",
 			type: "attraction"
 		},
+		book:{
+			items: [
+			{
+				"type":"book",
+				"name":"Santiago Bernardini",
+				"date":"12 enero 11:35",
+				"id":"1",
+				"state":"pendiente",
+				"listItemViewType":"book",
+				"amenity":"Cancha de Golf",
+				"description":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, consequatur, odio voluptatibus et earum nesciunt consectetur natus!"
+			}
+			],
+			labelPlural: "Reservar",
+			labelSingular: "Reserva",
+			type: "book"
+		},
+		visit:{
+			items: [
+			{
+				"type":"visit",
+				"name":"Santiago Bernardini",
+				"dateFrom":"12 enero",
+				"dateTo":"12 enero",
+				"id":"1",
+				"listItemViewType":"visit",
+				"description":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, consequatur, odio voluptatibus et earum nesciunt consectetur natus!"
+			}
+			],
+			labelPlural: "Visitas",
+			labelSingular: "Visita",
+			type: "visit"
+		},
+		delivery:{
+			items: [
+			{
+				"type":"delivery",
+				"name":"",
+				"id":"1",
+				"tel":"3514445659",
+				"listItemViewType":"delivery",
+				"image1":"delivery1.jpg"
+			},
+			{
+				"type":"delivery",
+				"name":"",
+				"id":"2",
+				"tel":"3514445659",
+				"listItemViewType":"delivery",
+				"image1":"delivery1.jpg"
+			},
+			{
+				"type":"delivery",
+				"name":"",
+				"id":"3",
+				"tel":"3514445659",
+				"listItemViewType":"delivery",
+				"image1":"delivery1.jpg"
+			}
+			],
+			labelPlural: "Deliverys",
+			labelSingular: "Deivery",
+			type: "delivery"
+		},
 		adScreen:{
 			items: [
 			{name:"adScreen1",id:"1", fileName:"3-fernet-listo2.png"}
@@ -93,6 +176,12 @@ window.ModelManager = {
 			return this.type.attraction;
 		} else if(type == this.type.adScreen.code){
 			return this.type.adScreen;
+		} else if(type == this.type.book.code){
+			return this.type.book;
+		} else if(type == this.type.visit.code){
+			return this.type.visit;
+		} else if(type == this.type.delivery.code){
+			return this.type.delivery;
 		}
 		return;
 	},
@@ -103,6 +192,12 @@ window.ModelManager = {
 			return this.setup.attraction;
 		} else if(type == this.type.adScreen.code){
 			return this.setup.adScreen;
+		} else if(type == this.type.book.code){
+			return this.setup.book;
+		} else if(type == this.type.visit.code){
+			return this.setup.visit;
+		} else if(type == this.type.delivery.code){
+			return this.setup.delivery;
 		}
 		return;
 	},

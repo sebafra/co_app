@@ -86,7 +86,7 @@ window.ListView = Backbone.View.extend({
     },
     headerButtonClick: function (event) {
 
-        var view = new ItemViewNewConversation();
+        var view = new ItemViewNewVisit();
         window.viewNavigator.pushView( view );
     }
 });

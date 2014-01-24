@@ -26,6 +26,10 @@ window.ItemView = Backbone.View.extend({
     	App.setLanguageSpanish();
     	this.reload();
     },
+    // función cuando se ejecuta el botón volver
+    backCallback:function () {
+    $(".ftr").css("display","none");
+    },
 
     changeLanguageEnglish:function () {
     	App.setLanguageEnglish();

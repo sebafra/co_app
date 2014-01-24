@@ -1,0 +1,10 @@
+/***********************/
+/******* Home View *****/
+/***********************/
+
+#homeView {
+    position: static;
+}
+#homeView .container {
+    position: static;
+}

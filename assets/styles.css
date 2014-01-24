@@ -41,6 +41,10 @@ body {
     font-size:0.85em;
     font-color: #888;
 }
+.form-control{
+    background-color: #c7c7c7 !important;
+    color: #444 !important;
+}
 
 /***********************/
 /******* Data List *****/
@@ -107,6 +111,147 @@ body {
     font-weight: bold;
     /*background-image:url('images/more_disclosure_white.png');*/
 }
+/* Load View Search */
+
+    .loadItems .icon{
+        color: #f59e01;
+        font-size: 5em;
+        margin-top: 1em;
+        opacity: .7;
+    }
+    .searchString {
+        color: #619C00;
+        font-weight:bold;
+    }
+
+
+    .data-list li #bar{
+        position: absolute;
+        bottom:0px;
+        left:0px;
+        /*background: rgba(200,200,200,0.12); */
+        background: url('images/bar_background.png');
+        border-right: 1px solid rgba(150,150,150,0.16);
+        top:0px;
+        z-index: 0;
+        overflow: hidden;
+    }
+
+    .data-list li #bar #watermark{
+        position: relative;
+        margin-left:0px;
+        margin-top:50px;
+        font-size: 10em;
+        color: rgba( 255,255,255,0.5 );
+    }
+
+    .data-list li #overlay{
+        position: relative;
+        width:100%;
+        z-index: 1;
+    }
+
+    .data-list li #overlay #name{
+        color: #619C00;
+        font-weight:bold;
+        font-size: 1.35em;
+    }
+
+    .data-list li.listSelected #overlay #name,
+    .data-list li .listSelected #overlay #name,
+    .data-list .listSelected div #name,
+    .data-list li .listSelected div #name{
+        /*text-shadow: 1px 1px #000;*/
+        color: #333;
+    }
+
+    .green,
+    .price {
+        color: #619C00;
+    }
+
+    li #time {
+        font-size: 0.8em;
+        font-weight: bold;
+    }
+
+    li.listSelected .price {
+        text-shadow: 1px 1px #000;
+        /*color: #8CE200;*/
+    }
+
+    .shadow,
+    .cuisine .listSelected,
+    li.listSelected #walker,
+    li.listSelected #overlay {
+        text-shadow: 1px 1px #000;
+    }
+    .lightShadow {
+        text-shadow: 1px 1px #777;
+    }
+
+    .data-list li #overlay #distance{
+        font-size:0.75em;
+        font-style: italic;
+
+    }
+
+    .ratingStar {
+        fill:#619C00;
+    }
+
+    li.listSelected .ratingStar {
+        fill:#8CE200;
+    }
+
+    .padded {
+        padding-left:10px;
+        padding-right: 10px;
+    }
+
+    .label {
+        font-weight: bold;
+        width:60px;
+        display: inline-block;
+    }
+
+    .wideLabel {
+        width:120px;
+        display: inline-block;
+    }
+
+    .detailMapContainer {
+        border-top:1px solid #619C00;
+        border-bottom:1px solid #619C00;
+    }
+
+    .toolbar {
+        background: #DDD;
+        border-top: 1px solid #999;
+        border-bottom: 1px solid #666;
+        padding: 10px;
+    }
+
+    .amenitiesFirstCol {
+        width: 50%;
+    }
+
+    .gpu {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+
+        transform: translate3d(0,0,0);
+        -webkit-transform: translate3d(0,0,0);
+    }
+
+    .data-table {
+        width:100%;
+    }
+
+    .data-table div div {
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+    }
 
 
 /***********************/
@@ -212,25 +357,6 @@ body {
     border: none;
     color: #999;
 }
-/***********************/
-/******* About View *****/
-/***********************/
-
-#aboutView .container{
-    padding: 1em;
-    text-align: left;
-}
-#aboutView {
-    color: #555;
-}
-/***********************/
-/* New Conversation View */
-/***********************/
-
-#itemViewNewConversation .container{
-    padding: 1em;
-    color: #555;
-}
 
 /***********************/
 /******* Home View *****/
@@ -257,7 +383,7 @@ body {
 
 @media screen and (min-device-width : 768px) {
     #homeView {
-        background: url('images/background_1024.jpg') no-repeat center top;
+       /* background: url('images/background_1024.jpg') no-repeat center top;*/
     }
 }
 #homeView a {
@@ -269,19 +395,25 @@ body {
 #homeView .container {
     position: absolute;
     bottom: 0;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
 }
 .homeSelect{
-    width: 98%;
-    height: 7em;
+    width: 100%;
     background: none;
-    padding-top: 1em;
-    /*background: url(images/logo.png) center bottom no-repeat;*/
+    padding: 1em;
+    overflow-x: hidden;
+    /*background: url(images/cincolomas.jpg) center bottom no-repeat;*/
+}
+.homeSelect img{
+    max-width: 100%;
+    margin: .5em 0;
 }
 .homeButton{
     width:48%;
     display: inline-block;
     overflow: hidden;
-    height: 7em;
+    height: 5em;
     text-align: center;
     margin: 0;
     /*position: relative;*/
@@ -295,10 +427,6 @@ body {
     color: #FFFFFF;
     font-weight: bold;
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
-}
-.buttonLine img{
-    max-width: 98%;
-    margin-bottom: .5em;
 }
 .buttonLine .col-12{
     text-align: center;
@@ -322,7 +450,7 @@ body {
     padding-top: 1em;
 }
 .homeButton .icon, .homeButton .glyphicon{
-    font-size: 3em;
+    font-size: 2em;
     color: #fff;
 }
 
@@ -336,520 +464,349 @@ body {
     background-size: cover;
     }*/
 
-    /* Load View Search */
-
-   /* .loadItems{
-        padding: 5em !important;
-    }
-    .loadItems .progress{
-        margin-top: 5em;
-    }
-    .loadItems .progress-bar{
-        background-color: #f59e01;
-        }*/
-        .loadItems .icon{
-            color: #f59e01;
-            font-size: 5em;
-            margin-top: 1em;
-            opacity: .7;
-        }
-
-    /*.searchGraphic .activityIndicator {
-        position:absolute;
-        top: 104px;
-        left: 174px;
-        }*/
-
-        /* End Load View Search */
-
-    /*.header {
-        background: url('images/lettuce.jpg') no-repeat;
-    }
-
-    .header h1 {
-        background: url('images/lettuce.jpg') no-repeat;
-        margin:0px;
-        padding:10px 10px;
-        color: white;
-        text-shadow: 2px 2px #000;
-        }*/
-
-        .searchString {
-            color: #619C00;
-            font-weight:bold;
-        }
 
 
-        .data-list li #bar{
-            position: absolute;
-            bottom:0px;
-            left:0px;
-            /*background: rgba(200,200,200,0.12); */
-            background: url('images/bar_background.png');
-            border-right: 1px solid rgba(150,150,150,0.16);
-            top:0px;
-            z-index: 0;
-            overflow: hidden;
-        }
+/***********************/
+/******* About View *****/
+/***********************/
 
-        .data-list li #bar #watermark{
-            position: relative;
-            margin-left:0px;
-            margin-top:50px;
-            font-size: 10em;
-            color: rgba( 255,255,255,0.5 );
-        }
+#aboutView .container{
+    padding: 1em;
+    text-align: left;
+}
+#aboutView {
+    color: #555;
+}
 
-        .data-list li #overlay{
-            position: relative;
-            width:100%;
-            z-index: 1;
-        }
+/********************************/
+/****** Item Conversación *******/
+/********************************/
 
-        .data-list li #overlay #name{
-            color: #619C00;
-            font-weight:bold;
-            font-size: 1.35em;
-        }
-
-        .data-list li.listSelected #overlay #name,
-        .data-list li .listSelected #overlay #name,
-        .data-list .listSelected div #name,
-        .data-list li .listSelected div #name{
-            /*text-shadow: 1px 1px #000;*/
-            color: #333;
-        }
-
-        .green,
-        .price {
-            color: #619C00;
-        }
-
-        li #time {
-            font-size: 0.8em;
-            font-weight: bold;
-        }
-
-        li.listSelected .price {
-            text-shadow: 1px 1px #000;
-            /*color: #8CE200;*/
-        }
-
-        .shadow,
-        .cuisine .listSelected,
-        li.listSelected #walker,
-        li.listSelected #overlay {
-            text-shadow: 1px 1px #000;
-        }
-        .lightShadow {
-            text-shadow: 1px 1px #777;
-        }
-
-        .data-list li #overlay #distance{
-            font-size:0.75em;
-            font-style: italic;
-
-        }
-
-        .ratingStar {
-            fill:#619C00;
-        }
-
-        li.listSelected .ratingStar {
-            fill:#8CE200;
-        }
-
-        .padded {
-            padding-left:10px;
-            padding-right: 10px;
-        }
-
-        .label {
-            font-weight: bold;
-            width:60px;
-            display: inline-block;
-        }
-
-        .wideLabel {
-            width:120px;
-            display: inline-block;
-        }
-
-        .detailMapContainer {
-            border-top:1px solid #619C00;
-            border-bottom:1px solid #619C00;
-        }
-
-        .toolbar {
-            background: #DDD;
-            border-top: 1px solid #999;
-            border-bottom: 1px solid #666;
-            padding: 10px;
-        }
-
-        .amenitiesFirstCol {
-            width: 50%;
-        }
-
-        .gpu {
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-
-            transform: translate3d(0,0,0);
-            -webkit-transform: translate3d(0,0,0);
-        }
-
-        .data-table {
-            width:100%;
-        }
-
-        .data-table div div {
-            border-bottom: 1px solid #ccc;
-            padding: 10px;
-        }
-
-        /*Swiper Dangerous*/
-
-        .swiper-container {
-          height: 15em;
-          width: 100%;
-      }
-      .content-slide {
-          padding: 20px;
-          color: #fff;
-      }
-      .swiper-slide img {
-          max-width: 100%;
-      }
-      .title {
-          font-size: 25px;
-          margin-bottom: 10px;
-      }
-      .pagination {
-          position: absolute;
-          left: 0;
-          text-align: center;
-          bottom:5px;
-          width: 100%;
-      }
-      .swiper-pagination-switch {
-          display: inline-block;
-          width: 10px;
-          height: 10px;
-          border-radius: 10px;
-          background: #999;
-          box-shadow: 0px 1px 2px #555 inset;
-          margin: 0 3px;
-          cursor: pointer;
-      }
-      .swiper-active-switch {
-          background: #fff;
-      }
-
-      a{
-        color: inherit;
-    }
-    .container {
-        text-align: center;
-        padding: 0;
-    }
-    #slider{
-        height: 15em;
-    }
-    #slider img{
-        width: 100%;
-    }
-    .barra {
-        background: #999;
-        width: 100%;
-        height: 4em;
-        color: #222;
-    }
-    #footer {
-        position:absolute; z-index:200;
-        bottom:0; left:0;
-        width:100%;
-        height:48px;
-        background-color:#f59e01;
-        padding:0;
-        padding-top: 1em;
-        border-top:1px solid #444;
-        text-align: center;
-    }
-    .footerIcon{
-        display: inline-block;
-        width: 18%;
-        vertical-align: central;
-        text-align: center;
-        font-size: 1.7em;
-        color: white;
-    }
-    .footerIcon span{
-        display: block;
-    }
-    .footerIconTxt{
-        font-size: .5em;
-    }
-    .featured{
-        background-color: #f6f6f6!important;
-    }
-    .barTitle{
-        display: block;
-        font-size: 1.3em;
-    }
-    .barAddress, .barTel{
-        display: block;
-    }
-    .itemDescription p{
-        text-align: left;
-        padding: 1em;
-        padding-top: .2em;
-        padding-bottom: .2em;
-    }
-    .itemDescription li{
-        text-align: left;
-    }
-    .itemInfo{
-        text-align: left;
-    }
-    .itemInfo span{
-        display: block;
-        font-size: .9em;
-    }
-    .container .itemWell{
-        background-color: #f5f5f5;
-        text-align: left;
-        padding: 10px;
-        margin-bottom: 0;
-    }
-    .itemWell{
-        background-color: #f5f5f5;
-        text-align: left;
-    }
-    .itemWell .barButtons{
-        text-align: right;
-    }
-    .itemWell .barButtons .icon{
-        font-size: 2em;
-        width: .5em;
-    }
-
-    /********************************/
-    /****** List Item  *********/
-    /********************************/
-
-    .itemType{
-        font-size: .9em;
-        font-style: italic;
-    }
-    .itemFirstLine{
-        font-size: .9em;
-        color: #cbcbcb;
-    }
-    .itemFirstLine .itemDate{
-        font-size: .8em;
-        color: #999;
-        font-style: italic;
-    }
-    .itemSecondLine{
-        font-size: 1em;
-        color: #f0f0f0;
-    }
-    .itemThirdLine{
-        font-size: .8em;
-        color: #999;
-    }
-    .itemFeatured {
-
-        background-image:url('images/more_disclosure.png') !important ;
-        background-color: yellow;
-    }
-    .liContainer {
-        padding:1em;
-        padding-left:1em;
-        padding-right:1px;
-        border-top:1px solid #999;
-        border-bottom:none;
-        width: 100%;
-    }
-    .liContainerExtended {
-        background-image:url('images/more_disclosure.png');
-        background-position:right center;
-        background-repeat:no-repeat;
-    }
-    /********************************/
-    /****** Ventana Modal Login *********/
-    /********************************/
-
-    .modal-backdrop.in {
-        opacity: .05;
-    }
-    .modal-backdrop {
-        visibility: hidden;
-    }
-    .modal-body{
-        padding: 10px;
-    }
-    .modal-footer{
-        margin-top: 0;
-    }
-    .modal-content{
-        color:#555;
-    }
-
-    /********************************/
-    /****** Item Conversación *********/
-    /********************************/
-
-    .messageContainer{
-        margin-top: .5em;
-        margin-bottom: .5em;
-    }
-    .messageContainerLeft{
-        text-align: left;
-        padding-left: 2em;
-    }
-    .messageContainerRight{
-        text-align: right;
-        padding-right: 2em;
-    }
-    .messageContainer .messageDate{
-        color: #b3b3b3;
-        font-size: .8em;
-        font-style: italic;
-    }
-    .messageContainer .messageText{
-        -webkit-border-radius: 10px;
-        padding: 1em;
-        font-size: .9em;
-    }
-    .messageContainerLeft .messageText{
-        background-color: #f59e01;
-        color: #111;
-    }
-    .messageContainerRight .messageText{
-        background-color: #555;
-    }
-    .messageSend{
-        width: 96%;
-        margin-left: 2%;
-        margin-right: 2%;
-    }
-    .messageSend .btn{
-        color: #f0f0f0;
-        background-color: #555;
-        border-color: #444;
-    }
-
-    /********************************/
-    /****** Cronograma View *********/
-    /********************************/
-
-    .liContainerCronograma {
-        background-image:'none';
-        padding: 0 1em;
-        padding-right: 1px
-    }
-    .liContainerCronograma .itemFirstLine {
-        margin-bottom: .5em;
-        background-color: #f59e01;
-        /*background-color: #f0f0f0;*/
-        color: #fff;
-    }
-    .liContainerCronograma .itemName {
-        font-size: 1.5em;
-    }
-    .liContainerCronograma .itemData {
-        font-size: 1em;
-        display: block;
-    }
-    .liContainerCronograma .artists {
-        color: #999;
-    }
-    .liContainerCronograma .scheduleFooter {
-        text-align: right;
-        font-style: italic;
-        color: #555;
-        font-size: .7em;
-        background-color: #f0f0f0;
-        /*    height: 2em;*/
-        padding-top: .5em;
-        padding-bottom: .5em;
-        margin-top: .5em;
-    }
-/*.liContainerCronograma .badge {
-    background-color: #FFF;
-    color: #f59e01;
+.messageContainer{
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+.messageContainerLeft{
+    text-align: left;
+    padding-left: 2em;
+}
+.messageContainerRight{
+    text-align: right;
+    padding-right: 2em;
+}
+.messageContainer .messageDate{
+    color: #b3b3b3;
     font-size: .8em;
-    }*/
-    .liContainerCronograma .itemData button {
-        font-size:.9em;
-        padding: .2em;
-        margin-top: .2em;
-        color: #999;
-    }
-    .liContainerCronograma .itemTxt {
-        font-size:.8em;
-        display: block;
-    }
-    .itemTxt:first-child {
-        margin-top: .3em;
-    }
-    .liContainerCronograma .panel {
-        padding: .1em;
-        font-size: .9em;
-    }
-    .liContainerCronograma .row {
-        margin-right:0;
-    }
-    .liContainerCronograma .itemData span {
-        margin-left: .5em;
-    }
-    .liContainerCronograma .itemData span:first-child {
-        margin-right: .5em;
-    }
-    .adScreen{
-        left: 5%;
-        top: 5%;
-        width: 90%;
-        height: 90%;
-        background: red;
-        z-index: 100;
-        position: absolute;
-    }
+    font-style: italic;
+}
+.messageContainer .messageText{
+    -webkit-border-radius: 10px;
+    padding: 1em;
+    font-size: .9em;
+}
+.messageContainerLeft .messageText{
+    background-color: #f59e01;
+    color: #111;
+}
+.messageContainerRight .messageText{
+    background-color: #555;
+}
+.messageSend{
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.messageSend .btn{
+    color: #f0f0f0;
+    background-color: #555;
+    border-color: #444;
+}
+
+/***********************/
+/* New Conversation View */
+/***********************/
+
+#itemViewNewConversation .container{
+    padding: 1em;
+    color: #555;
+}
+#itemViewNewConversation .panel{
+    background: rgba(255,255,255,0.2);
+    text-align: center;
+    border: none;
+}
+
+#itemViewNewConversation .panel .form-control{
+    -webkit-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+    background-color: #f0f0f0;
+    border: none;
+    color: #999;
+}
 
     /********************************/
-    /* Div Absoluto arrow down */
+    /****** Swiper Dangerous  *********/
     /********************************/
 
-    .ftr{
-        width: 100%;
-        height: 3em;
-        background: #ebebeb;
-        z-index: 300;
-        position: absolute;
-        bottom: 0;
-        text-align: center;
-        padding-top: .2em;
-        display: none;
+    .swiper-container {
+      height: 15em;
+      width: 100%;
+  }
+  .content-slide {
+      padding: 20px;
+      color: #fff;
+  }
+  .swiper-slide img {
+      max-width: 100%;
+  }
+  .title {
+      font-size: 25px;
+      margin-bottom: 10px;
+  }
+  .pagination {
+      position: absolute;
+      left: 0;
+      text-align: center;
+      bottom:5px;
+      width: 100%;
+  }
+  .swiper-pagination-switch {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      background: #999;
+      box-shadow: 0px 1px 2px #555 inset;
+      margin: 0 3px;
+      cursor: pointer;
+  }
+  .swiper-active-switch {
+      background: #fff;
+  }
+
+  /********************************/
+  /********** Item View  *********/
+  /********************************/
+
+  a{
+    color: inherit;
+}
+.container {
+    text-align: center;
+    padding: 0;
+}
+#slider{
+    height: 15em;
+}
+#slider img{
+    width: 100%;
+}
+.barra {
+    background: #999;
+    width: 100%;
+    height: 4em;
+    color: #222;
+}
+#footer {
+    position:absolute; z-index:200;
+    bottom:0; left:0;
+    width:100%;
+    height:48px;
+    background-color:#f59e01;
+    padding:0;
+    padding-top: 1em;
+    border-top:1px solid #444;
+    text-align: center;
+}
+.footerIcon{
+    display: inline-block;
+    width: 18%;
+    vertical-align: central;
+    text-align: center;
+    font-size: 1.7em;
+    color: white;
+}
+.footerIcon span{
+    display: block;
+}
+.footerIconTxt{
+    font-size: .5em;
+}
+.featured{
+    background-color: #f6f6f6!important;
+}
+.barTitle{
+    display: block;
+    font-size: 1.3em;
+}
+.barAddress, .barTel{
+    display: block;
+}
+.itemDescription p{
+    text-align: left;
+    padding: 1em;
+    padding-top: .2em;
+    padding-bottom: .2em;
+}
+.itemDescription li{
+    text-align: left;
+}
+.itemInfo{
+    text-align: left;
+}
+.itemInfo span{
+    display: block;
+    font-size: .9em;
+}
+.container .itemWell{
+    background-color: #f5f5f5;
+    text-align: left;
+    padding: 10px;
+    margin-bottom: 0;
+}
+.itemWell{
+    background-color: #f5f5f5;
+    text-align: left;
+}
+.itemWell .barButtons{
+    text-align: right;
+}
+.itemWell .barButtons .icon{
+    font-size: 2em;
+    width: .5em;
+}
+
+/********************************/
+/****** List Item  *********/
+/********************************/
+
+.itemType{
+    font-size: .9em;
+    font-style: italic;
+}
+.itemFirstLine{
+    font-size: .9em;
+    color: #cbcbcb;
+}
+.itemFirstLine .itemDate{
+    font-size: .8em;
+    color: #999;
+    font-style: italic;
+}
+.itemSecondLine{
+    font-size: 1em;
+    color: #f0f0f0;
+}
+.itemThirdLine{
+    font-size: .8em;
+    color: #999;
+}
+.itemFeatured {
+
+    background-image:url('images/more_disclosure.png') !important ;
+    background-color: yellow;
+}
+.liContainer {
+    padding:1em;
+    padding-left:1em;
+    padding-right:1px;
+    border-top:1px solid #999;
+    border-bottom:none;
+    width: 100%;
+}
+.liContainerExtended {
+    background-image:url('images/more_disclosure.png');
+    background-position:right center;
+    background-repeat:no-repeat;
+}
+.liContainerBook .label{
+        font-weight: normal;
+        width:auto;
+        display: inline;
+}
+.liContainerBook .itemThirdLine .col-xs-12, .liContainerVisit .itemThirdLine .col-xs-12{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 98%;
+    padding-left: 0;
+}
+.liContainerBook .itemDate {
+    font-size: .9em;
+}
+.liContainerVisit .itemDate {
+    font-size: .9em;
+}
+.liContainerDelivery {
+    overflow: hidden;
+    padding: 1%;
+    width: 98%;
+}
+/********************************/
+/**** Ventana Modal Login *******/
+/********************************/
+
+.modal-backdrop.in {
+    opacity: .05;
+}
+.modal-backdrop {
+    visibility: hidden;
+}
+.modal-body{
+    padding: 10px;
+}
+.modal-footer{
+    margin-top: 0;
+}
+.modal-content{
+    color:#555;
+}
+
+/********************************/
+/****** ADS *********/
+/********************************/
+
+.adScreen{
+    left: 5%;
+    top: 5%;
+    width: 90%;
+    height: 90%;
+    background: red;
+    z-index: 100;
+    position: absolute;
+}
+
+/********************************/
+/* Div Absoluto arrow down */
+/********************************/
+
+.ftr{
+    width: 100%;
+    height: 3em;
+    background: #ebebeb;
+    z-index: 300;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding-top: .2em;
+    display: none;
+}
+
+/********************************/
+/* Media Queries: Tablet Portrait */
+/********************************/
+
+@media screen and (min-device-width : 768px) {
+    body{
+        font-size: 16px;
     }
-
-    /********************************/
-    /* Media Queries: Tablet Portrait */
-    /********************************/
-
-    @media screen and (min-device-width : 768px) {
-        body{
-            font-size: 16px;
-        }
-        #slider {
-            height: 25em;
-        }
-        .homeButton{
-         width:49%;
-         height: 17em;
-     }
-     #thelist li{
+    #slider {
+        height: 25em;
+    }
+    .homeButton{
+       width:49%;
+       height: 17em;
+   }
+   #thelist li{
       height: 5em;
       vertical-align: middle;
   }

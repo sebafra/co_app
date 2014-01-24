@@ -5,6 +5,7 @@
    <!--  <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no;" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    <script src="libs/mobiledetection.js"></script>
     <link rel="stylesheet" href="libs/app-ui/viewnavigator/viewnavigator.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/activityIndicator.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/idangerous.swiper.css" type="text/css" />
@@ -12,6 +13,18 @@
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="assets/styles.css" type="text/css" />
     <link rel="stylesheet" href="assets/ionicons.css" type="text/css" />
+    <script>
+        getOS();
+        if ( mobileOS === 'iOS' && Number( mobileOSver.charAt(0) ) >= 5 ) {
+            //alert("Soy un iPhone");
+        }
+        if ( mobileOS === 'Android' && Number( mobileOSver.charAt(0) ) <= 3 ) {
+            document.write("<link rel=stylesheet href=assets/old_android_styles.css type=text/css />")
+        }
+        if ( mobileOS === 'Android' && Number( mobileOSver.charAt(0) ) >= 4 ) {
+            //alert("Soy un Android Nuevo");
+        }
+    </script>
 </head>
 <body>
     <div id="viewNavigator_header" style="">
@@ -26,13 +39,6 @@
         <div class="viewNavigator_backButton_active" />
         <div class="viewNavigator_backButton:active" />
         <div class="header" />
-        <!-- <img src="assets/images/lettuce.jpg"/> -->
-        <!-- <img src="assets/images/iOSbackButton.png"/>
-        <img src="assets/images/iOSbackButton_active.png"/> -->
-        <!-- <img src="assets/images/usa.png" />
-        <img src="assets/images/walk/52bf27.png" />
-        <img src="assets/images/walk/e87562.png" />
-        <img src="assets/images/walk/e8da62.png" /> -->
         <ul class="data-list"><li>test</li></ul>
     </div>
 
@@ -64,6 +70,8 @@
 <script src="app/views/ListItemView.js"></script>
 <script src="app/views/ItemView.js"></script>
 <script src="app/views/ItemViewNewConversation.js"></script>
+<script src="app/views/ItemViewNewBook.js"></script>
+<script src="app/views/ItemViewNewVisit.js"></script>
 <script src="app/views/LoadItemView.js"></script>
 <script src="app/views/LoginView.js"></script>
 <script src="app/views/LoadHomeView.js"></script>

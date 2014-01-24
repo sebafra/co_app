@@ -12,9 +12,14 @@ window.HomeView = Backbone.View.extend({
 
     events:{
         "click .administradorClick":"loadAttractions",
+        "click .bookClick":"loadBooks",
+        "click .visitClick":"loadVisits",
+        "click .deliveryClick":"loadDeliverys"
     },
 
-
+    showCallback:function () {
+        //Ejecutar una funcion al pasar al cargar la vista
+    },
 
     render:function (eventName) {
         var template = _.template(templates.homeView);
@@ -41,8 +46,18 @@ window.HomeView = Backbone.View.extend({
         //window.viewNavigator.pushView( view );
         ViewNavigatorUtil.pushView( view );
     },
-    loadRecomendado:function () {
-        var view = new LoadItemsView({type:ModelManager.type.cronograma.code});
+    loadBooks:function () {
+        var view = new LoadItemsView({type:ModelManager.type.book.code});
+        //window.viewNavigator.pushView( view );
+        ViewNavigatorUtil.pushView( view );
+    },
+    loadVisits:function () {
+        var view = new LoadItemsView({type:ModelManager.type.visit.code});
+        //window.viewNavigator.pushView( view );
+        ViewNavigatorUtil.pushView( view );
+    },
+    loadDeliverys:function () {
+        var view = new LoadItemsView({type:ModelManager.type.delivery.code});
         //window.viewNavigator.pushView( view );
         ViewNavigatorUtil.pushView( view );
     },
