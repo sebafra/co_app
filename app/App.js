@@ -1,7 +1,7 @@
 window.App = {
 
 	isEnvironmentWeb:function(){
-		return true;
+		return false;
 	},
 
 	worksWithoutServer:function(){

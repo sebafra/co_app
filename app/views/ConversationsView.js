@@ -39,6 +39,7 @@ window.ConversationsView = Backbone.View.extend({
     },
 
     showCallback:function(){
+    	alert("showcallback");
         var template = _.template(templates.conversationsView);
         // this.$el.css("background", "#333");
         this.$el.html(template( {conversations:App.messages} ));

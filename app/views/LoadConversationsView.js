@@ -35,6 +35,8 @@ window.LoadConversationsView = Backbone.View.extend({
     },
 
     loadConversations: function(result) {
+		alert(result.messages);
+
 		App.messages = result.messages;
 
 		var view = new ConversationsView({ model:{} });
@@ -42,7 +44,9 @@ window.LoadConversationsView = Backbone.View.extend({
     },
     
     loadConversationsFail: function(message) {
-        var view = new MessageView({message:message});
+		alert(message);
+
+		var view = new MessageView({message:message});
         window.ViewNavigatorUtil.replaceView( view );
     }
     

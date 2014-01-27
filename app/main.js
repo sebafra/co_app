@@ -9,6 +9,8 @@ $( document ).ready(function() {
 
 function onDeviceReady() {
 
+	$.ajaxSetup({ cache: false });
+
 	// $(".ftr").click(function(){
 	// 	alert("hola");
 	// });

@@ -23,6 +23,10 @@ window.ConversationView = Backbone.View.extend({
         "click #btnNewMessage":"sendNewMessage"
     },
 
+    test:function(){
+    	alert("testttt");
+    },
+    
     render:function (eventName) {
         this.title = this.message.messageSubject;
         this.$el.html( this.template( this.message ));
@@ -77,6 +81,12 @@ window.ConversationView = Backbone.View.extend({
 
     	ServiceMessage.register(self.messageMessage.val(), App.lastMessage.messageSubject, App.lastMessage.messageId, self.onSendNewMessageOk, self.onSendNewMessageFail);
     },
+
+    
+    receiveNewMessage:function(message){
+        this.drawMessage(this.messagesContainer, message);
+    },
+    
     
     sendNewMessageOk:function(message){
         this.drawMessage(this.messagesContainer, message);

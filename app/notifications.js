@@ -1,5 +1,8 @@
+
 var pushNotification;
 var deviceSO;
+var deviceVersion;
+var deviceModel;
 
 function enableNotifications() {
 //    alert('start the notifications!!!');
@@ -9,18 +12,24 @@ function enableNotifications() {
     	pushNotification = window.plugins.pushNotification;
     	if (device.platform == 'android' || device.platform == 'Android') {
 //			alert('registering android');
-        	pushNotification.register(successHandler, errorHandler, {"senderID":"375490732716","ecb":"onNotificationGCM"});		// required!
-            deviceSO = "android";
+        	pushNotification.register(successHandler, errorHandler, {"senderID":"1012559635414","ecb":"onNotificationGCM"});		// required!
+            deviceSO      = "android";
+            deviceVersion = device.version;
+            deviceModel   = device.model;
 		} else {
 //			alert('registering iOS');
         	pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
             deviceSO = "ios";
+            deviceVersion = "ios";
+            deviceModel = "ios";
     	}
     }
 	catch(err) 
 	{ 
         pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
         deviceSO = "ios";
+        deviceVersion = "ios";
+        deviceModel = "ios";
 	}
 }
 
@@ -64,21 +73,35 @@ function onNotificationGCM(e) {
         	// you might want to play a sound to get the user's attention, throw up a dialog, etc.
         	if (e.foreground)
         	{
-//				alert('<li>--INLINE NOTIFICATION--' + '</li>');
-				
-				// if the notification contains a soundname, play it.
-				var my_media = new Media("/android_asset/www/"+e.soundname);
+        		
+				var my_media = new Media("/android_asset/www/beep.wav");
 				my_media.play();
+
+				var messageShowed = false;
+        		if(window.viewNavigator.history.length > 1){
+            		try{
+            			var view = window.viewNavigator.history[ window.viewNavigator.history.length - 1 ];
+            			
+            			if(view.receiveNewMessage){
+            				view.receiveNewMessage(e.payload.data);
+            				messageShowed = true;
+            			}
+            		}catch(exc){}
+        		}
+
+        		if(!messageShowed) alert(e.payload.message);
+        		
+        		
+        		
 			}
-			else
-			{	// otherwise we were launched because the user touched a notification in the notification tray.
-//				if (e.coldstart)
-//					alert('<li>--COLDSTART NOTIFICATION--' + '</li>');
-//				else
-//					alert('<li>--BACKGROUND NOTIFICATION--' + '</li>');
-			}
+			/*else
+			{	
+				if (e.coldstart){
+				} else {
+				}
+			}*/
 				
-        	alert(e.payload.message);
+//        	alert(e.payload.message);
 //        	alert('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
         break;
         
@@ -111,12 +134,23 @@ function errorHandler (error) {
 
 
 function deviceRegister (device) {
-	var url = "http://www.diproach.com/api/dc/device/register?json=%7Bdevice%3A%22" + device + "%22%2CapplicationId%3D%22JMETM%22%7D";
-
+	
+	if(deviceSO == undefined) 		deviceSO = "";
+	if(deviceVersion == undefined) 	deviceVersion = "";
+	if(deviceModel == undefined) 	deviceModel = "";
+	
+//	alert(deviceSO);
+//	alert(deviceVersion);
+//	alert(deviceModel);
+	
+	var url = Constants.URL_BASE + "/device/register?json=%7Bdevice%3A%22" + device + "%22%2CapplicationId%3A%22COM%22%2CapplicationVersion%3A%221%22%2Cos%3A%22" + deviceSO + "%22%2CosVersion%3A%22" + deviceVersion + "%22%2Cmodel%3A%22" + deviceModel + "%22%2CuserId%3A%22" + App.userId + "%22%7D";
+//	alert(url);
+	
 	$.getJSON(url, function(result) {
-
 //		alert(JSON.stringify(result.data));
 	}).error(function(result) {
 //		alert(result);
 	});
 }
+        	
+        	
