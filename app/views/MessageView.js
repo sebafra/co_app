@@ -2,11 +2,11 @@ templates.messageView = "app/views/MessageView.html";
 
 window.MessageView = Backbone.View.extend({
 
-    title: "Consorcio Digital",
+    title: "Consorcio M&oacute;vil",
     destructionPolicy:'never',
     message: "",
     backLabel: "Volver",
- 
+
     initialize: function(options) {
     	this.message = options;
 

@@ -2,7 +2,7 @@ templates.homeView = "app/views/HomeView.html";
 
 window.HomeView = Backbone.View.extend({
 
-    title: "Consorcio Digital",
+    title: "Consorcio M&oacute;vil",
     destructionPolicy:'never',
 
     initialize: function(options) {

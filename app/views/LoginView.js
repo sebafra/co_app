@@ -2,7 +2,7 @@ templates.loginView = "app/views/LoginView.html";
 
 window.LoginView = Backbone.View.extend({
 
-    title: "Consorcio Digital",
+    title: "Consorcio M&oacute;vil",
     destructionPolicy:'never',
 
     initialize: function(options) {

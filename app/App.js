@@ -5,7 +5,7 @@ window.App = {
 	},
 
 	worksWithoutServer:function(){
-		return false;
+		return true;
 	},
 
 	isOnlineEnabled:function(){
@@ -55,7 +55,7 @@ window.App = {
 		// TODO modificar
 		return "assets/model/adScreen/"+fileName;
 	},
-	
+
 	userName:		undefined,
 	userId:			undefined,
 	password:		undefined,
@@ -68,7 +68,7 @@ window.App = {
 	message: 		undefined,
 	lastMessage: 	undefined,
 	lastMessageRoot:undefined,
-	
+
 	saveUser:function(data){
 		this.userId    = data.userId;
 		this.userName  = data.userName;
