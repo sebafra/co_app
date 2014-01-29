@@ -1,5 +1,5 @@
 <div id="homeView">
-  <div class="homeSelect">
+	<div class="homeSelect">
         <select class="form-control" name="barrio" id="countries">
         </select>
        <img src="assets/images/cincolomas.jpg" class="img-thumbnail" alt="">
@@ -18,7 +18,11 @@
     <div class="buttonLine">
 		<div class="homeButton administradorClick">
 			<span class="icon ion-clipboard"></span>
+			<% if(App.role == Constants.ROLE_USER){ %>
 			<p>Administrador</p>
+			<% } else { %>
+			<p>Consorcistas</p>
+			<% } %>
 		</div>
 		<div class="homeButton bookClick">
 			<span class="icon ion-clock"></span>

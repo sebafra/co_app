@@ -10,6 +10,17 @@
         </div>
       </div>
       <hr>
+
+	  <% if(App.role == Constants.ROLE_ADMINISTRATOR){ %>
+      <div class="form-group">
+        <div class="col-sm-10">
+	        <select class="form-control" id="users">
+	        </select>
+        </div>
+      </div>
+      <hr>
+	  <%}%>
+
       <div class="form-group">
         <div class="col-sm-10">
           <textarea class="form-control" rows="3" placeholder="Escriba su mensaje..." id='messageMessage'></textarea>

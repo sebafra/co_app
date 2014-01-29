@@ -21,6 +21,14 @@ window.ConversationNewView = Backbone.View.extend({
         this.messageSubject = this.$('#messageSubject');
         this.messageMessage = this.$('#messageMessage');
 
+        var $users = this.$el.find("#users");
+        var idx = 0;
+        _.each(App.users, function (user) {
+        	if(idx == 0) App.userSelected = user;
+            $users.append("<option value=" + user.userId + ">" + user.name + "</option>");
+        	idx++;
+        }, this);
+        
         return this;
     },
     

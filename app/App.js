@@ -61,6 +61,8 @@ window.App = {
 	password:		undefined,
 	role:			undefined,
 	messageOrigin:	undefined,
+	users: 			undefined,
+	userSelected:	undefined,
 	countries: 		undefined,
 	country:		undefined,
 	countryId: 		undefined,

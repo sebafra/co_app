@@ -143,7 +143,7 @@ function deviceRegister (device) {
 //	alert(deviceVersion);
 //	alert(deviceModel);
 	
-	var url = Constants.URL_BASE + "/device/register?json=%7Bdevice%3A%22" + device + "%22%2CapplicationId%3A%22COM%22%2CapplicationVersion%3A%221%22%2Cos%3A%22" + deviceSO + "%22%2CosVersion%3A%22" + deviceVersion + "%22%2Cmodel%3A%22" + deviceModel + "%22%2CuserId%3A%22" + App.userId + "%22%7D";
+	var url = Constants.URL_BASE + "/device/register?json=%7Bdevice%3A%22" + device + "%22%2CapplicationId%3A%22COM%22%2CapplicationVersion%3A%221%22%2Cos%3A%22" + deviceSO + "%22%2CosVersion%3A%22" + deviceVersion + "%22%2Cmodel%3A%22" + deviceModel + "%22%2CuserId%3A%22" + App.userId + "%22%2Crole%3A%22" + App.role + "%22%7D";
 //	alert(url);
 	
 	$.getJSON(url, function(result) {

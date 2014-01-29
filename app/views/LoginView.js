@@ -19,15 +19,19 @@ window.LoginView = Backbone.View.extend({
         var model = {isTablet:NativeUtil.isTablet()};
         this.$el.html(template(model));
 
-        this.inputEmail = this.$('#inputEmail');
-        this.inputPhone = this.$('#inputPhone');
-        this.inputPassword = this.$('#inputPassword');
+        this.inputEmail 	= this.$('#inputEmail');
+        this.inputPhone 	= this.$('#inputPhone');
+        this.inputPassword 	= this.$('#inputPassword');
+        this.selectRoles	= this.$("#roles");
+        
+        this.selectRoles.append("<option value=" + Constants.ROLE_ADMINISTRATOR + ">Administrador</option>");
+        this.selectRoles.append("<option value=" + Constants.ROLE_USER + ">Consorcista</option>");
 
         return this;
     },
 
     login:function () {
-        var view = new LoadHomeView({ usuario:this.inputEmail.val(), password:this.inputPassword.val() });
+        var view = new LoadHomeView({ usuario:this.inputEmail.val(), password:this.inputPassword.val(), role:this.selectRoles.val() });
         window.ViewNavigatorUtil.pushView( view );
 
 //    	ServiceUser.login(this.inputEmail.val(),this.inputPassword.val(), this.loginOk, this.loginFail);

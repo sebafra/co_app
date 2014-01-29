@@ -35,18 +35,42 @@ window.LoadConversationsView = Backbone.View.extend({
     },
 
     loadConversations: function(result) {
-		alert(result.messages);
 
-		App.messages = result.messages;
+    	App.messages = result.messages;
 
-		var view = new ConversationsView({ model:{} });
-        window.ViewNavigatorUtil.replaceView( view );
+    	if(App.role == Constants.ROLE_ADMINISTRATOR){
+    	
+    		ServiceUser.getByCountry( this.loadUsers, this.loadUsersFail );
+    	
+    	} else {
+    		
+    		var view = new ConversationsView({ model:{} });
+            window.ViewNavigatorUtil.replaceView( view );
+
+    	}
+    	
     },
     
     loadConversationsFail: function(message) {
-		alert(message);
-
 		var view = new MessageView({message:message});
+        window.ViewNavigatorUtil.replaceView( view );
+    },
+
+    loadUsers: function(result) {
+        var view;
+        
+    	if(result.users == undefined || result.users.length == 0){
+    		view = new MessageView({message:"No posee ningun usuario"});
+		} else {
+			App.users = result.users;
+			view = new ConversationsView({ model:{} });
+		}
+    	
+        window.ViewNavigatorUtil.replaceView( view );
+    },
+    
+    loadUsersFail: function(message) {
+        var view = new MessageView({message:message});
         window.ViewNavigatorUtil.replaceView( view );
     }
     

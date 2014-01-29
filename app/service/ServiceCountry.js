@@ -3,7 +3,9 @@ window.ServiceCountry = {
     getByUser:function(success, fail){
 
     	var json = {
-    				userName:App.userName
+    				userName:App.userName,
+    				userId:App.userId,
+    				role:App.role
     				};
     	
     	if(App.worksWithoutServer()){

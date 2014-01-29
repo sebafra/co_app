@@ -27,7 +27,38 @@ window.ServiceUser = {
     		loginFail(Constants.LOGIN_ERROR_MESSAGE_GENERIC);
     	});
 
-    }
+    },
 
+    getByCountry:function(success, fail){
+
+    	var json = {
+    				countryId:App.country.countryId
+    				};
+    	
+    	if(App.worksWithoutServer()){
+
+        	var users = {
+        			users:[]
+    				};
+
+    		success(users);
+    		return;
+    	}
+    	
+    	var url = Constants.URL_BASE + "/user/getByCountry?json=" + JSON.stringify(json);
+
+    	$.getJSON(url, function(result) {
+    		
+    		if(result.status == Constants.JSON_RESPONSE_STATUS_OK){
+        		success(result.data);
+    		} else {
+        		fail(result.error.message);
+    		}
+    		
+    	}).error(function(result) {
+    		fail(Constants.LOGIN_ERROR_MESSAGE_GENERIC);
+    	});
+
+    }
 
 };
