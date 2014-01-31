@@ -36,11 +36,6 @@ function enableNotifications() {
 
 // handle APNS notifications for iOS
 function onNotificationAPN(e) {
-    if (e.alert) {
-         alert(e.alert);
-         navigator.notification.alert(e.alert);
-    }
-        
     if (e.sound) {
         var snd = new Media(e.sound);
         snd.play();
@@ -54,8 +49,12 @@ function onNotificationAPN(e) {
     if(e.messageId){
 		if(canDrawNewMessage()){
 			drawNewMessage(e.messageId);
-		}
+		} else if (e.alert) {
+            alert(e.alert);
+            navigator.notification.alert(e.alert);
+        }
     }
+
 }
 
 // handle GCM notifications for Android
