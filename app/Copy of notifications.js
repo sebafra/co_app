@@ -50,12 +50,6 @@ function onNotificationAPN(e) {
         alert(e.alert);
         pushNotification.setApplicationIconBadgeNumber(successHandler, e.badge);
     }
-    
-    if(e.messageId){
-		if(canDrawNewMessage()){
-			drawNewMessage(e.messageId);
-		}
-    }
 }
 
 // handle GCM notifications for Android
@@ -84,9 +78,31 @@ function onNotificationGCM(e) {
 				var my_media = new Media("/android_asset/www/beep.wav");
 				my_media.play();
 
-				if(canDrawNewMessage()){
-					drawNewMessage(e.payload.messageId);
-				}
+				var messageShowed = false;
+        		if(window.viewNavigator.history.length > 1){
+            		try{
+            			var view = window.viewNavigator.history[ window.viewNavigator.history.length - 1 ];
+            			
+            			if(view.receiveNewMessage){
+            				
+            		    	if(App.lastMessage.messageAdministratorId == e.payload.data.messageAdministratorId && 
+            		    	    	   App.lastMessage.messageUserId  == e.payload.data.messageUserId 
+            		    	    	   /*
+            		    	    	    &&
+            		    	    	   App.lastMessage.messageId  	  == e.payload.data.messageIdParent 
+            		    	    	   */
+            		    	    	   ){
+                				view.receiveNewMessage(e.payload.data);
+                				messageShowed = true;
+            		    	}
+            		    	    	
+            			}
+            		}catch(exc){}
+        		}
+
+        		if(!messageShowed) alert(e.payload.message);
+        		
+        		
         		
 			}
 			/*else
@@ -125,33 +141,6 @@ function successHandler (result) {
 
 function errorHandler (error) {
 //	alert('<li>error:'+ error +'</li>');
-}
-
-var viewToDrawMessage = undefined;
-function canDrawNewMessage(){
-	if(window.viewNavigator.history.length > 1){
-		try{
-			viewToDrawMessage = window.viewNavigator.history[ window.viewNavigator.history.length - 1 ];
-			if(viewToDrawMessage.receiveNewMessage){
-				return true;
-			}
-		}catch(exc){
-			return false
-		}
-	}
-	return false;
-}
-
-function drawNewMessage(messageId){
-	ServiceMessage.getById(messageId, drawNewMessageOk, drawNewMessageFail);
-}
-
-function drawNewMessageOk(data){
-	if(viewToDrawMessage)
-		viewToDrawMessage.receiveNewMessage(data);
-}
-
-function drawNewMessageFail(){
 }
 
 

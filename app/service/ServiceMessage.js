@@ -1,41 +1,64 @@
 window.ServiceMessage = {
 
-    getByUserByCountry:function(success, fail){
+	    getByUserByCountry:function(success, fail){
+
+	   	
+	    	var json = {
+	    				userId: App.getUserId(),
+	    				countryId:App.country.countryId,
+	    				role: App.role
+	    				};
+	    	
+	    	if(App.worksWithoutServer()){
+
+	        	var messages = {
+	    				messages:[
+	    				 	{
+	    				 		messageId:"1",
+	    				 		messageSubject:"subject 1",
+	    				 		messageUserName:"usuario 1",
+	    				 		messageDate:"1/12/2014",
+	    				 		messageMessage:"mesnaje 1",
+	       				 		messageOrigin:Constants.MESSAGE_ORIGIN_USER,
+	    				 	},
+	    				 	{
+	    				 		messageId:"2",
+	    				 		messageSubject:"subject 2",
+	    				 		messageUserName:"usuario 2",
+	    				 		messageDate:"2/12/2014",
+	    				 		messageMessage:"mesnaje 2"
+	    				 	}
+	    				 ]
+	    				};
+
+	    		success(messages);
+	    		return;
+	    	}
+	    	
+	    	var url = Constants.URL_BASE + "/message/getByUserByCountryByRole?json=" + JSON.stringify(json);
+
+	    	$.getJSON(url, function(result) {
+	    		
+	    		if(result.status == Constants.JSON_RESPONSE_STATUS_OK){
+	        		success(result.data);
+	    		} else {
+	        		fail(result.error.message);
+	    		}
+	    		
+	    	}).error(function(result) {
+	    		fail(Constants.LOGIN_ERROR_MESSAGE_GENERIC);
+	    	});
+
+	    },
+
+    getById:function(messageId, success, fail){
 
    	
     	var json = {
-    				userId: App.getUserId(),
-    				countryId:App.country.countryId,
-    				role: App.role
+    				messageId: messageId
     				};
     	
-    	if(App.worksWithoutServer()){
-
-        	var messages = {
-    				messages:[
-    				 	{
-    				 		messageId:"1",
-    				 		messageSubject:"subject 1",
-    				 		messageUserName:"usuario 1",
-    				 		messageDate:"1/12/2014",
-    				 		messageMessage:"mesnaje 1",
-       				 		messageOrigin:Constants.MESSAGE_ORIGIN_USER,
-    				 	},
-    				 	{
-    				 		messageId:"2",
-    				 		messageSubject:"subject 2",
-    				 		messageUserName:"usuario 2",
-    				 		messageDate:"2/12/2014",
-    				 		messageMessage:"mesnaje 2"
-    				 	}
-    				 ]
-    				};
-
-    		success(messages);
-    		return;
-    	}
-    	
-    	var url = Constants.URL_BASE + "/message/getByUserByCountryByRole?json=" + JSON.stringify(json);
+    	var url = Constants.URL_BASE + "/message/getById?json=" + JSON.stringify(json);
 
     	$.getJSON(url, function(result) {
     		
