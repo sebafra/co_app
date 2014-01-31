@@ -53,6 +53,9 @@ function onNotificationAPN(e) {
             alert(e.alert);
             navigator.notification.alert(e.alert);
         }
+    } else if (e.alert) {
+        alert(e.alert);
+        navigator.notification.alert(e.alert);
     }
 
 }
