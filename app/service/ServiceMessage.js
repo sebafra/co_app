@@ -2,6 +2,8 @@ window.ServiceMessage = {
 
     getByUserByCountry:function(success, fail){
 
+    	alert(App.role);
+    	
     	var json = {
     				userId: App.userId,
     				countryId:App.country.countryId,

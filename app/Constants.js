@@ -1,5 +1,5 @@
 window.Constants = {
-		URL_BASE:"http://192.168.1.6:8080/consorciodigital/api",
+		URL_BASE:"http://192.168.0.125:8080/consorciodigital/api",
 		
 		ROLE_USER:"user",
 		ROLE_ADMINISTRATOR:"administrator",

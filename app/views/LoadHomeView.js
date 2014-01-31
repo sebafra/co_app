@@ -5,12 +5,13 @@ window.LoadHomeView = Backbone.View.extend({
     title: "Cargando...",
 	usuario: undefined,
 	password: undefined,
+	role: undefined,
 
     initialize: function(options) {
 
     	this.usuario  = options.usuario;
     	this.password = options.password;
-    	this.role 	  = Constants.ROLE_USER; // TODO cambiar
+    	this.role 	  = options.role;
     	
         this.render();
         this.view = this.$el;
@@ -35,7 +36,7 @@ window.LoadHomeView = Backbone.View.extend({
 
         //delay long enough for transition to complete
         setTimeout(function(){
-        	ServiceUser.login(self.role, self.usuario,self.password, self.onLogin, self.onLoginFail);
+        	ServiceUser.login(self.role, self.usuario, self.password, self.onLogin, self.onLoginFail);
         }, 401 );        
     },
 
@@ -69,6 +70,9 @@ window.LoadHomeView = Backbone.View.extend({
     
     login: function(data){
     	App.saveUser(data);
+    	if(App.isEnvironmentWeb() == false){
+    		window.setTimeout(enableNotifications,10000);
+    	}
     	ServiceCountry.getByUser( this.loadCountries, this.loadCountriesFail );
     },
     
