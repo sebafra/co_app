@@ -7,7 +7,7 @@ window.ConversationView = Backbone.View.extend({
     // backLabel: "<span class='icon ion-location'></span>",
     title:"",
     messagesContainer:undefined,
-    
+
     initialize: function(options) {
 
 //        this.model = options.model;
@@ -23,52 +23,47 @@ window.ConversationView = Backbone.View.extend({
         "click #btnNewMessage":"sendNewMessage"
     },
 
-    test:function(){
-    	alert("testttt");
-    },
-    
+
     render:function (eventName) {
         this.title = this.message.messageSubject;
         this.$el.html( this.template( this.message ));
         this.messagesContainer = this.$el.find(".container");
         this.messageMessage = this.$('#messageMessage');
 
-    	App.lastMessageRoot = this.message;
+        App.lastMessageRoot = this.message;
         this.drawMessage(this.messagesContainer, this.message);
 
         return this;
     },
-    
-    
+
+
     drawMessage:function(container, message){
-    	
-    	if(message.messageOrigin == Constants.MESSAGE_ORIGIN_USER){
-            container.append("<div class='row'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageDate'>Yo</div><div class='messageText'>" + message.messageMessage + "</div></div></div>");
-    	} else {
-            container.append("<div class='row'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageDate'>Administrador</div><div class='messageText'>" + message.messageMessage + "</div></div><div class='col-xs-2'></div></div>");
-    	}
-    	
-    	App.lastMessage = message;
-    	
+
+        if(App.role == Constants.ROLE_USER){
+            if(message.messageOrigin == Constants.MESSAGE_ORIGIN_USER){
+                container.append("<div class='row'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageDate'>Yo</div><div class='messageText'>" + message.messageMessage + "</div></div></div>");
+            } else {
+                container.append("<div class='row'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageDate'>Administrador</div><div class='messageText'>" + message.messageMessage + "</div></div><div class='col-xs-2'></div></div>");
+            }
+        } else {
+            if(message.messageOrigin == Constants.MESSAGE_ORIGIN_USER){
+                container.append("<div class='row'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageDate'>" + message.messageUserName + "</div><div class='messageText'>" + message.messageMessage + "</div></div><div class='col-xs-2'></div></div>");
+            } else {
+                container.append("<div class='row'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageDate'>Yo</div><div class='messageText'>" + message.messageMessage + "</div></div></div>");
+            }
+        }
+        window.viewNavigator.refreshScroller();
+
+
+        App.lastMessage = message;
+
         _.each(message.messages, function (message) {
             this.drawMessage(container, message);
-        }, this);        
+        }, this);
     },
-    
-    sendNewMessage:function(){
-//        var $container = this.$el.find(".container");
-//        var messageMessage = this.$('#messageMessage');
 
-//        var newMessage = {
-//	 			messageId:"xxxx",
-//	 			messageSubject:App.message.messageSubject,
-//	 			messageUserName:App.userName,
-//	 			messageDate:"1/12/2014",
-//	 			messageMessage:messageMessage.val(),
-//		 		messageOrigin:Constants.MESSAGE_ORIGIN_USER
-//	 	};
-//        this.drawMessage($container, newMessage);
-    	
+    sending:false,
+    sendNewMessage:function(){
         var self = this;
 
         this.onSendNewMessageOk = function(message){
@@ -79,21 +74,71 @@ window.ConversationView = Backbone.View.extend({
             self.sendNewMessageFail(message);
         };
 
-    	ServiceMessage.register(self.messageMessage.val(), App.lastMessage.messageSubject, App.lastMessage.messageId, self.onSendNewMessageOk, self.onSendNewMessageFail);
+        if(!this.sending){
+            this.sending = true;
+
+            var userId = App.getUserId();
+            if(App.role == Constants.ROLE_ADMINISTRATOR)
+                userId = App.lastMessage.messageUserId;
+            alert("userId:" + userId);
+            alert(JSON.stringify(App.lastMessage));
+
+            ServiceMessage.register(self.messageMessage.val(), App.lastMessage.messageSubject, App.lastMessage.messageId, userId, self.onSendNewMessageOk, self.onSendNewMessageFail);
+        }
     },
 
-    
+    sendNewMessageExternal:function(msg){
+        var self = this;
+
+        this.onSendNewMessageOk = function(message){
+            self.sendNewMessageOk(message);
+        };
+
+        this.onSendNewMessageFail = function(message){
+            self.sendNewMessageFail(message);
+        };
+
+        if(!this.sending){
+            this.sending = true;
+
+            var userId = App.getUserId();
+            if(App.role == Constants.ROLE_ADMINISTRATOR)
+                userId = App.lastMessage.messageUserId;
+            alert("userId:" + userId);
+            alert(JSON.stringify(App.lastMessage));
+
+            ServiceMessage.register(msg, App.lastMessage.messageSubject, App.lastMessage.messageId, userId, self.onSendNewMessageOk, self.onSendNewMessageFail);
+        }
+    },
+
+
     receiveNewMessage:function(message){
         this.drawMessage(this.messagesContainer, message);
     },
-    
-    
+
+
     sendNewMessageOk:function(message){
+        this.sending = false;
         this.drawMessage(this.messagesContainer, message);
-        this.messageMessage.val("");
+        this.$('#messageMessageExternal').val("");
+        //this.messageMessage.val("");
     },
     sendNewMessageFail:function(message){
-    	alert(message);
-    }    
-    
+        this.sending = false;
+        alert(message);
+    }
+
 });
+
+function clickSendNewMessage(){
+
+    var view = window.viewNavigator.history[ window.viewNavigator.history.length - 1 ];
+
+    view.sendNewMessageExternal(this.$('#messageMessageExternal').val());
+//
+//          view.receiveNewMessage(e.payload.data);
+//          messageShowed = true;
+//      }
+//
+//  }
+}

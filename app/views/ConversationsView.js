@@ -39,7 +39,6 @@ window.ConversationsView = Backbone.View.extend({
     },
 
     showCallback:function(){
-    	alert("showcallback");
         var template = _.template(templates.conversationsView);
         // this.$el.css("background", "#333");
         this.$el.html(template( {conversations:App.messages} ));
@@ -54,7 +53,7 @@ window.ConversationsView = Backbone.View.extend({
             self.headerButtonClick(event);
         } );
     },
-    
+
     listItemClick: function( event ) {
 
         this.$el.find( "li" ).removeClass( "listSelected" );
@@ -85,5 +84,5 @@ window.ConversationsView = Backbone.View.extend({
     		}
     	}
     	return null;
-    }    
+    }
 });

@@ -6,5 +6,6 @@
     position: static;
 }
 #homeView .container {
-    position: static;
+    position: fixed;
+    bottom: 0;
 }
