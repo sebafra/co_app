@@ -86,8 +86,12 @@ function onNotificationGCM(e) {
             			if(view.receiveNewMessage){
             				
             		    	if(App.lastMessage.messageAdministratorId == e.payload.data.messageAdministratorId && 
-            		    	    	   App.lastMessage.messageUserId  == e.payload.data.messageUserId &&
-            		    	    	   App.lastMessage.messageId  	  == e.payload.data.messageIdParent ){
+            		    	    	   App.lastMessage.messageUserId  == e.payload.data.messageUserId 
+            		    	    	   /*
+            		    	    	    &&
+            		    	    	   App.lastMessage.messageId  	  == e.payload.data.messageIdParent 
+            		    	    	   */
+            		    	    	   ){
                 				view.receiveNewMessage(e.payload.data);
                 				messageShowed = true;
             		    	}
