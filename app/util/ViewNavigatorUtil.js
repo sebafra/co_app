@@ -52,10 +52,10 @@ ViewNavigatorUtil = {
 			if(window.viewNavigator.animating){
 
 		        var self = this;
-		        this.onPublishViewPerform = function(){
-		            self.publishViewPerform();
+		        this.onPushViewPerform = function(){
+		            self.pushViewPerform();
 		        };
-				setTimeout( self.onPublishViewPerform , this.animationDuration );
+				setTimeout( self.onPushViewPerform , this.animationDuration );
 
 			} else {
 				this.done = true;
@@ -72,12 +72,12 @@ ViewNavigatorUtil = {
 			if(times > 0){
 
 				var self = this;
-		        this.onPublishViewPerform = function(){
-		            self.publishViewPerform();
+		        this.onPushViewPerform = function(){
+		            self.pushViewPerform();
 		        };
 		        
 		        this.times--;
-				setTimeout( self.onPublishViewPerform , this.animationDuration );
+				setTimeout( self.onPushViewPerform , this.animationDuration );
 			}
 		} else {
 			this.done = true;

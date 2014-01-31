@@ -2,10 +2,9 @@ window.ServiceMessage = {
 
     getByUserByCountry:function(success, fail){
 
-    	alert(App.role);
-    	
+   	
     	var json = {
-    				userId: App.userId,
+    				userId: App.getUserId(),
     				countryId:App.country.countryId,
     				role: App.role
     				};
@@ -52,7 +51,7 @@ window.ServiceMessage = {
 
     },
 
-    register:function(messageMessage, messageSubject, messageIdParent, success, fail){
+    register:function(messageMessage, messageSubject, messageIdParent, userId, success, fail){
 
     	var self = this;
     	
@@ -66,16 +65,18 @@ window.ServiceMessage = {
     		return;
     	}
     	
+    	
     	var json = {
     			messageSubject: messageSubject,
     			messageMessage:messageMessage,
     			messageOrigin: App.messageOrigin,
     			messageCountryId: App.country.countryId,
     			messageAdministratorId: App.country.countryAdministratorId,
-    			messageUserId:App.userId,
+    			messageUserId:userId,
     			messageIdParent:messageIdParent,
     			messageAnswered:Constants.MESSAGE_ANSWERED_YES,
-    			messageTypeId:Constants.MESSAGE_TYPE_ID_MESSAGE
+    			messageTypeId:Constants.MESSAGE_TYPE_ID_MESSAGE,
+    			messageUserName:App.getName()
     	};
 	
 
@@ -123,7 +124,7 @@ window.ServiceMessage = {
     			messageOrigin: App.messageOrigin,
     			messageCountryId: App.country.countryId,
     			messageAdministratorId: App.country.countryAdministratorId,
-    			messageUserId:App.userId,
+    			messageUserId:App.getUserId(),
     			messageIdParent:messageIdParent,
     			messageAnswered:Constants.MESSAGE_ANSWERED_YES,
     			messageTypeId:Constants.MESSAGE_TYPE_ID_MESSAGE
@@ -177,7 +178,7 @@ window.ServiceMessage = {
     			messageOrigin: App.messageOrigin,
     			messageCountryId: App.country.countryId,
     			messageAdministratorId: App.country.countryAdministratorId,
-    			messageUserId:App.userId,
+    			messageUserId:App.getUserId(),
     			messageIdParent:lastMessage.messageId,
     			messageAnswered:Constants.MESSAGE_ANSWERED_YES,
     			messageTypeId:Constants.MESSAGE_TYPE_ID_MESSAGE

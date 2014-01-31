@@ -26,6 +26,7 @@ function enableNotifications() {
     }
 	catch(err) 
 	{ 
+		
         pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
         deviceSO = "ios";
         deviceVersion = "ios";
@@ -83,8 +84,14 @@ function onNotificationGCM(e) {
             			var view = window.viewNavigator.history[ window.viewNavigator.history.length - 1 ];
             			
             			if(view.receiveNewMessage){
-            				view.receiveNewMessage(e.payload.data);
-            				messageShowed = true;
+            				
+            		    	if(App.lastMessage.messageAdministratorId == e.payload.data.messageAdministratorId && 
+            		    	    	   App.lastMessage.messageUserId  == e.payload.data.messageUserId &&
+            		    	    	   App.lastMessage.messageId  	  == e.payload.data.messageIdParent ){
+                				view.receiveNewMessage(e.payload.data);
+                				messageShowed = true;
+            		    	}
+            		    	    	
             			}
             		}catch(exc){}
         		}
@@ -142,8 +149,7 @@ function deviceRegister (device) {
 //	alert(deviceSO);
 //	alert(deviceVersion);
 //	alert(deviceModel);
-	
-	var url = Constants.URL_BASE + "/device/register?json=%7Bdevice%3A%22" + device + "%22%2CapplicationId%3A%22COM%22%2CapplicationVersion%3A%221%22%2Cos%3A%22" + deviceSO + "%22%2CosVersion%3A%22" + deviceVersion + "%22%2Cmodel%3A%22" + deviceModel + "%22%2CuserId%3A%22" + App.userId + "%22%2Crole%3A%22" + App.role + "%22%7D";
+	var url = Constants.URL_BASE + "/device/register?json=%7Bdevice%3A%22" + device + "%22%2CapplicationId%3A%22COM%22%2CapplicationVersion%3A%221%22%2Cos%3A%22" + deviceSO + "%22%2CosVersion%3A%22" + deviceVersion + "%22%2Cmodel%3A%22" + deviceModel + "%22%2CuserId%3A%22" + App.getUserId() + "%22%2Crole%3A%22" + App.role + "%22%2CuserName%3A%22" + App.getUserName() + "%22%2Cpassword%3A%22" + App.getPassword() + "%22%7D";
 //	alert(url);
 	
 	$.getJSON(url, function(result) {

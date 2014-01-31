@@ -7,7 +7,7 @@ window.ConversationView = Backbone.View.extend({
     // backLabel: "<span class='icon ion-location'></span>",
     title:"",
     messagesContainer:undefined,
-
+    
     initialize: function(options) {
 
 //        this.model = options.model;
@@ -30,38 +30,38 @@ window.ConversationView = Backbone.View.extend({
         this.messagesContainer = this.$el.find(".container");
         this.messageMessage = this.$('#messageMessage');
 
-        App.lastMessageRoot = this.message;
+    	App.lastMessageRoot = this.message;
         this.drawMessage(this.messagesContainer, this.message);
 
         return this;
     },
-
-
+    
+    
     drawMessage:function(container, message){
 
-        if(App.role == Constants.ROLE_USER){
-            if(message.messageOrigin == Constants.MESSAGE_ORIGIN_USER){
-                container.append("<div class='row'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageDate'>Yo</div><div class='messageText'>" + message.messageMessage + "</div></div></div>");
-            } else {
-                container.append("<div class='row'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageDate'>Administrador</div><div class='messageText'>" + message.messageMessage + "</div></div><div class='col-xs-2'></div></div>");
-            }
-        } else {
-            if(message.messageOrigin == Constants.MESSAGE_ORIGIN_USER){
-                container.append("<div class='row'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageDate'>" + message.messageUserName + "</div><div class='messageText'>" + message.messageMessage + "</div></div><div class='col-xs-2'></div></div>");
-            } else {
-                container.append("<div class='row'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageDate'>Yo</div><div class='messageText'>" + message.messageMessage + "</div></div></div>");
-            }
-        }
-        window.viewNavigator.refreshScroller();
+    	if(App.role == Constants.ROLE_USER){
+	    	if(message.messageOrigin == Constants.MESSAGE_ORIGIN_USER){
+	            container.append("<div class='row'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageDate'>Yo</div><div class='messageText'>" + message.messageMessage + "</div></div></div>");
+	    	} else {
+	            container.append("<div class='row'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageDate'>Administrador</div><div class='messageText'>" + message.messageMessage + "</div></div><div class='col-xs-2'></div></div>");
+	    	}
+    	} else {
+	    	if(message.messageOrigin == Constants.MESSAGE_ORIGIN_USER){
+	            container.append("<div class='row'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageDate'>" + message.messageUserName + "</div><div class='messageText'>" + message.messageMessage + "</div></div><div class='col-xs-2'></div></div>");
+	    	} else {
+	            container.append("<div class='row'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageDate'>Yo</div><div class='messageText'>" + message.messageMessage + "</div></div></div>");
+	    	}
+    	}	
+    	window.viewNavigator.refreshScroller();
 
-
-        App.lastMessage = message;
-
+    	
+    	App.lastMessage = message;
+    	
         _.each(message.messages, function (message) {
             this.drawMessage(container, message);
-        }, this);
+        }, this);        
     },
-
+    
     sending:false,
     sendNewMessage:function(){
         var self = this;
@@ -75,15 +75,15 @@ window.ConversationView = Backbone.View.extend({
         };
 
         if(!this.sending){
-            this.sending = true;
-
-            var userId = App.getUserId();
-            if(App.role == Constants.ROLE_ADMINISTRATOR)
-                userId = App.lastMessage.messageUserId;
-            alert("userId:" + userId);
-            alert(JSON.stringify(App.lastMessage));
-
-            ServiceMessage.register(self.messageMessage.val(), App.lastMessage.messageSubject, App.lastMessage.messageId, userId, self.onSendNewMessageOk, self.onSendNewMessageFail);
+        	this.sending = true;
+        	
+      	  	var userId = App.getUserId();
+      	  	if(App.role == Constants.ROLE_ADMINISTRATOR)
+      	  		userId = App.lastMessage.messageUserId;  
+      	  	alert("userId:" + userId);
+      	  	alert(JSON.stringify(App.lastMessage));
+      	  
+      	  	ServiceMessage.register(self.messageMessage.val(), App.lastMessage.messageSubject, App.lastMessage.messageId, userId, self.onSendNewMessageOk, self.onSendNewMessageFail);
         }
     },
 
@@ -99,46 +99,46 @@ window.ConversationView = Backbone.View.extend({
         };
 
         if(!this.sending){
-            this.sending = true;
-
-            var userId = App.getUserId();
-            if(App.role == Constants.ROLE_ADMINISTRATOR)
-                userId = App.lastMessage.messageUserId;
-            alert("userId:" + userId);
-            alert(JSON.stringify(App.lastMessage));
-
-            ServiceMessage.register(msg, App.lastMessage.messageSubject, App.lastMessage.messageId, userId, self.onSendNewMessageOk, self.onSendNewMessageFail);
+        	this.sending = true;
+        	
+      	  	var userId = App.getUserId();
+      	  	if(App.role == Constants.ROLE_ADMINISTRATOR)
+      	  		userId = App.lastMessage.messageUserId;  
+      	  	alert("userId:" + userId);
+      	  	alert(JSON.stringify(App.lastMessage));
+      	  
+      	  	ServiceMessage.register(msg, App.lastMessage.messageSubject, App.lastMessage.messageId, userId, self.onSendNewMessageOk, self.onSendNewMessageFail);
         }
     },
 
-
+    
     receiveNewMessage:function(message){
         this.drawMessage(this.messagesContainer, message);
     },
-
-
+    
+    
     sendNewMessageOk:function(message){
-        this.sending = false;
+  	  	this.sending = false;
         this.drawMessage(this.messagesContainer, message);
         this.$('#messageMessageExternal').val("");
         //this.messageMessage.val("");
     },
     sendNewMessageFail:function(message){
-        this.sending = false;
-        alert(message);
-    }
-
+  	  	this.sending = false;
+    	alert(message);
+    }    
+    
 });
 
 function clickSendNewMessage(){
-
-    var view = window.viewNavigator.history[ window.viewNavigator.history.length - 1 ];
-
-    view.sendNewMessageExternal(this.$('#messageMessageExternal').val());
-//
-//          view.receiveNewMessage(e.payload.data);
-//          messageShowed = true;
-//      }
-//
-//  }
+	
+	var view = window.viewNavigator.history[ window.viewNavigator.history.length - 1 ];
+	
+	view.sendNewMessageExternal(this.$('#messageMessageExternal').val());
+//		
+//			view.receiveNewMessage(e.payload.data);
+//			messageShowed = true;
+//    	}
+//    	    	
+//	}
 }

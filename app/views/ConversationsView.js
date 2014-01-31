@@ -39,10 +39,7 @@ window.ConversationsView = Backbone.View.extend({
     },
 
     showCallback:function(){
-<<<<<<< HEAD
-=======
 
->>>>>>> 142e35e98572b8360eac7f51739fb4fb1c4a9ea4
         var template = _.template(templates.conversationsView);
         // this.$el.css("background", "#333");
         this.$el.html(template( {conversations:App.messages} ));
@@ -57,7 +54,7 @@ window.ConversationsView = Backbone.View.extend({
             self.headerButtonClick(event);
         } );
     },
-
+    
     listItemClick: function( event ) {
 
         this.$el.find( "li" ).removeClass( "listSelected" );
@@ -75,7 +72,6 @@ window.ConversationsView = Backbone.View.extend({
 
     },
     headerButtonClick: function (event) {
-
         var view = new ConversationNewView();
         window.viewNavigator.replaceView( view );
     },
@@ -88,5 +84,5 @@ window.ConversationsView = Backbone.View.extend({
     		}
     	}
     	return null;
-    }
+    }    
 });

@@ -15,7 +15,8 @@ window.HomeView = Backbone.View.extend({
         "click .bookClick":"loadBooks",
         "click .visitClick":"loadVisits",
         "click .deliveryClick":"loadDeliverys",
-        "click .administradorClick":"loadConversations"
+        "click .administradorClick":"loadConversations",
+        "change #countries":"changeCountry"
     },
 
     showCallback:function () {
@@ -48,6 +49,13 @@ window.HomeView = Backbone.View.extend({
     loadConversations:function () {
         var view = new LoadConversationsView();
         ViewNavigatorUtil.pushView( view );
+    },
+    changeCountry:function () {
+        var $countries = this.$el.find("#countries");
+        _.each(App.countries, function (country) {
+        	if(country.countryId == $countries.val()) 
+        		App.country = country;
+        }, this);
     },
     loadAttractions:function () {
         var view = new LoadItemsView({type:ModelManager.type.attraction.code});

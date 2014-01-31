@@ -1,10 +1,10 @@
 window.ServiceCountry = {
 
     getByUser:function(success, fail){
-
+    	
     	var json = {
-    				userName:App.userName,
-    				userId:App.userId,
+    				userName:App.getUserName(),
+    				userId:App.getUserId(),
     				role:App.role
     				};
     	

@@ -12,6 +12,8 @@ window.LoginView = Backbone.View.extend({
 
     events:{
         "click #btnLogin":"login",
+        "click #inputEmail":"clickInputEmail",
+        "click #inputPassword":"clickInputPassword"
     },
 
     render:function (eventName) {
@@ -24,20 +26,36 @@ window.LoginView = Backbone.View.extend({
         this.inputPassword 	= this.$('#inputPassword');
         this.selectRoles	= this.$("#roles");
         
-        this.selectRoles.append("<option value=" + Constants.ROLE_ADMINISTRATOR + ">Administrador</option>");
         this.selectRoles.append("<option value=" + Constants.ROLE_USER + ">Consorcista</option>");
+        this.selectRoles.append("<option value=" + Constants.ROLE_ADMINISTRATOR + ">Administrador</option>");
 
         return this;
     },
 
+    clickInputEmail:function(){
+    	this.$('#inputEmail').scroll();
+    },
+    clickInputPassword:function(){
+    	this.$('#inputPassword').scroll();
+    },
     login:function () {
+
+    	App.role = this.selectRoles.val();
+    	if(App.role == Constants.ROLE_USER)
+			App.messageOrigin = Constants.MESSAGE_ORIGIN_USER;
+		else
+			App.messageOrigin = Constants.MESSAGE_ORIGIN_ADMINISTRATOR;
+    	
         var view = new LoadHomeView({ usuario:this.inputEmail.val(), password:this.inputPassword.val(), role:this.selectRoles.val() });
         window.ViewNavigatorUtil.pushView( view );
 
 //    	ServiceUser.login(this.inputEmail.val(),this.inputPassword.val(), this.loginOk, this.loginFail);
-    },
+    }
+    /*
+    ,
 
     loginOk: function(data){
+    	
     	App.saveUser(data);
         var view = new LoadHomeView({ model:{} });
         window.ViewNavigatorUtil.pushView( view );
@@ -47,5 +65,5 @@ window.LoginView = Backbone.View.extend({
     loginFail: function(message){
         var view = new MessageView({message:message});
         window.ViewNavigatorUtil.pushView( view );
-    }
+    }*/
 });
