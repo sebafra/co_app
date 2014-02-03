@@ -1,34 +1,33 @@
 <div id="itemViewNewConversation">
-<div class="container">
-    <div class="panel panel-default">
+  <div class="container">
+    <div class="panel panel-default col-sm-8">
       <div class="panel-body">
-         <form class="form-horizontal" role="form">
-      <div class="form-group">
-        <div class="col-sm-10">
-          <input type="text" class="form-control"
-            placeholder="Asunto" id='messageSubject'>
+       <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" class="form-control" placeholder="Asunto" id='messageSubject'>
+          </div>
         </div>
-      </div>
-      <hr>
+        <hr>
 
-	  <% if(App.role == Constants.ROLE_ADMINISTRATOR){ %>
-      <div class="form-group">
-        <div class="col-sm-10">
-	        <select class="form-control" id="users">
-	        </select>
-        </div>
-      </div>
-      <hr>
-	  <% } %>
+        <% if(App.role == Constants.ROLE_ADMINISTRATOR){ %>
+        <div class="form-group">
+          <div class="col-sm-12">
+           <select class="form-control" id="users">
+           </select>
+         </div>
+       </div>
+       <hr>
+       <% } %>
 
-      <div class="form-group">
-        <div class="col-sm-10">
+       <div class="form-group">
+        <div class="col-sm-12">
           <textarea class="form-control" rows="3" placeholder="Escriba su mensaje..." id='messageMessage'></textarea>
         </div>
       </div>
-      <button type="button" class="btn btn-warning btn-block" id="btnNewMessage">Enviar</button>
+      <button type="submit" class="btn btn-warning btn-block" id="btnNewMessage">Enviar</button>
     </form>
-      </div>
-    </div>
+  </div>
+</div>
 </div>
 </div>

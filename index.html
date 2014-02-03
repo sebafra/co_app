@@ -17,12 +17,15 @@
     <link rel="stylesheet" href="assets/ionicons.css" type="text/css" />
     <script>
         getOS();
+        //Estilos para iOS
         if ( mobileOS === 'iOS' && Number( mobileOSver.charAt(0) ) >= 5 ) {
-            //alert("Soy un iPhone");
+            document.write("<link rel=stylesheet href=assets/ios_styles.css type=text/css />")
         }
+        //Estilos para Android < 3.0
         if ( mobileOS === 'Android' && Number( mobileOSver.charAt(0) ) <= 3 ) {
             document.write("<link rel=stylesheet href=assets/old_android_styles.css type=text/css />")
         }
+         //Estilos para Android > 4.0
         if ( mobileOS === 'Android' && Number( mobileOSver.charAt(0) ) >= 4 ) {
             $(function () {
                 $('#inputVisitDateFrom').datetimepicker();
@@ -64,7 +67,7 @@
 <script src="libs/idangerous.swiper-2.1.min.js"></script>
 
 <script src="cordova.js"></script>
-<script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
+<!-- <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script> -->
 
 <!-- APP SCRIPTS -->
 <!-- <script src="model/User.js"></script>-->

@@ -1,0 +1,21 @@
+/***************************/
+/******* iPhone & iPad *****/
+/***************************/
+
+
+.viewNavigator_content {
+top: 56px;
+}
+.viewNavigator_header {
+height: 56px;
+}
+.viewNavigator_header_title {
+position: absolute;
+top: 22px;
+}
+.viewNavigator_headerActions {
+padding-top: 18px;
+}
+.viewNavigator_backButton {
+top: 26px;
+}

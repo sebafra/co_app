@@ -1,7 +1,7 @@
 var User = Backbone.Model.extend({
 
 	localStorage: new Backbone.LocalStorage("User")
-	
+
 });
 
 var UserCollection = Backbone.Collection.extend({
@@ -15,7 +15,7 @@ var UserCollection = Backbone.Collection.extend({
     	if(App.role == Constants.ROLE_USER){
 
     		if(App.country == undefined || App.country.countryId == undefined){
-    			
+
         		if(this.length > 0){
            			return this.at(0);
             	}
@@ -30,14 +30,14 @@ var UserCollection = Backbone.Collection.extend({
     		}
 
     	} else {
-    	
+
     		if(this.length > 0){
        			return this.at(0);
         	}
         	return null;
-    		
+
     	}
-    	
+
     }
 
   });
@@ -45,11 +45,11 @@ var UserCollection = Backbone.Collection.extend({
 window.App = {
 
 	isEnvironmentWeb:function(){
-		return false;
+		return true;
 	},
 
 	worksWithoutServer:function(){
-		return false;
+		return true;
 	},
 
 	isOnlineEnabled:function(){
@@ -115,31 +115,31 @@ window.App = {
 	lastMessage: 	undefined,
 	lastMessageRoot:undefined,
 	usersLogged:	undefined,
-	
+
 	saveUser:function(data){
-	
+
 		this.usersLogged = new UserCollection;
 
         _.each(data.users, function (user) {
         	this.usersLogged.create(user);
-        }, this); 		
+        }, this);
 
-        
+
 //		this.usersLogged = new UserCollection;
 //		try{
 //			this.country = {
-//					countryId:2	
+//					countryId:2
 //				};
 //        _.each(data.users, function (user) {
 //        	this.usersLogged.create(user);
-//  
+//
 //        	alert(JSON.stringify(this.usersLogged.getCurrent()));
-//        }, this); 		
+//        }, this);
 //		}catch(e){alert(e.message)}
-        
-        
 
-	/*	
+
+
+	/*
 		this.userId    = data.userId;
 		this.userName  = data.userName;
 		this.password  = data.password;
@@ -148,37 +148,41 @@ window.App = {
 			this.messageOrigin = Constants.MESSAGE_ORIGIN_USER;
 		else
 			this.messageOrigin = Constants.MESSAGE_ORIGIN_ADMINISTRATOR;
-			
+
 			*/
-		
-		
+
+
 	},
-	
+
 	getUserId:function(){
-		return this.usersLogged.getCurrent().get("userId");
+		// return this.usersLogged.getCurrent().get("userId");
+		return "25";
 	},
-	
+
 	getUserName:function(){
-		return this.usersLogged.getCurrent().get("userName");
+		// return this.usersLogged.getCurrent().get("userName");
+		return "seba";
 	},
-	
+
 	getName:function(){
-		return this.usersLogged.getCurrent().get("name");
+		// return this.usersLogged.getCurrent().get("name");
+		return "1234";
 	},
-	
+
 	getPassword:function(){
-		return this.usersLogged.getCurrent().get("password");
+		//return this.usersLogged.getCurrent().get("password");
+		return "1234";
 	}
-	
+
 //	getRole:function(){
 //		return this.usersLogged.getCurrent().get("role");
 //	},
-//	
+//
 //	getMessageOrigin:function(){
 //		if(this.getRole() == Constants.ROLE_USER)
 //			return Constants.MESSAGE_ORIGIN_USER;
 //		else
 //			return Constants.MESSAGE_ORIGIN_ADMINISTRATOR;
 //	}
-	
+
 };

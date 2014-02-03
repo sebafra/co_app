@@ -359,6 +359,7 @@ body {
 }
 #loginView .logo{
     -webkit-filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.5));
+    width: 50%;
 }
 
 /***********************/
@@ -443,12 +444,12 @@ body {
     margin-bottom:0;
 }
 .buttonLine:last-child{
-    margin-top:.3em;
+    margin-top:0;
     margin-bottom:.3em;
 }
 
 .expensesHomeButton{
-    width: 98%;
+    width: 97%;
     height: 5em;
     padding-top: 1em;
     /*background: url(images/logo.png) center bottom no-repeat;*/
@@ -460,7 +461,9 @@ body {
     font-size: 2em;
     color: #fff;
 }
-
+.expensesHomeButton .glyphicon{
+    font-size: 3em;
+}
 /*.img{
     padding: 0;
     margin: 0;
@@ -527,6 +530,9 @@ body {
     color: #f0f0f0;
     background-color: #555;
     border-color: #444;
+}
+.conversationContainer {
+    padding-bottom: 4em !important;
 }
 
 /***********************/
@@ -766,8 +772,8 @@ body {
     padding:1em;
     padding-left:1em;
     padding-right:1px;
-    border-top:1px solid #999;
-    border-bottom:none;
+    border-top:none;
+    border-bottom:1px solid #999;
     width: 100%;
 }
 .liContainerExtended {
@@ -836,13 +842,10 @@ body {
     body{
         font-size: 16px;
     }
-    #slider {
+/*    #slider {
         height: 25em;
-    }
-    .homeButton{
-       width:49%;
-       height: 17em;
-   }
+    }*/
+
    #thelist li{
       height: 5em;
       vertical-align: middle;
@@ -850,40 +853,18 @@ body {
   .container {
     width: 100%;
 }
-.swiper-container {
+/*.swiper-container {
   height: 30em;
-}
+}*/
 .btn-sm{
     padding: 10px 20px;
     font-size: 15px;
-}
-.homeButton p{
-    font-size: 1.4em;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 50px;
-    margin-left: 0px;
-
-}
-.homeButton:first-child p{
-    font-size: 1.6em !important;
-    padding: 0 !important;
-}
-.homeButton:first-child{
-    height: 20em !important;
-}
-.ftr{
-    background: url("images/arrow_down_big.png") no-repeat bottom center;
-    height: 15em;
 }
 .row{
     margin-left: -20px;
 }
 .label{
     width:100px;
-}
-.liContainerTempAccom .itemSecondLine{
-    line-height: 2;
 }
 .itemInfo h1.glyphicon {
     font-size: 4em;
@@ -893,6 +874,85 @@ body {
 .itemWell .col-sm-8 {
     padding-left: 20px;
 }
+
+/*Nuevos de Coterránea*/
+
+/*Login View*/
+
+#loginView .panel, #itemViewNewConversation .panel, #itemViewNewVisit .panel {
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+    text-align: center;
+    padding: 2em;
+    margin-top: 2em;
+}
+#loginView .panel img {
+    margin: 0;
+    margin-bottom: 2em;
+}
+#loginView button {
+    margin-top: 2em;
+}
+/*#loginView .logo{
+    width: 100%;
+}*/
+
+/*Home View*/
+
+.imgHomeSelect {
+    width: 100%;
+    background: rgba(255,255,255,0.2);
+    padding: 2em;
+    margin-top: 1em;
+    -webkit-border-radius: 10px;
+}
+.homeButton{
+    height: 10em;
+   padding: 2em;
+}
+.homeButton p{
+    font-size: 1.4em;
+}
+.homeButton .icon{
+    font-size: 4em;
+}
+.expensesHomeButton{
+    width: 97%;
+    height: 8em;
+}
+.expensesHomeButton .glyphicon{
+    font-size: 4em;
+}
+.expensesIcon {
+    text-align: right;
+}
+.expensesText {
+    text-align: left;
+}
+.buttonLine:last-child{
+    margin-top:0.3em;
+}
+
+/*Conversation List*/
+
+.itemFirstLine .itemDate {
+font-size: 1em;
+}
+
+/*Conversation View*/
+
+.ftr{
+    height: 3.7em;
+    padding-top: .4em;
+}
+.messageContainer .messageText {
+    font-size: 1em;
+}
+.conversationContainer {
+    padding-bottom: 5em;
+}
+
 }
 /********************************/
 /* Media Queries: Small Phones  */
@@ -915,6 +975,12 @@ body {
         font-size: 1em;
     }
     .liContainerCronograma .itemData .glyphicon {
+        display: none;
+    }
+    #loginView .logo{
+        display: none;
+    }
+    .imgHomeSelect {
         display: none;
     }
 }
