@@ -45,11 +45,11 @@ var UserCollection = Backbone.Collection.extend({
 window.App = {
 
 	isEnvironmentWeb:function(){
-		return true;
+		return false;
 	},
 
 	worksWithoutServer:function(){
-		return true;
+		return false;
 	},
 
 	isOnlineEnabled:function(){
@@ -155,23 +155,23 @@ window.App = {
 	},
 
 	getUserId:function(){
-		// return this.usersLogged.getCurrent().get("userId");
-		return "25";
+		return this.usersLogged.getCurrent().get("userId");
+		//return "25";
 	},
 
 	getUserName:function(){
-		// return this.usersLogged.getCurrent().get("userName");
-		return "seba";
+		return this.usersLogged.getCurrent().get("userName");
+		//return "seba";
 	},
 
 	getName:function(){
-		// return this.usersLogged.getCurrent().get("name");
-		return "1234";
+		return this.usersLogged.getCurrent().get("name");
+		//return "1234";
 	},
 
 	getPassword:function(){
-		//return this.usersLogged.getCurrent().get("password");
-		return "1234";
+		return this.usersLogged.getCurrent().get("password");
+		//return "1234";
 	}
 
 //	getRole:function(){
