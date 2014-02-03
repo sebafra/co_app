@@ -69,6 +69,6 @@ window.ConversationNewView = Backbone.View.extend({
   sendNewMessageFail:function(message){
 	  this.sending = false;
 	  alert(message);
-  }    
+  }
 
 });

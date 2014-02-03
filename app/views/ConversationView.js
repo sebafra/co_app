@@ -33,28 +33,34 @@ window.ConversationView = Backbone.View.extend({
     	App.lastMessageRoot = this.message;
         this.drawMessage(this.messagesContainer, this.message);
 
+        this.moveToLastMessage();
+        
         return this;
     },
 
 
+    drawMessageIdx:0,
     drawMessage:function(container, message){
 
+		//alert("<div class='row' id='msg_" + this.drawMessageIdx.toString() + "'>");
     	if(App.role == Constants.ROLE_USER){
 	    	if(message.messageOrigin == Constants.MESSAGE_ORIGIN_USER){
-	            container.append("<div class='row'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageDate'>Yo</div><div class='messageText'>" + message.messageMessage + "</div></div></div>");
+	            container.append("<div class='row' id='msg_" + this.drawMessageIdx.toString() + "'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageDate'>Yo</div><div class='messageText'>" + message.messageMessage + "</div></div></div>");
 	    	} else {
-	            container.append("<div class='row'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageDate'>Administrador</div><div class='messageText'>" + message.messageMessage + "</div></div><div class='col-xs-2'></div></div>");
+	            container.append("<div class='row' id='msg_" + this.drawMessageIdx.toString() + "'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageDate'>Administrador</div><div class='messageText'>" + message.messageMessage + "</div></div><div class='col-xs-2'></div></div>");
 	    	}
     	} else {
 	    	if(message.messageOrigin == Constants.MESSAGE_ORIGIN_USER){
-	            container.append("<div class='row'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageDate'>" + message.messageUserName + "</div><div class='messageText'>" + message.messageMessage + "</div></div><div class='col-xs-2'></div></div>");
+	            container.append("<div class='row' id='msg_" + this.drawMessageIdx.toString() + "'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageDate'>" + message.messageUserName + "</div><div class='messageText'>" + message.messageMessage + "</div></div><div class='col-xs-2'></div></div>");
 	    	} else {
-	            container.append("<div class='row'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageDate'>Yo</div><div class='messageText'>" + message.messageMessage + "</div></div></div>");
+	            container.append("<div class='row' id='msg_" + this.drawMessageIdx.toString() + "'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageDate'>Yo</div><div class='messageText'>" + message.messageMessage + "</div></div></div>");
 	    	}
     	}
     	window.viewNavigator.refreshScroller();
-
-
+    	//window.viewNavigator.scrollToElement('#msg_' + this.drawMessageIdx.toString());
+    	
+    	this.drawMessageIdx++;
+    	
     	App.lastMessage = message;
 
         _.each(message.messages, function (message) {
@@ -113,20 +119,38 @@ window.ConversationView = Backbone.View.extend({
 
 
     receiveNewMessage:function(message){
-        this.drawMessage(this.messagesContainer, message);
+
+    	if(message.messageOrigin != App.messageOrigin){
+    		if(this.isMessageValidToAdd(message)){
+    			this.drawMessage(this.messagesContainer, message);
+    			this.moveToLastMessage();
+    		}
+    	}
+    	
     },
 
-
+    isMessageValidToAdd:function(message){
+    	return true;
+    },
     sendNewMessageOk:function(message){
   	  	this.sending = false;
         this.drawMessage(this.messagesContainer, message);
+        this.moveToLastMessage();
+        
         this.$('#messageMessageExternal').val("");
         //this.messageMessage.val("");
+    },
+    moveToLastMessage:function(){
+       	var idxNew = this.drawMessageIdx - 1;
+    	window.viewNavigator.scroller.scrollToElement('#msg_' + idxNew.toString());
     },
     sendNewMessageFail:function(message){
   	  	this.sending = false;
     	alert(message);
-    }
+    },
+    backCallback:function () {
+      $(".ftr").css("display","none");
+    }    
 
 });
 
