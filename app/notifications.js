@@ -83,11 +83,13 @@ function onNotificationGCM(e) {
         	if (e.foreground)
         	{
         		
-				//var my_media = new Media("/android_asset/www/beep.wav");
-				//my_media.play();
+				var my_media = new Media("/android_asset/www/beep.wav");
+				my_media.play();
 
 				if(canDrawNewMessage()){
 					drawNewMessage(e.payload.messageId);
+				} else {
+					alert(e.payload.message);
 				}
         		
 			}

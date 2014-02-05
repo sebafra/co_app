@@ -55,34 +55,6 @@ window.ConversationsView = Backbone.View.extend({
         } );
     },
     
-    listItemClickNew: function( event ) {
-
-        this.$el.find( "li" ).removeClass( "listSelected" );
-        var target = $( event.target );
-        while (target.get(0).nodeName.toUpperCase() != "LI") {
-            target=target.parent();
-        }
-
-        target.addClass( "listSelected" );
-        var id = target.attr( "id" );
-        var item = this.getItemById( id , App.messages );
-
-    	ServiceMessage.getById(messageId, this.listItemClickOk, this.listItemClickFail);
-    },
-    
-    listItemClickOk: function(data){
-
-        var view = new ConversationView({message:data});
-        window.ViewNavigatorUtil.replaceView( view );
-    	
-    },
-
-    listItemClickFail: function(){
-        var view = new MessageView({message:"No se puede cargar la conversacion"});
-        window.ViewNavigatorUtil.pushView( view );
-    },
-    
-    
     listItemClick: function( event ) {
 
         this.$el.find( "li" ).removeClass( "listSelected" );
@@ -99,7 +71,6 @@ window.ConversationsView = Backbone.View.extend({
        window.ViewNavigatorUtil.replaceView( view );
 
     },
-    
     headerButtonClick: function (event) {
         var view = new ConversationNewView();
         window.viewNavigator.replaceView( view );

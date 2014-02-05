@@ -63,12 +63,13 @@ window.ConversationNewView = Backbone.View.extend({
   
   sendNewMessageOk:function(message){
 	  this.sending = false;
-      var view = new LoadConversationsView({message:message});
-      window.ViewNavigatorUtil.replaceView( view );
+//      var view = new HomeView({});//new LoadConversationsView({message:message});
+//      window.ViewNavigatorUtil.replaceView( view );
+	  window.viewNavigator.popView( );
   },
   sendNewMessageFail:function(message){
 	  this.sending = false;
 	  alert(message);
-  }
+  }    
 
 });
