@@ -89,7 +89,7 @@ window.ConversationView = Backbone.View.extend({
       	  	//alert("userId:" + userId);
       	  	//alert(JSON.stringify(App.lastMessage));
 
-      	  	ServiceMessage.register(self.messageMessage.val(), App.lastMessage.messageSubject, App.lastMessage.messageId, userId, self.onSendNewMessageOk, self.onSendNewMessageFail);
+      	  	ServiceMessage.register(self.onSendNewMessageOk, self.onSendNewMessageFail, self.messageMessage.val(), App.lastMessage.messageSubject, App.lastMessage.messageId, userId);
         }
     },
 
@@ -113,7 +113,7 @@ window.ConversationView = Backbone.View.extend({
       	  	//alert("userId:" + userId);
       	  	//alert(JSON.stringify(App.lastMessage));
 
-      	  	ServiceMessage.register(msg, App.lastMessage.messageSubject, App.lastMessage.messageId, userId, self.onSendNewMessageOk, self.onSendNewMessageFail);
+      	  	ServiceMessage.register(self.onSendNewMessageOk, self.onSendNewMessageFail, msg, App.lastMessage.messageSubject, App.lastMessage.messageId, userId);
         }
     },
 
@@ -146,7 +146,7 @@ window.ConversationView = Backbone.View.extend({
     },
     sendNewMessageFail:function(message){
   	  	this.sending = false;
-    	alert(message);
+    	//alert(message);
     },
     backCallback:function () {
       $(".ftr").css("display","none");

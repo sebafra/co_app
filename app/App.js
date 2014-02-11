@@ -110,6 +110,7 @@ window.App = {
 	countries: 		undefined,
 	country:		undefined,
 	countryId: 		undefined,
+	messageTypeId: 	undefined,
 	messages: 		undefined,
 	message: 		undefined,
 	lastMessage: 	undefined,

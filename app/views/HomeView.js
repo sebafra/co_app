@@ -47,6 +47,7 @@ window.HomeView = Backbone.View.extend({
     },
 
     loadConversations:function () {
+    	App.messageTypeId = Constants.MESSAGE_TYPE_ID_MESSAGE;
         var view = new LoadConversationsView();
         ViewNavigatorUtil.pushView( view );
     },
@@ -58,22 +59,29 @@ window.HomeView = Backbone.View.extend({
         }, this);
     },
     loadAttractions:function () {
-        var view = new LoadItemsView({type:ModelManager.type.attraction.code});
+    	this.messageTypeId = Constants.MESSAGE_TYPE_ID_MESSAGE;
+
+    	var view = new LoadItemsView({messageType:ModelManager.type.attraction.code});
         //window.viewNavigator.pushView( view );
         ViewNavigatorUtil.pushView( view );
     },
     loadBooks:function () {
-        var view = new LoadItemsView({type:ModelManager.type.book.code});
-        //window.viewNavigator.pushView( view );
+    	App.messageTypeId = Constants.MESSAGE_TYPE_ID_BOOKING;
+        var view = new LoadConversationsView();
         ViewNavigatorUtil.pushView( view );
+//        var view = new LoadItemsView({type:ModelManager.type.book.code});
+        //window.viewNavigator.pushView( view );
+//        ViewNavigatorUtil.pushView( view );
     },
     loadVisits:function () {
-        var view = new LoadItemsView({type:ModelManager.type.visit.code});
-        //window.viewNavigator.pushView( view );
+    	App.messageTypeId = Constants.MESSAGE_TYPE_ID_AUTHORIZATION;
+        var view = new LoadConversationsView();
         ViewNavigatorUtil.pushView( view );
+//        var view = new LoadItemsView({type:ModelManager.type.visit.code});
+//        ViewNavigatorUtil.pushView( view );
     },
     loadDeliverys:function () {
-        var view = new LoadItemsView({type:ModelManager.type.delivery.code});
+        var view = new LoadDeliveriesView();
         //window.viewNavigator.pushView( view );
         ViewNavigatorUtil.pushView( view );
     },

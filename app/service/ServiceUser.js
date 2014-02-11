@@ -17,6 +17,7 @@ window.ServiceUser = {
 
     	$.getJSON(url, function(result) {
     		
+    		
     		if(result.status == Constants.JSON_RESPONSE_STATUS_OK){
         		loginOk(result.data);
     		} else {

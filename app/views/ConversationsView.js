@@ -8,9 +8,15 @@ window.ConversationsView = Backbone.View.extend({
 
     initialize: function(options) {
 
-        this.title = "Conversaciones";
 
-        this.render();
+    	if(App.messageTypeId == Constants.MESSAGE_TYPE_ID_AUTHORIZATION)
+            this.title = "Autorizaciones";
+    	else if(App.messageTypeId == Constants.MESSAGE_TYPE_ID_BOOKING) 
+            this.title = "Reservas";
+    	else
+            this.title = "Conversaciones";
+
+    	this.render();
         this.view = this.$el;
     },
 
@@ -57,18 +63,20 @@ window.ConversationsView = Backbone.View.extend({
     
     listItemClick: function( event ) {
 
-        this.$el.find( "li" ).removeClass( "listSelected" );
-        var target = $( event.target );
-        while (target.get(0).nodeName.toUpperCase() != "LI") {
-            target=target.parent();
-        }
+    	if(App.messageTypeId == Constants.MESSAGE_TYPE_ID_MESSAGE){
+            this.$el.find( "li" ).removeClass( "listSelected" );
+            var target = $( event.target );
+            while (target.get(0).nodeName.toUpperCase() != "LI") {
+                target=target.parent();
+            }
 
-        target.addClass( "listSelected" );
-        var id = target.attr( "id" );
-        var item = this.getItemById( id , App.messages );
+            target.addClass( "listSelected" );
+            var id = target.attr( "id" );
+            var item = this.getItemById( id , App.messages );
 
-       var view = new ConversationView({message:item});
-       window.ViewNavigatorUtil.replaceView( view );
+            var view = new ConversationView({message:item});
+            window.ViewNavigatorUtil.replaceView( view );
+    	}
 
     },
     headerButtonClick: function (event) {

@@ -2,11 +2,11 @@ window.ServiceMessage = {
 
 	    getByUserByCountry:function(success, fail){
 
-	   	
 	    	var json = {
 	    				userId: App.getUserId(),
 	    				countryId:App.country.countryId,
-	    				role: App.role
+	    				role: App.role,
+	    				messageTypeId: App.messageTypeId
 	    				};
 	    	
 	    	if(App.worksWithoutServer()){
@@ -74,7 +74,7 @@ window.ServiceMessage = {
 
     },
 
-    register:function(messageMessage, messageSubject, messageIdParent, userId, success, fail){
+    register:function(success, fail, messageMessage, messageSubject, messageIdParent, userId, messageDateFrom, messageDateTo){
 
     	var self = this;
     	
@@ -98,8 +98,10 @@ window.ServiceMessage = {
     			messageUserId:userId,
     			messageIdParent:messageIdParent,
     			messageAnswered:Constants.MESSAGE_ANSWERED_YES,
-    			messageTypeId:Constants.MESSAGE_TYPE_ID_MESSAGE,
-    			messageUserName:App.getName()
+    			messageTypeId:App.messageTypeId,
+    			messageUserName:App.getName(),
+    			messageDateFrom:messageDateFrom,
+    			messageDateTo:messageDateTo
     	};
 	
 

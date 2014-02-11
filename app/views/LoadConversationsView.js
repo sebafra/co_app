@@ -4,11 +4,13 @@ window.LoadConversationsView = Backbone.View.extend({
 
     title: "Cargando...",
 
+    type: undefined,
+    
     initialize: function(options) {
 
         this.render();
         this.view = this.$el;
-
+        
         var self = this;
 
         this.onLoadConversations = function(result){

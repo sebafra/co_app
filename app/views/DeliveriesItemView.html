@@ -1,0 +1,11 @@
+<div class="liContainer liContainerDelivery">
+
+	<% if (typeof(deliveryPhone) !== "undefined"){ %>
+	<a href="tel:<%= deliveryPhone %>">
+	<% } %>
+		<img class="img-responsive" src="http://www.coterranea.com/images/Newsletter/2009/<%= deliveryImage %>" alt="">
+	<% if (typeof(deliveryPhone) !== "undefined"){ %>
+	</a>
+	<% } %>
+
+</div>

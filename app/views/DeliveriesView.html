@@ -1,0 +1,16 @@
+
+<% if ((typeof(deliveries) != "undefined") && deliveries.length > 0) { %>
+    <ul class="data-list" id="list"></ul>
+<% } else { %>
+    <div style="padding:10px;">
+        <div class="alert alert-error" >
+            No hay informaci&oacute;n disponible
+        </div>
+    </div>
+    <div style="padding:25px; text-align: center;">
+        <img src="assets/images/error.png" />
+    </div>
+<% } %>
+<script>
+	$(".ftr").css("display","none");
+</script>
