@@ -1,0 +1,27 @@
+<div class="liContainer liContainerBook">
+	<div class="col-xs-8 col-sm-8">
+	<div class="itemFirstLine row">
+		<div>
+			<span class="label label-warning">Lun 10 Ene</span> <span class="itemDate" id="date">10:00 - 10:30hs</span>
+		</div>
+	</div>
+	<div class="itemSecondLine row">
+		<span class="itemName" id="name">Cancha de Tennis</span>
+	</div>
+	<div class="itemThirdLine row">
+		<span class="itemName" id="name">Monaco, Juan Pico</span>
+	</div>
+	</div>
+	<div class="col-xs-4 col-sm-4 bookActions">
+		<div class="btn-group btn-group-sm">
+			<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+			<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	</div>
+<script>
+  //Home View toma el alto del Content View
+  var headerHeight = $(".viewNavigator_contentHolder").height();
+  $("#homeLogin").css("height",headerHeight);
+  </script>

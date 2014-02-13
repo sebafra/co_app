@@ -1,3 +1,6 @@
+/*Colores
+Naranja: #f59e01;*/
+
 @font-face {
     font-family: 'open_sanslight';
     src: url('fonts/OpenSans-Light-webfont.eot');
@@ -795,6 +798,23 @@ body {
 }
 .liContainerBook .itemDate {
     font-size: .9em;
+}
+.liContainerBook .bookActions {
+    padding-right: 0;
+    padding-top: .5em;
+}
+.liContainerBook .bookActions button:active .glyphicon {
+    color: #f59e01;
+}
+.liContainerBook .selectedState, .liContainerBook .nonSelectedState {
+    margin-left: .3em;
+    font-size: 1.2em;
+}
+.liContainerBook .selectedState {
+    color: #f59e01;
+}
+.liContainerBook .nonSelectedState {
+    opacity: .3;
 }
 .liContainerVisit .itemDate {
     font-size: .9em;
