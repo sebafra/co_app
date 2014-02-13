@@ -551,6 +551,12 @@ body {
     text-align: center;
     border: none;
 }
+#itemViewNewConversation .amenities{
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
 #itemViewNewConversation .toInput{
     float: right;
     padding-left: .5em;
@@ -568,6 +574,10 @@ body {
     border: none;
     color: #999;
 }
+#itemViewNewConversation .fromInput label, #itemViewNewConversation .toInput label{
+    color: #f0f0f0;
+}
+
 /***********************/
 /* New Visit View */
 /***********************/
@@ -608,6 +618,9 @@ body {
     background-color: #f0f0f0;
     border: none;
     color: #999;
+}
+#itemViewNewVisit .fromInput label, #itemViewNewVisit .toInput label{
+    color: #f0f0f0;
 }
     /********************************/
     /****** Swiper Dangerous  *********/
