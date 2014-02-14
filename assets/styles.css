@@ -833,9 +833,27 @@ body {
 .liContainerVisit .itemDate {
     font-size: .9em;
 }
+
+/********************************/
+/****** List Delivery  *********/
+/********************************/
+
 .liContainerDelivery {
     overflow: hidden;
-    padding: 1%;
+}
+.deliveryList {
+    padding: .5em;
+}
+.deliveryList li{
+    display: inline-block;
+    width: 49%;
+    margin: .1em .2em;
+    padding: 0;
+}
+@media screen and (min-device-width : 768px) {
+    .deliveryList li{
+    width: 24.5%;
+}
 }
 
 /********************************/
