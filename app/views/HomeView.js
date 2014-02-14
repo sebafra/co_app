@@ -4,6 +4,7 @@ window.HomeView = Backbone.View.extend({
 
     title: "Consorcio M&oacute;vil",
     destructionPolicy:'never',
+    backLabel: "Logout",
 
     initialize: function(options) {
         this.render();
@@ -89,5 +90,9 @@ window.HomeView = Backbone.View.extend({
 
         var view = new AboutView();
         window.viewNavigator.pushView( view );
-    }
+    },
+    backCallback:function () {
+        App.logout();
+    }    
+    
 });

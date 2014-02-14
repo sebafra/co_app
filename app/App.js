@@ -173,6 +173,8 @@ window.App = {
 	getPassword:function(){
 		return this.usersLogged.getCurrent().get("password");
 		//return "1234";
+	},
+	logout:function(){
 	}
 
 //	getRole:function(){

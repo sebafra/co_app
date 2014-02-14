@@ -30,7 +30,7 @@ window.LoadConversationsView = Backbone.View.extend({
     },
 
     render:function (eventName) {
-        this.$el.html(templates.loadItemsView);
+        this.$el.html(templates.inProgressView);
 
         this.$el.css("height", "100%");
         return this;
@@ -40,6 +40,15 @@ window.LoadConversationsView = Backbone.View.extend({
 
     	App.messages = result.messages;
 
+    	
+    	App.messages.sort(function(a, b){
+    		//alert("a.messageDate:"+ a.messageDate + "-" + "b.messageDate:"+ b.messageDate );
+    	    if (a.messageTimeStamp < b.messageTimeStamp) return -1;
+    	    if (b.messageTimeStamp < a.messageTimeStamp) return 1;
+    	    return 0;
+    	});
+    	
+    	
     	if(App.role == Constants.ROLE_ADMINISTRATOR){
     	
     		ServiceUser.getByCountry( this.loadUsers, this.loadUsersFail );

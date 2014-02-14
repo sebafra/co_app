@@ -68,7 +68,7 @@ window.ServiceCountry = {
     		}
     		
     	}).error(function(result) {
-    		fail(Constants.LOGIN_ERROR_MESSAGE_GENERIC);
+    		fail(Constants.AJAX_JSON_ERROR_MESSAGE_GENERIC);
     	});
 
     }

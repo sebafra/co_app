@@ -46,7 +46,7 @@ window.ServiceMessage = {
 	    		}
 	    		
 	    	}).error(function(result) {
-	    		fail(Constants.LOGIN_ERROR_MESSAGE_GENERIC);
+	    		fail(Constants.AJAX_JSON_ERROR_MESSAGE_GENERIC);
 	    	});
 
 	    },
@@ -69,7 +69,7 @@ window.ServiceMessage = {
     		}
     		
     	}).error(function(result) {
-    		fail(Constants.LOGIN_ERROR_MESSAGE_GENERIC);
+    		fail(Constants.AJAX_JSON_ERROR_MESSAGE_GENERIC);
     	});
 
     },
@@ -105,7 +105,7 @@ window.ServiceMessage = {
     	};
 	
 
-    	var url = Constants.URL_BASE + "/message/register?json=" + JSON.stringify(json);
+    	var url = Constants.URL_BASE + "/message/register?json=" + encodeURI(JSON.stringify(json));
 
     	$.getJSON(url, function(result) {
     		
@@ -124,7 +124,7 @@ window.ServiceMessage = {
     		}
     		
     	}).error(function(result) {
-    		fail(Constants.LOGIN_ERROR_MESSAGE_GENERIC);
+    		fail(Constants.AJAX_JSON_ERROR_MESSAGE_GENERIC);
     	});
 
     },
@@ -175,7 +175,7 @@ window.ServiceMessage = {
     		}
     		
     	}).error(function(result) {
-    		fail(Constants.LOGIN_ERROR_MESSAGE_GENERIC);
+    		fail(Constants.AJAX_JSON_ERROR_MESSAGE_GENERIC);
     	});
 
     },

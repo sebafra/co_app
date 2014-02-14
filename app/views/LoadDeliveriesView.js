@@ -1,3 +1,6 @@
+templates.inProgressView = "app/views/InProgressView.html";
+templates.inProgressView = "app/views/InProgressView.html";
+
 window.LoadDeliveriesView = Backbone.View.extend({
 
     title: "Cargando...",
@@ -28,7 +31,7 @@ window.LoadDeliveriesView = Backbone.View.extend({
     },
 
     render:function (eventName) {
-        this.$el.html(templates.loadDeliveriesView);
+        this.$el.html(templates.inProgressView);
 
         this.$el.css("height", "100%");
         return this;

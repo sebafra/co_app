@@ -31,7 +31,7 @@ window.ConversationNewView = Backbone.View.extend({
     	'<div id="nv' + this.visitorCount.toString() + '" class="row">' +
 	    '	<div class="col-xs-10">' +
 	    '		<div class="form-group">' +
-	    '			<input type="text" name="" id="nvtxt' + this.visitorCount.toString() + '" class="form-control" value="" required="required">' +
+	    '			<input type="text" name="" id="nvtxt' + this.visitorCount.toString() + '" class="form-control" required="required" value="' +  this.$('#nvtxt').val() + '">' +
 	    '		</div>' +
 	    '	</div>' +
 	    '	<div class="col-xs-2">' +
@@ -40,7 +40,6 @@ window.ConversationNewView = Backbone.View.extend({
 	    '	</div>' +
     	'</div>';
 
-    	
     	this.$('#newVisitor').after(newVisitorHTML);
     	this.visitorCount++;
     	window.viewNavigator.refreshScroller();
@@ -118,29 +117,124 @@ window.ConversationNewView = Backbone.View.extend({
     	  var messageDateFrom;
     	  
     	  if(App.messageTypeId == Constants.MESSAGE_TYPE_ID_AUTHORIZATION){
+    		  
     		  messageDateFrom	= self.messageDateFrom.val();
     		  messageDateTo 	= self.messageDateTo.val();	
       		  messageSubject  = "Autorizacion";
       		  messageMessage  = "Autorizacion para: ";
    
+    		  if($.trim(messageDateFrom) == ''){
+    			  alert("Debe ingresar la fecha desde.");
+    	    	  this.sending = false;
+    			  return;
+    		  }
+
+    		  if($.trim(messageDateTo) == ''){
+    			  alert("Debe ingresar la fecha hasta.");
+    	    	  this.sending = false;
+    			  return;
+    		  }
+
+    		  var from = messageDateFrom.split("-");
+    		  var dateFrom = new Date(from[0], from[1] - 1, from[2]);
+    		  var to = messageDateTo.split("-");
+    		  var dateTo = new Date(to[0], to[1] - 1, to[2]);
+    		  if(dateTo < dateFrom) {
+    			  alert("La fecha hasta debe ser mayor o igual a la fecha desde.");
+    	    	  this.sending = false;
+    			  return;
+    		  }
+    		  
+    		  var dateNow = new Date();
+    		  dateNow.setHours(0);
+    		  dateNow.setMilliseconds(0);
+    		  dateNow.setMinutes(0);
+    		  dateNow.setMonth(0);
+    		  dateNow.setSeconds(0);
+    		  if(dateFrom < dateNow) {
+    			  alert("La fecha desde debe ser mayor o igual a la fecha actual.");
+    	    	  this.sending = false;
+    			  return;
+    		  }
+
+    		  var visitorAdded = false;
       		  for(var i = 0 ; i < this.visitorCount ; i++){
           		  try{
-           			if(this.$('#nvtxt' + i.toString()).val() != undefined){
-               			if( i > 0 ) messageMessage += "; "; 
-           				messageMessage += this.$('#nvtxt' + i.toString()).val();
-           			}
+          			  var txt = this.$('#nvtxt' + i.toString()).val();
+          			  if((txt != undefined) && ($.trim(txt) != '' ) ){
+          				  if( visitorAdded ) messageMessage += "; "; 
+          				  //messageMessage += this.$('#nvtxt' + i.toString()).val();
+          				  messageMessage += txt;
+          				  visitorAdded = true;
+          			  }
           		  }catch(e){        	
           		  }
       		  }	
       		  
-      	  } else if(App.messageTypeId == Constants.MESSAGE_TYPE_ID_BOOKING) {
+    		  if(!visitorAdded){
+    			  alert("Debe ingresar el nombre de un visitante.");
+    	    	  this.sending = false;
+    			  return;
+    		  }
+
+    	  } else if(App.messageTypeId == Constants.MESSAGE_TYPE_ID_BOOKING) {
     		  messageDateFrom = self.messageDateFrom.val();
     		  messageDateTo   = self.messageDateTo.val();	
       		  messageSubject  = "Reserva";
-      		  messageMessage  = this.$('#amenities option:selected').text();
+      		  messageMessage  = $.trim(this.$('#amenities option:selected').text());
+      		  
+    		  if($.trim(messageDateFrom) == ''){
+    			  alert("Debe ingresar la fecha desde.");
+    	    	  this.sending = false;
+    			  return;
+    		  }
+
+    		  if($.trim(messageDateTo) == ''){
+    			  alert("Debe ingresar la fecha hasta.");
+    	    	  this.sending = false;
+    			  return;
+    		  }
+
+    		  var from = messageDateFrom.split("-");
+    		  var dateFrom = new Date(from[0], from[1] - 1, from[2]);
+    		  var to = messageDateTo.split("-");
+    		  var dateTo = new Date(to[0], to[1] - 1, to[2]);
+    		  if(dateTo < dateFrom) {
+    			  alert("La fecha hasta debe ser mayor o igual a la fecha desde.");
+    	    	  this.sending = false;
+    			  return;
+    		  }
+    		  
+    		  var dateNow = new Date();
+    		  dateNow.setHours(0);
+    		  dateNow.setMilliseconds(0);
+    		  dateNow.setMinutes(0);
+    		  dateNow.setMonth(0);
+    		  dateNow.setSeconds(0);
+    		  if(dateFrom < dateNow) {
+    			  alert("La fecha desde debe ser mayor o igual a la fecha actual.");
+    	    	  this.sending = false;
+    			  return;
+    		  }
+
+      		  
       	  } else {
-      		  	messageMessage = self.messageMessage.val();
-      		  	messageSubject = self.messageSubject.val();
+      		  	messageMessage = $.trim(self.messageMessage.val());
+      		  	messageSubject = $.trim(self.messageSubject.val());
+      		  	
+      		  if($.trim(messageSubject) == ''){
+    			  alert("Debe ingresar el asunto.");
+    	    	  this.sending = false;
+    			  return;
+    		  }
+
+      		  if($.trim(messageMessage) == ''){
+    			  alert("Debe ingresar el mensaje.");
+    	    	  this.sending = false;
+    			  return;
+    		  }
+
+      		  	
       	  }
     	  
     	  ServiceMessage.register(self.onSendNewMessageOk, self.onSendNewMessageFail, messageMessage, messageSubject, "-1" , userId, messageDateFrom, messageDateTo);
