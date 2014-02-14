@@ -33,8 +33,18 @@
 				<% } %>
 				<% if(App.role == Constants.ROLE_ADMINISTRATOR){ %>
 				<div class="btn-group btn-group-sm">
-					<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></button>
-					<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+
+					<% if(messageState == Constants.MESSAGE_STATE_AUTHORIZED){ %>
+					<button type="button" class="btn btn-default active" disabled="disabled"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+					<button type="button" class="btn btn-default" disabled="disabled"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+					<% } else if(messageState == Constants.MESSAGE_STATE_DENIED){ %>
+					<button type="button" class="btn btn-default" disabled="disabled"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+					<button type="button" class="btn btn-default active" disabled="disabled"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+					<% } else if(messageState == Constants.MESSAGE_STATE_PENDING){ %>
+					<button type="button" class="btn btn-default" onclick="clickAnswerBooking('<%=messageSubject%>', '<%=Constants.MESSAGE_STATE_AUTHORIZED_PATTERN%>', '<%=messageId%>', '<%=messageUserId%>')"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+					<button type="button" class="btn btn-default" onclick="clickAnswerBooking('<%=messageSubject%>', '<%=Constants.MESSAGE_STATE_DENIED_PATTERN%>', '<%=messageId%>', '<%=messageUserId%>')"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+					<% } %>
+
 				</div>
 				<% } %>
 	</div>

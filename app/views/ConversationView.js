@@ -155,20 +155,8 @@ window.ConversationView = Backbone.View.extend({
 });
 
 function clickSendNewMessage(){
-
 	var view = window.viewNavigator.history[ window.viewNavigator.history.length - 1 ];
-
-//	alert(view);
-//	alert($('#messageMessageExternal').val());
 	var msg = $('#messageMessageExternal').val();
 	view.sendNewMessageExternal(msg);
-
-    //Limpia el input una vez enviado el mensaje
     $('#messageMessageExternal').val('');
-//
-//			view.receiveNewMessage(e.payload.data);
-//			messageShowed = true;
-//    	}
-//
-//	}
 }
