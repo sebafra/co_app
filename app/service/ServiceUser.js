@@ -13,7 +13,7 @@ window.ServiceUser = {
     		return;
     	}
     	
-    	var url = Constants.URL_BASE + "/user/login?json=" + JSON.stringify(json);
+    	var url = Constants.URL_BASE + "/user/login?json=" + encodeURI(JSON.stringify(json));
 
     	$.getJSON(url, function(result) {
     		

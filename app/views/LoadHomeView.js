@@ -57,7 +57,16 @@ window.LoadHomeView = Backbone.View.extend({
     		view = new MessageView({message:"No posee ningun country"});
 		} else {
 			App.countries = result.countries;
+			
+	    	App.countries.sort(function(a, b){
+	    	    if (a.countryName.toLowerCase() < b.countryName.toLowerCase()) return -1;
+	    	    if (b.countryName.toLowerCase() < a.countryName.toLowerCase()) return 1;
+	    	    return 0;
+	    	});
+	    	
 			view = new HomeView({ model:{} });
+	  	  	//window.ViewNavigatorUtil.popView();
+			window.ViewNavigatorUtil.removeView();
 		}
     	
         window.ViewNavigatorUtil.replaceView( view );
