@@ -162,6 +162,7 @@ window.App = {
 
 	getUserName:function(){
 		return this.usersLogged.getCurrent().get("userName");
+		// TODO a veces tira error y no se porque
 		//return "seba";
 	},
 

@@ -83,6 +83,16 @@ ViewNavigatorUtil = {
 			this.done = true;
 			window.viewNavigator.pushView( this.view );
 		}
+    },
+    popView: function( ){
+		window.viewNavigator.popView();
+    },
+    removeView: function() {
+    	if (window.viewNavigator.animating || window.viewNavigator.history.length <= 1 )
+    		return;
+    	
+    	window.viewNavigator.history.pop();	
     }
 
+    
 }

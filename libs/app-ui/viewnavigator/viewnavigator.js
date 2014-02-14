@@ -96,6 +96,17 @@ ViewNavigator.prototype.popView = function() {
 	this.updateView( viewDescriptor );
 }
 
+ViewNavigator.prototype.logoutView = function() {
+
+	var currentViewDescriptor = this.history[ this.history.length-1];
+	if ( currentViewDescriptor.logoutCallback ) {
+		currentViewDescriptor.logoutCallback();
+	}
+
+	//this.history.pop();	
+    
+}
+
 ViewNavigator.prototype.setHeaderPadding = function( amount ) {
 	this.headerPadding = amount;
 	if ( this.headerBacklink ) {
@@ -120,7 +131,12 @@ ViewNavigator.prototype.updateView = function( viewDescriptor ) {
 	
 	var linkGuid = this.guid();
     if ( viewDescriptor.backLabel ) {
-        this.headerBacklink = $('<li class="viewNavigator_header_backlink viewNavigator_backButtonPosition ' + this.backLinkCSS +'" id="link' + linkGuid + '" onclick="window.viewNavigators[\'' + this.uniqueId + '\'].popView()">'+ viewDescriptor.backLabel + '</li>');
+    	
+    	if( viewDescriptor.backLabel == 'Logout') {
+            this.headerBacklink = $('<li class="viewNavigator_header_backlink viewNavigator_backButtonPosition ' + this.backLinkCSS +'" id="link' + linkGuid + '" onclick="window.viewNavigators[\'' + this.uniqueId + '\'].logoutView()">'+ viewDescriptor.backLabel + '</li>');
+    	} else {
+            this.headerBacklink = $('<li class="viewNavigator_header_backlink viewNavigator_backButtonPosition ' + this.backLinkCSS +'" id="link' + linkGuid + '" onclick="window.viewNavigators[\'' + this.uniqueId + '\'].popView()">'+ viewDescriptor.backLabel + '</li>');
+    	}
         this.headerContent.append( this.headerBacklink );
 
         //this is for proper handling in splitviewnavigator

@@ -1,7 +1,13 @@
 window.Constants = {
+<<<<<<< HEAD
 		URL_BASE:"http://192.168.1.8:8080/consorciomovil/api",
 		//URL_BASE:"http://200.58.118.223:8080/consorciomovil/api",
 
+=======
+		//URL_BASE:"http://192.168.1.8:8080/consorciomovil/api",
+		URL_BASE:"http://200.58.118.223:8080/consorciomovil/api",
+		
+>>>>>>> 3fb7db165eda2e6f7659d4dbd4d57e6c48ee5b9a
 		ROLE_USER:"user",
 		ROLE_ADMINISTRATOR:"administrator",
 

@@ -91,8 +91,10 @@ window.HomeView = Backbone.View.extend({
         var view = new AboutView();
         window.viewNavigator.pushView( view );
     },
-    backCallback:function () {
-        App.logout();
+    logoutCallback:function () {
+    	App.logout();
+        var view = new LoginView();
+        ViewNavigatorUtil.replaceView( view );
     }    
     
 });

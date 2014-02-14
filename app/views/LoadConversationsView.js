@@ -40,9 +40,7 @@ window.LoadConversationsView = Backbone.View.extend({
 
     	App.messages = result.messages;
 
-    	
     	App.messages.sort(function(a, b){
-    		//alert("a.messageDate:"+ a.messageDate + "-" + "b.messageDate:"+ b.messageDate );
     	    if (a.messageTimeStamp < b.messageTimeStamp) return -1;
     	    if (b.messageTimeStamp < a.messageTimeStamp) return 1;
     	    return 0;
@@ -74,6 +72,12 @@ window.LoadConversationsView = Backbone.View.extend({
     		view = new MessageView({message:"No posee ningun usuario"});
 		} else {
 			App.users = result.users;
+	    	App.users.sort(function(a, b){
+	    	    if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+	    	    if (b.name.toLowerCase() < a.name.toLowerCase()) return 1;
+	    	    return 0;
+	    	});
+			
 			view = new ConversationsView({ model:{} });
 		}
     	
