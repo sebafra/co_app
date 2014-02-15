@@ -39,4 +39,17 @@
   //Home View toma el alto del Content View
   var headerHeight = $(".viewNavigator_contentHolder").height();
   $("#homeLogin").css("height",headerHeight);
+  //Evento ocultar inputs
+  $("#btnLogin").on("click",hideInputs);
+  //Ocultar/mostrar inputs en android 4 cuando pasa al home
+  function hideInputs(){
+  	$("#inputPassword").hide();
+  	$("#inputEmail").hide();
+  	$("#inputPhone").hide();
+  }
+  function showInputs(){
+  	$("#inputPassword").show();
+  	$("#inputEmail").show();
+  	$("#inputPhone").show();
+  }
   </script>

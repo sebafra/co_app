@@ -55,7 +55,7 @@ window.HomeView = Backbone.View.extend({
     changeCountry:function () {
         var $countries = this.$el.find("#countries");
         _.each(App.countries, function (country) {
-        	if(country.countryId == $countries.val()) 
+        	if(country.countryId == $countries.val())
         		App.country = country;
         }, this);
     },
@@ -95,6 +95,8 @@ window.HomeView = Backbone.View.extend({
     	App.logout();
         var view = new LoginView();
         ViewNavigatorUtil.replaceView( view );
-    }    
-    
+        showInputs();
+
+    }
+
 });

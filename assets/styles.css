@@ -507,7 +507,7 @@ body {
     text-align: right;
     padding-right: 2em;
 }
-.messageContainer .messageDate{
+.messageContainer .messageDate, .messageContainer .messageUser{
     color: #b3b3b3;
     font-size: .8em;
     font-style: italic;
@@ -817,8 +817,12 @@ body {
     padding-right: 0;
     padding-top: .5em;
 }
-.liContainerBook .bookActions button:active .glyphicon {
+.liContainerBook .bookActions .btnActive .glyphicon {
     color: #f59e01;
+}
+.liContainerBook .bookActions button:disabled {
+    background-color: #333;
+    border: 1px solid #555;
 }
 .liContainerBook .selectedState, .liContainerBook .nonSelectedState {
     margin-left: .3em;
@@ -1034,5 +1038,35 @@ font-size: 1em;
     }
     .imgHomeSelect {
         display: none;
+    }
+    .liContainerExtended .itemThirdLine {
+        font-size: .9em;
+    }
+    .liContainerExtended .itemDate {
+        color: #f0f0f0;
+    }
+    .conversationContainer .messageContainer .messageUser {
+        color: #f0f0f0;
+        font-size: .9em;
+        font-style: italic;
+    }
+    .liContainerBook .itemDate {
+        color: #f0f0f0;
+        font-size: 1em;
+        font-style: normal;
+    }
+    .liContainerBook .itemThirdLine .itemName {
+        color: #f0f0f0;
+        font-size: 1em;
+        font-style: normal;
+    }
+     .liContainerVisit .itemDate {
+        font-size: 1em;
+        font-style: normal;
+    }
+    .liContainerVisit .itemThirdLine .itemDescription {
+        color: #f0f0f0;
+        font-size: 1em;
+        font-style: normal;
     }
 }
