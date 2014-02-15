@@ -92,5 +92,37 @@ window.ConversationsView = Backbone.View.extend({
     		}
     	}
     	return null;
-    }    
+    },
+    answerBookingExternal:function(messageSubject, messageAnswer, messageIdParent, messageUserId){
+        var self = this;
+
+        this.onAnswerBookingOk = function(message){
+            self.answerBookingOk(message);
+        };
+
+        this.onAnswerBookingFail = function(message){
+            self.answerBookingFail(message);
+        };
+
+        if(!this.sending){
+        	this.sending = true;
+      	  	ServiceMessage.register(self.onAnswerBookingOk, self.onAnswerBookingFail, messageAnswer, messageSubject, messageIdParent, messageUserId);
+        }
+    },
+    answerBookingOk:function(message){
+  	  	this.sending = false;
+  	  	window.viewNavigator.popView( );
+    },
+    answerBookingFail:function(message){
+  	  	this.sending = false;
+  	  	alert(message);
+    }
+
+    
 });
+
+
+function clickAnswerBooking(subject, answer, messageIdParent, messageUserId){
+	var view = window.viewNavigator.history[ window.viewNavigator.history.length - 1 ];
+	view.answerBookingExternal(subject, answer, messageIdParent, messageUserId);
+}

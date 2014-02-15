@@ -30,5 +30,5 @@ window.ConversationsItemView = Backbone.View.extend({
         this.$el.html( this.template( conversation ));
         this.$el.attr('id', conversation.messageId );
         return this;
-    }
+    }    
 });

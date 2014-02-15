@@ -1,4 +1,5 @@
 window.Constants = {
+
 		//URL_BASE:"http://192.168.1.8:8080/consorciomovil/api",
 		URL_BASE:"http://200.58.118.223:8080/consorciomovil/api",
 
@@ -11,9 +12,9 @@ window.Constants = {
 		MESSAGE_ANSWERED_YES:"SI",
 		MESSAGE_ANSWERED_NO:"NO",
 
-		MESSAGE_TYPE_ID_MESSAGE:"1",
-		MESSAGE_TYPE_ID_AUTHORIZATION:"2",
-		MESSAGE_TYPE_ID_BOOKING:"3",
+		MESSAGE_TYPE_ID_MESSAGE			:"1",
+		MESSAGE_TYPE_ID_AUTHORIZATION	:"2",
+		MESSAGE_TYPE_ID_BOOKING			:"3",
 
 
 		JSON_RESPONSE_STATUS_OK: "ok",
@@ -22,6 +23,9 @@ window.Constants = {
 		MESSAGE_STATE_PENDING	:"Pendiente",
 		MESSAGE_STATE_AUTHORIZED:"Autorizado",
 		MESSAGE_STATE_DENIED	:"No autorizado",
+
+		MESSAGE_STATE_AUTHORIZED_PATTERN: "si",
+		MESSAGE_STATE_DENIED_PATTERN 	: "no",
 
 		LOGIN_ERROR_MESSAGE_GENERIC: "No puede ingresar. Por favor intentar mas tarde.",
 		AJAX_JSON_ERROR_MESSAGE_GENERIC: "Error de comunicacion. Por favor intentar mas tarde."
