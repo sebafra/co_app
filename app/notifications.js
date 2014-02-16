@@ -3,6 +3,7 @@ var pushNotification;
 var deviceSO;
 var deviceVersion;
 var deviceModel;
+var lastAlert;
 
 function enableNotifications() {
 //    alert('start the notifications!!!');
@@ -46,6 +47,7 @@ function onNotificationAPN(e) {
         pushNotification.setApplicationIconBadgeNumber(successHandler, e.badge);
     }
     
+    lastAlert = e.alert;
     if(e.messageId){
 		if(canDrawNewMessage()){
 			drawNewMessage(e.messageId);
@@ -83,6 +85,8 @@ function onNotificationGCM(e) {
         	if (e.foreground)
         	{
         		
+				lastAlert = e.payload.message;
+
 				var my_media = new Media("/android_asset/www/beep.wav");
 				my_media.play();
 
@@ -146,13 +150,24 @@ function canDrawNewMessage(){
 	return false;
 }
 
+function isRightConversation(messageIdParent){
+	if(App.lastMessage.messageId == messageIdParent)
+		return true;
+	return false;
+}
+
 function drawNewMessage(messageId){
 	ServiceMessage.getById(messageId, drawNewMessageOk, drawNewMessageFail);
 }
 
 function drawNewMessageOk(data){
-	if(viewToDrawMessage)
-		viewToDrawMessage.receiveNewMessage(data);
+	if(viewToDrawMessage){
+		if((isRightConversation(data.messageIdParent)) && (data.messageTypeId == Constants.MESSAGE_TYPE_ID_MESSAGE)){
+			viewToDrawMessage.receiveNewMessage(data);
+		} else {
+			alert(lastAlert);
+		}
+	}
 }
 
 function drawNewMessageFail(){
@@ -165,9 +180,6 @@ function deviceRegister (device) {
 	if(deviceVersion == undefined) 	deviceVersion = "";
 	if(deviceModel == undefined) 	deviceModel = "";
 	
-//	alert(deviceSO);
-//	alert(deviceVersion);
-//	alert(deviceModel);
 	var url = Constants.URL_BASE + "/device/register?json=%7Bdevice%3A%22" + device + "%22%2CapplicationId%3A%22COM%22%2CapplicationVersion%3A%221%22%2Cos%3A%22" + deviceSO + "%22%2CosVersion%3A%22" + deviceVersion + "%22%2Cmodel%3A%22" + deviceModel + "%22%2CuserId%3A%22" + App.getUserId() + "%22%2Crole%3A%22" + App.role + "%22%2CuserName%3A%22" + App.getUserName() + "%22%2Cpassword%3A%22" + App.getPassword() + "%22%7D";
 //	alert(url);
 	

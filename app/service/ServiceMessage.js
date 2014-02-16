@@ -112,7 +112,7 @@ window.ServiceMessage = {
     		if(result.status == Constants.JSON_RESPONSE_STATUS_OK){
         		success(result.data);
 
-        		if(App.messageTypeId == MESSAGE_TYPE_ID_MESSAGE){
+        		if(App.messageTypeId == Constants.MESSAGE_TYPE_ID_MESSAGE){
             		if(result.data.messageIdParent == undefined){
                 		App.messages.push(result.data);
             		} else {

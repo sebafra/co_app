@@ -1,11 +1,12 @@
 templates.inProgressView = "app/views/InProgressView.html";
-templates.inProgressView = "app/views/InProgressView.html";
+window.lastInProgressView = undefined;
 
 window.LoadDeliveriesView = Backbone.View.extend({
 
     title: "Cargando...",
-
     type: undefined,
+    backLabel: "Volver",
+    cancelActivity: false,
     
     initialize: function(options) {
 
@@ -13,6 +14,7 @@ window.LoadDeliveriesView = Backbone.View.extend({
         this.view = this.$el;
         
         var self = this;
+        window.lastInProgressView = this;
 
         this.onLoadDeliveries = function(result){
             self.loadDeliveries(result);
@@ -38,6 +40,7 @@ window.LoadDeliveriesView = Backbone.View.extend({
     },
 
     loadDeliveries: function(result) {
+    	if(window.lastInProgressView.cancelActivity) return;
 
     	App.deliveries = result.deliveries;
 
@@ -47,9 +50,20 @@ window.LoadDeliveriesView = Backbone.View.extend({
     },
     
     loadDeliveriesFail: function(message) {
-		var view = new MessageView({message:message});
+    	if(window.lastInProgressView.cancelActivity) return;
+
+    	var view = new MessageView({message:message});
         window.ViewNavigatorUtil.replaceView( view );
+    },
+    
+    backCallback: function(){
+    	this.cancelActivity = true;
+    },
+    
+    showCallback: function(){
+    	this.cancelActivity = false;
     }
+
 
 
 });

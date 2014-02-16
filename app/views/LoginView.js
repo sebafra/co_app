@@ -12,6 +12,7 @@ window.LoginView = Backbone.View.extend({
 
     events:{
         "click #btnLogin":"login",
+        "click #inputPhone":"clickInputPhone",
         "click #inputEmail":"clickInputEmail",
         "click #inputPassword":"clickInputPassword"
     },
@@ -32,12 +33,18 @@ window.LoginView = Backbone.View.extend({
         return this;
     },
 
+    clickInputPhone:function(){
+    	this.$('#inputPhone').scroll();
+    },
+    
     clickInputEmail:function(){
     	this.$('#inputEmail').scroll();
     },
+    
     clickInputPassword:function(){
     	this.$('#inputPassword').scroll();
     },
+    
     login:function () {
 
     	App.role = this.selectRoles.val();
@@ -46,12 +53,22 @@ window.LoginView = Backbone.View.extend({
 		else
 			App.messageOrigin = Constants.MESSAGE_ORIGIN_ADMINISTRATOR;
     	
-        var view = new LoadHomeView({ usuario:this.inputEmail.val(), password:this.inputPassword.val(), role:this.selectRoles.val() });
+        var view = new LoadHomeView({ usuario:this.inputEmail.val(), phone:this.inputPhone.val(), password:this.inputPassword.val(), role:this.selectRoles.val() });
         window.ViewNavigatorUtil.pushView( view );
 
         this.inputPassword.val("");
-//    	ServiceUser.login(this.inputEmail.val(),this.inputPassword.val(), this.loginOk, this.loginFail);
+
     }
+    
+    ,
+    
+    showCallback: function(){
+    	try{
+    		showInputs();
+    	}catch(e){
+    		alert(e.message);
+    	}
+    }    
     /*
     ,
 

@@ -1,10 +1,12 @@
 templates.inProgressView = "app/views/InProgressView.html";
+window.lastInProgressView = undefined;
 
 window.LoadConversationsView = Backbone.View.extend({
 
     title: "Cargando...",
-
     type: undefined,
+    backLabel: "Volver",
+    cancelActivity: false,
     
     initialize: function(options) {
 
@@ -12,6 +14,7 @@ window.LoadConversationsView = Backbone.View.extend({
         this.view = this.$el;
         
         var self = this;
+        window.lastInProgressView = this;
 
         this.onLoadConversations = function(result){
             self.loadConversations(result);
@@ -37,6 +40,7 @@ window.LoadConversationsView = Backbone.View.extend({
     },
 
     loadConversations: function(result) {
+    	if(window.lastInProgressView.cancelActivity) return;
 
     	App.messages = result.messages;
 
@@ -61,11 +65,15 @@ window.LoadConversationsView = Backbone.View.extend({
     },
     
     loadConversationsFail: function(message) {
-		var view = new MessageView({message:message});
+    	if(window.lastInProgressView.cancelActivity) return;
+
+    	var view = new MessageView({message:message});
         window.ViewNavigatorUtil.replaceView( view );
     },
 
     loadUsers: function(result) {
+    	if(window.lastInProgressView.cancelActivity) return;
+
         var view;
         
     	if(result.users == undefined || result.users.length == 0){
@@ -85,9 +93,20 @@ window.LoadConversationsView = Backbone.View.extend({
     },
     
     loadUsersFail: function(message) {
+    	if(window.lastInProgressView.cancelActivity) return;
+
         var view = new MessageView({message:message});
         window.ViewNavigatorUtil.replaceView( view );
+    },
+    
+    backCallback: function(){
+    	this.cancelActivity = true;
+    },
+    
+    showCallback: function(){
+    	this.cancelActivity = false;
     }
+
     
 
 });

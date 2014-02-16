@@ -1,14 +1,19 @@
-templates.loadHomeView = "app/views/LoadHomeView.html";
+templates.inProgressView = "app/views/InProgressView.html";
+window.lastInProgressView = undefined;
 
 window.LoadHomeView = Backbone.View.extend({
 
     title: "Cargando...",
 	usuario: undefined,
+	phone: undefined,
 	password: undefined,
 	role: undefined,
+    backLabel: "Volver",
+    cancelActivity: false,
 
     initialize: function(options) {
 
+    	this.phone    = options.phone;
     	this.usuario  = options.usuario;
     	this.password = options.password;
     	this.role 	  = options.role;
@@ -17,7 +22,8 @@ window.LoadHomeView = Backbone.View.extend({
         this.view = this.$el;
 
         var self = this;
-
+        window.lastInProgressView = this;
+        
         this.onLoadCountries = function(data){
             self.loadCountries(data);
         };
@@ -36,7 +42,7 @@ window.LoadHomeView = Backbone.View.extend({
 
         //delay long enough for transition to complete
         setTimeout(function(){
-        	ServiceUser.login(self.role, self.usuario, self.password, self.onLogin, self.onLoginFail);
+        	ServiceUser.login(self.role, self.usuario, self.phone, self.password, self.onLogin, self.onLoginFail);
         }, 401 );        
     },
 
@@ -44,14 +50,16 @@ window.LoadHomeView = Backbone.View.extend({
     },
 
     render:function (eventName) {
-        this.$el.html(templates.loadItemsView);
+        this.$el.html(templates.inProgressView);
 
         this.$el.css("height", "100%");
         return this;
     },
 
     loadCountries: function(result) {
-        var view;
+    	if(window.lastInProgressView.cancelActivity) return;
+
+		var view;
         
     	if(result.countries == undefined || result.countries.length == 0){
     		view = new MessageView({message:"No posee ningun country"});
@@ -65,29 +73,43 @@ window.LoadHomeView = Backbone.View.extend({
 	    	});
 	    	
 			view = new HomeView({ model:{} });
-	  	  	//window.ViewNavigatorUtil.popView();
 			window.ViewNavigatorUtil.removeView();
 		}
     	
-        window.ViewNavigatorUtil.replaceView( view );
+		window.ViewNavigatorUtil.replaceView( view );
     },
     
     loadCountriesFail: function(message) {
-        var view = new MessageView({message:message});
-        window.ViewNavigatorUtil.replaceView( view );
+    	if(window.lastInProgressView.cancelActivity) return;
+
+    	var view = new MessageView({message:message});
+    	window.ViewNavigatorUtil.replaceView( view );
     },
     
     login: function(data){
+    	if(window.lastInProgressView.cancelActivity) return;
+
     	App.saveUser(data);
     	if(App.isEnvironmentWeb() == false){
     		window.setTimeout(enableNotifications,10000);
     	}
+
     	ServiceCountry.getByUser( this.loadCountries, this.loadCountriesFail );
     },
     
     loginFail: function(message){
+    	if(window.lastInProgressView.cancelActivity) return;
+
         var view = new MessageView({message:message});
         window.ViewNavigatorUtil.replaceView( view );
+    },
+    
+    backCallback: function(){
+    	this.cancelActivity = true;
+    },
+    
+    showCallback: function(){
+    	this.cancelActivity = false;
     }
     
 });

@@ -1,9 +1,10 @@
 window.ServiceUser = {
 
-    login:function(role, userName, password, loginOk, loginFail){
+    login:function(role, userName, userPhone, password, loginOk, loginFail){
 
 		var json = {
 					userName:userName,
+					userPhone:userPhone,
     				password:password,
     				role:role
     				};

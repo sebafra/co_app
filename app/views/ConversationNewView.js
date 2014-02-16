@@ -16,6 +16,7 @@ window.ConversationNewView = Backbone.View.extend({
     initialize: function(options) {
         this.render();
         this.view = this.$el;
+        this.addingVisitor = false;
     },
 
     events:{
@@ -25,7 +26,11 @@ window.ConversationNewView = Backbone.View.extend({
 
     visitorCount:0,
     
+    addingVisitor: false,
+    
     addVisitor:function () {
+    	if(this.addingVisitor)return;
+    	this.addingVisitor = true;
     	
     	var newVisitorHTML = 
     	'<div id="nv' + this.visitorCount.toString() + '" class="row">' +
@@ -35,7 +40,8 @@ window.ConversationNewView = Backbone.View.extend({
 	    '		</div>' +
 	    '	</div>' +
 	    '	<div class="col-xs-2">' +
-	    '		<span id="removeVisitorButton" class="icon ion-ios7-minus" onclick="$( \'#nv' + this.visitorCount.toString() + '\' ).remove();"></span>' +
+	    '		<span id="removeVisitorButton" class="icon ion-ios7-minus" onclick="setTimeout(function(){$( \'#nv' + this.visitorCount.toString() + '\' ).remove();}, 401); "></span>' +
+	    //'		<span id="removeVisitorButton" class="icon ion-ios7-minus" onclick="$( \'#nv' + this.visitorCount.toString() + '\' ).remove();"></span>' +
 	    //'		<span id="removeVisitorButton" class="icon ion-ios7-minus" onclick="alert(\'nv' + this.visitorCount.toString() + '\' )"></span>' +
 	    '	</div>' +
     	'</div>';
@@ -44,6 +50,12 @@ window.ConversationNewView = Backbone.View.extend({
     	this.visitorCount++;
     	window.viewNavigator.refreshScroller();
 
+    	var self = this;
+    	
+        setTimeout(function(){
+        	self.addingVisitor = false;
+        }, 401 ); 
+    	
     },
     
     render:function (eventName) {

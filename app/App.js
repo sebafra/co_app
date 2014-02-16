@@ -22,11 +22,13 @@ var UserCollection = Backbone.Collection.extend({
             	return null;
 
     		} else {
-        		for(var idx = 0 ; idx < this.length ; idx++){
+
+    			for(var idx = 0 ; idx < this.length ; idx++){
             		if(App.country.countryId == this.at(idx).get("countryId"))
             			return this.at(idx);
             	}
             	return null;
+            	
     		}
 
     	} else {
@@ -125,7 +127,6 @@ window.App = {
         	this.usersLogged.create(user);
         }, this);
 
-
 //		this.usersLogged = new UserCollection;
 //		try{
 //			this.country = {
@@ -176,6 +177,7 @@ window.App = {
 		//return "1234";
 	},
 	logout:function(){
+		App.country = undefined;
 	}
 
 //	getRole:function(){

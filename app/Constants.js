@@ -1,7 +1,7 @@
 window.Constants = {
 
-		//URL_BASE:"http://192.168.1.8:8080/consorciomovil/api",
-		URL_BASE:"http://200.58.118.223:8080/consorciomovil/api",
+		URL_BASE:"http://192.168.0.100:8080/consorciomovil/api",
+		//URL_BASE:"http://200.58.118.223:8080/consorciomovil/api",
 
 		ROLE_USER:"user",
 		ROLE_ADMINISTRATOR:"administrator",
@@ -28,6 +28,6 @@ window.Constants = {
 		MESSAGE_STATE_DENIED_PATTERN 	: "no",
 
 		LOGIN_ERROR_MESSAGE_GENERIC: "No puede ingresar. Por favor intentar mas tarde.",
-		AJAX_JSON_ERROR_MESSAGE_GENERIC: "Error de comunicacion. Por favor intentar mas tarde."
+		AJAX_JSON_ERROR_MESSAGE_GENERIC: "Error de comunicacion. Por favor verifique su conexion de Internet."
 
 };
