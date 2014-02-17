@@ -37,6 +37,7 @@ function enableNotifications() {
 
 // handle APNS notifications for iOS
 function onNotificationAPN(e) {
+
     if (e.sound) {
         var snd = new Media(e.sound);
         snd.play();
