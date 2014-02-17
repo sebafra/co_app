@@ -1,28 +1,44 @@
 <div id="aboutView">
-    <div class="container">
-        <div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Consorcio M&oacute;vil</div>
-  <div class="panel-body">
-    <p>Sistema de comunicaci&oacute;n para administradores y consorcistas con interacciones utilitarias como bajada y pago de expensas, reservas de espacios, autorizaci&oacute;n de visitas, chat y encuestas.</p>
-  </div>
-</div>
-        <div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">T&eacute;rminos y Condiciones</div>
-  <div class="panel-body">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, laudantium, recusandae earum nostrum magni aut reprehenderit. Perferendis, consequatur, rerum, a, at cum inventore aliquid laboriosam velit vitae architecto neque quibusdam.</p>
-  </div>
-
-  <!-- List group -->
-  <ul class="list-group">
-    <li class="list-group-item">Recomendar<span class="glyphicon glyphicon-chevron-right pull-right"></span></li>
-    <li class="list-group-item">Valorar<span class="glyphicon glyphicon-chevron-right pull-right"></span></li>
-    <li class="list-group-item">Cr&eacute;ditos<a href="http://www.diproach.com"><span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
-  </ul>
-</div>
-
-        </div>
+  <div class="container">
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Consorcio M&oacute;vil</div>
+      <div class="panel-body">
+        <p>Sistema de comunicaci&oacute;n para administradores y consorcistas con interacciones utilitarias como bajada y pago de expensas, reservas de espacios, autorizaci&oacute;n de visitas, chat y encuestas.</p>
+      </div>
+      <!-- List group -->
+      <ul class="list-group">
+        <li class="list-group-item">Recomendar<span class="glyphicon glyphicon-chevron-right pull-right"></span></li>
+        <a class="marketLink" href='' target=''><li class='list-group-item'>Valorar<span class='glyphicon glyphicon-chevron-right pull-right'></span></li></a>"
+        <li class="list-group-item">Cr&eacute;ditos<a href="javascript:openExternalURL('http://www.diproach.com')"><span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+      </ul>
     </div>
+
+  </div>
 </div>
 </div>
+</div>
+<script src="childbrowser.js"></script>
+<script type="text/javascript">
+function openExternalURL( url ) {
+  window.open( url, '_blank' );
+}
+if (deviceOs=="iOS") {
+  $(".marketLink").attr({
+    href:"https://itunes.apple.com/ar/app/consorcio-movil/id811229106?mt=8&uo=4",
+    target:"itunes_store"
+  });
+} else if(deviceOs=="android") {
+  $(".marketLink").attr({
+    href:"https://play.google.com/store/apps/details?id=com.diproach.consorcio.movil",
+  });
+};
+</script>
+
+<script type="text/javascript">
+    // if (deviceOs=="iOS") {
+    //   document.write("<a href='https://itunes.apple.com/ar/app/consorcio-movil/id811229106?mt=8&uo=4' target='itunes_store'><li class='list-group-item'>Valorar<span class='glyphicon glyphicon-chevron-right pull-right'></span></li></a>");
+    // } else if(deviceOs=="android") {
+    //   document.write("<a href='https://play.google.com/store/apps/details?id=com.diproach.consorcio.movil'><li class='list-group-item'>Valorar<span class='glyphicon glyphicon-chevron-right pull-right'></span></li></a></span></li></a>");
+    // };
+    </script>

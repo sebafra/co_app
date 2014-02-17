@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns 		= "http://www.w3.org/ns/widgets"
+        	xmlns:gap 	= "http://phonegap.com/ns/1.0"
+        	id        	= "com.diproach.turismo.jesusmaria.entumano"
+        	versionCode	= "2"
+        	version   	= "0.00.02">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Consorcio Movil</name>
+
+    <description>
+        Aplicación mobile para consorcistas
+    </description>
+
+    <author href="http://diproach.com" email="info@diproach.com">
+        Diproach
+    </author>
+
+	<gap:splash src="splash.png" width="720" height="1280" />
+
+	<preference name="orientation" value="portrait" />
+    <preference name="fullscreen" value="true" />
+    <preference name="load-url-timeout" value="60000" />
+
+    <feature name="http://api.phonegap.com/1.0/file"/>
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/media"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+	<feature name="http://api.phonegap.com/1.0/notification"/>
+
+	<access origin="*" />
+
+	<!-- <gap:plugin name="com.phonegap.plugins.childbrowser" /> -->
+	<icon src="icon.png" />
+
+</widget>

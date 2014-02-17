@@ -18,19 +18,24 @@
     <link rel="stylesheet" href="assets/styles.css" type="text/css" />
     <link rel="stylesheet" href="assets/ionicons.css" type="text/css" />
     <script>
+        var deviceOs;
         getOS();
         //Estilos para iOS
         if ( mobileOS === 'iOS' && Number( mobileOSver.charAt(0) ) >= 5 ) {
-            document.write("<link rel=stylesheet href=assets/ios_styles.css type=text/css />")
+            document.write("<link rel=stylesheet href=assets/ios_styles.css type=text/css />");
+            deviceOs = "iOS";
+
         }
         //Estilos para Android < 3.0
         if ( mobileOS === 'Android' && Number( mobileOSver.charAt(0) ) <= 3 ) {
-            document.write("<link rel=stylesheet href=assets/old_android_styles.css type=text/css />")
+            document.write("<link rel=stylesheet href=assets/old_android_styles.css type=text/css />");
+            deviceOs = "oldandroid";
         }
          //Estilos para Android > 4.0
         if ( mobileOS === 'Android' && Number( mobileOSver.charAt(0) ) >= 4 ) {
             $(function () {
                 //$('#inputVisitDateFrom').datetimepicker();
+                deviceOs = "android";
             });
         }
     </script>
