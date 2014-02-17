@@ -41,15 +41,11 @@
   $("#homeLogin").css("height",headerHeight);
   //Evento ocultar inputs
   $("#btnLogin").on("click",hideInputs);
-  //Ocultar/mostrar inputs en android 4 cuando pasa al home
+  //Ocultar mostrar inputs en android 4 cuando pasa al home
   function hideInputs(){
-  	$("#inputPassword").hide();
-  	$("#inputEmail").hide();
-  	$("#inputPhone").hide();
+  	$("#loginView").hide();
   }
   function showInputs(){
-  	$("#inputPassword").show();
-  	$("#inputEmail").show();
-  	$("#inputPhone").show();
+  	$("#loginView").show();
   }
   </script>
