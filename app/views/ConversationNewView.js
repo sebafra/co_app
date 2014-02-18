@@ -151,7 +151,7 @@ window.ConversationNewView = Backbone.View.extend({
     		  var dateFrom = new Date(from[0], from[1] - 1, from[2]);
     		  var to = messageDateTo.split("-");
     		  var dateTo = new Date(to[0], to[1] - 1, to[2]);
-    		  if(dateTo < dateFrom) {
+    		  if(dateTo.toLocaleString() < dateFrom.toLocaleString()) {
     			  alert("La fecha hasta debe ser mayor o igual a la fecha desde.");
     	    	  this.sending = false;
     			  return;
@@ -163,7 +163,7 @@ window.ConversationNewView = Backbone.View.extend({
     		  dateNow.setMinutes(0);
     		  dateNow.setMonth(0);
     		  dateNow.setSeconds(0);
-    		  if(dateFrom < dateNow) {
+    		  if(dateFrom.toLocaleString() < dateNow.toLocaleString()) {
     			  alert("La fecha desde debe ser mayor o igual a la fecha actual.");
     	    	  this.sending = false;
     			  return;
@@ -211,7 +211,7 @@ window.ConversationNewView = Backbone.View.extend({
     		  var dateFrom = new Date(from[0], from[1] - 1, from[2]);
     		  var to = messageDateTo.split("-");
     		  var dateTo = new Date(to[0], to[1] - 1, to[2]);
-    		  if(dateTo < dateFrom) {
+    		  if(dateTo.toLocaleString() < dateFrom.toLocaleString()) {
     			  alert("La fecha hasta debe ser mayor o igual a la fecha desde.");
     	    	  this.sending = false;
     			  return;
@@ -223,7 +223,7 @@ window.ConversationNewView = Backbone.View.extend({
     		  dateNow.setMinutes(0);
     		  dateNow.setMonth(0);
     		  dateNow.setSeconds(0);
-    		  if(dateFrom < dateNow) {
+    		  if(dateFrom.toLocaleString() < dateNow.toLocaleString()) {
     			  alert("La fecha desde debe ser mayor o igual a la fecha actual.");
     	    	  this.sending = false;
     			  return;
@@ -260,6 +260,9 @@ window.ConversationNewView = Backbone.View.extend({
   sendNewMessageFail:function(message){
 	  this.sending = false;
 	  alert(message);
-  }    
+  },
+  showCallback:function(){
+  }
 
 });
+

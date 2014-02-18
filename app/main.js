@@ -64,3 +64,4 @@ function hideHeader(){
         $(".viewNavigator_header").css("display","none");
         $(".viewNavigator_content").css("top","0");
 };
+

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns 		= "http://www.w3.org/ns/widgets"
         	xmlns:gap 	= "http://phonegap.com/ns/1.0"
-        	id        	= "com.diproach.turismo.jesusmaria.entumano"
-        	versionCode	= "2"
-        	version   	= "0.00.02">
+        	id        	= "com.diproach.consorcio.movil"
+        	versionCode	= "5"
+        	version   	= "0.00.05">
 
     <!-- versionCode is optional and Android only -->
 
     <name>Consorcio Movil</name>
 
     <description>
-        Aplicación mobile para consorcistas
+        Consorcios
     </description>
 
     <author href="http://diproach.com" email="info@diproach.com">
@@ -20,18 +20,24 @@
 	<gap:splash src="splash.png" width="720" height="1280" />
 
 	<preference name="orientation" value="portrait" />
-    <preference name="fullscreen" value="true" />
+<!--     <preference name="fullscreen" value="true" /> -->
     <preference name="load-url-timeout" value="60000" />
+	<preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" />
 
+    
     <feature name="http://api.phonegap.com/1.0/file"/>
 	<feature name="http://api.phonegap.com/1.0/geolocation"/>
 	<feature name="http://api.phonegap.com/1.0/media"/>
 	<feature name="http://api.phonegap.com/1.0/network"/>
 	<feature name="http://api.phonegap.com/1.0/notification"/>
 
+	
+	<plugin name="DatePickerPlugin" value="com.phonegap.plugins.DatePickerPlugin"/>
+
+	
 	<access origin="*" />
 
-	<!-- <gap:plugin name="com.phonegap.plugins.childbrowser" /> -->
+
 	<icon src="icon.png" />
 
 </widget>

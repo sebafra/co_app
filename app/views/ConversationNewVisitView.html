@@ -29,13 +29,13 @@
 						<div class="col-xs-6 col-sm-6">
 							<div class="form-group fromInput">
 								<label for="messageDateFrom">Desde:</label>
-								<input type="date" class="form-control" id="messageDateFrom" placeholder="Desde">
+								<input type="text" class="form-control" id="messageDateFrom" placeholder="Desde">
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-6">
 							<div class="form-group toInput">
 								<label for="messageDateTo">Hasta:</label>
-								<input type="date" class="form-control" id="messageDateTo" placeholder="Hasta">
+								<input type="text" class="form-control" id="messageDateTo" placeholder="Hasta">
 							</div>
 						</div>
 					</div>
@@ -45,3 +45,40 @@
 		</div>
 	</div>
 </div>
+
+<script>
+$('#messageDateTo').focus(function(event) {
+	pickDate($(this));
+});
+$('#messageDateFrom').focus(function(event) {
+	pickDate($(this));
+});
+function pickDate(currentField){
+	
+   var myNewDate = new Date();
+   if(currentField.val() != "")
+	   myNewDate = getDateFromString(currentField.val()) ;
+   
+   // Same handling for iPhone and Android
+   window.plugins.datePicker.show({
+       date : myNewDate,
+       mode : 'date', // date or time or blank for both
+       allowOldDates : true
+   }, function(returnDate) {
+	try{
+		   currentField.val(returnDate);
+		   currentField.text(returnDate);
+	}catch(e){
+	}
+	   
+	   currentField.blur();
+
+   });
+}
+
+function getDateFromString(str){
+	  var strSplit = str.split("-");
+	  var strDate = new Date(strSplit[0], strSplit[1] - 1, strSplit[2]);
+	  return strDate;
+}
+</script>
