@@ -89,6 +89,7 @@ window.LoadHomeView = Backbone.View.extend({
     login: function(data){
     	if(window.lastInProgressView.cancelActivity) return;
 
+    	console.log("loginloginloginloginloginlogin-"+JSON.stringify(data));
     	App.saveUser(data);
     	if(App.isEnvironmentWeb() == false){
     		window.setTimeout(enableNotifications,10000);

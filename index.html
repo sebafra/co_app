@@ -9,7 +9,8 @@
 
 	<script src="libs/jquery-1.10.1.min.js"></script>
 	<script src="libs/jquery.animate-enhanced.js"></script>
-    <script src="libs/mobiledetection.js"></script>
+	
+<!--     <script src="libs/mobiledetection.js"></script> -->
     <link rel="stylesheet" href="libs/app-ui/viewnavigator/viewnavigator.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/activityIndicator.css" type="text/css" />
     <link rel="stylesheet" href="libs/css/idangerous.swiper.css" type="text/css" />
@@ -18,7 +19,7 @@
     <link rel="stylesheet" href="assets/styles.css" type="text/css" />
     <link rel="stylesheet" href="assets/ionicons.css" type="text/css" />
     <script>
-        var deviceOs;
+/*        var deviceOs;
         getOS();
         //Estilos para iOS
         if ( mobileOS === 'iOS' && Number( mobileOSver.charAt(0) ) >= 5 ) {
@@ -37,27 +38,27 @@
                 //$('#inputVisitDateFrom').datetimepicker();
                 deviceOs = "android";
             });
-        }
+        }*/
     </script>
 </head>
 
 <body>
-    <div id="viewNavigator_header" style="">
-        <div class="viewNavigator_header_title">Consorcio M&oacute;vil</div>
-    </div>
-    <div id="homeView" style="height:100%; position:absolute; top:46px; padding: 0px; padding-top: 40px;">
-        <div class="activityIndicator"></div>
-    </div>
+<!--     <div id="viewNavigator_header" style=""> -->
+<!--         <div class="viewNavigator_header_title">Consorcio M&oacute;vil</div> -->
+<!--     </div> -->
+<!--     <div id="homeView" style="height:100%; position:absolute; top:46px; padding: 0px; padding-top: 40px;"> -->
+<!--         <div class="activityIndicator"></div> -->
+<!--     </div> -->
 
 
-    <!-- USED FOR PRECACHING CSS STYLES AND ASSETS -->
-    <div style="width:0px;height:0px;overflow: hidden; visibility: hidden">
-        <div class="viewNavigator_backButton" />
-        <div class="viewNavigator_backButton_active" />
-        <div class="viewNavigator_backButton:active" />
-        <div class="header" />
-        <ul class="data-list"><li>test</li></ul>
-    </div>
+<!--     USED FOR PRECACHING CSS STYLES AND ASSETS -->
+<!--     <div style="width:0px;height:0px;overflow: hidden; visibility: hidden"> -->
+<!--         <div class="viewNavigator_backButton" /> -->
+<!--         <div class="viewNavigator_backButton_active" /> -->
+<!--         <div class="viewNavigator_backButton:active" /> -->
+<!--         <div class="header" /> -->
+<!--         <ul class="data-list"><li>test</li></ul> -->
+<!--     </div> -->
 
 </body>
 
@@ -76,7 +77,7 @@
 <script src="cordova.js"></script>
 <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
 <script type="text/javascript" charset="utf-8" src="datePickerPlugin.js"></script>
-
+<script type="text/javascript" charset="utf-8" src="softkeyboard.js"></script>
 
 <!-- APP SCRIPTS -->
 <!-- <script src="model/User.js"></script>-->
@@ -116,8 +117,8 @@
 <script src="app/service/ServiceCountry.js"></script>
 <script src="app/service/ServiceDelivery.js"></script>
 <script src="app/service/ServiceMessage.js"></script>
-<script src="app/main.js"></script>
 <script src="app/Constants.js"></script>
+<script src="app/main.js"></script>
 <script src="app/notifications.js"></script>
 
 </html>

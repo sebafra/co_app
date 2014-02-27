@@ -11,10 +11,11 @@ window.LoginView = Backbone.View.extend({
     },
 
     events:{
-        "click #btnLogin":"login",
+        "click #btnLogin":"login"
+/*        	,
         "click #inputPhone":"clickInputPhone",
         "click #inputEmail":"clickInputEmail",
-        "click #inputPassword":"clickInputPassword"
+        "click #inputPassword":"clickInputPassword"*/
     },
 
     render:function (eventName) {
@@ -25,36 +26,24 @@ window.LoginView = Backbone.View.extend({
         this.inputEmail 	= this.$('#inputEmail');
         this.inputPhone 	= this.$('#inputPhone');
         this.inputPassword 	= this.$('#inputPassword');
+        this.selectRoles	= this.$("#roles");
 
+        this.selectRoles.append("<option value=" + Constants.ROLE_USER + ">Consorcista</option>");
+        this.selectRoles.append("<option value=" + Constants.ROLE_ADMINISTRATOR + ">Administrador</option>");
 
-/*		if( isDeviceOSAndroidVersionOld() ) {
-	        var container = this.$el.find(".container")
-	        container.append("<div class='form-group'><div class='col-sm-12'><select class='form-control' name='roles' id='roles' style='z-index: 1000'></select><hr></div></div>");
-		} */
-
-	        this.selectRoles	= this.$("#roles");
-	        this.selectRoles.append("<option value=" + Constants.ROLE_USER + ">Consorcista</option>");
-	        this.selectRoles.append("<option value=" + Constants.ROLE_ADMINISTRATOR + ">Administrador</option>");
-        
         return this;
     },
 
     clickInputPhone:function(){
-    	if( !isDeviceOSAndroidVersionOld() ) {
-    		this.$('#inputPhone').scroll();
-    	}
+    	this.$('#inputPhone').scroll();
     },
 
     clickInputEmail:function(){
-    	if( !isDeviceOSAndroidVersionOld() ) {
-    		this.$('#inputEmail').scroll();
-    	}
+    	this.$('#inputEmail').scroll();
     },
 
     clickInputPassword:function(){
-    	if( !isDeviceOSAndroidVersionOld() ) {
-    		this.$('#inputPassword').scroll();
-    	}
+    	this.$('#inputPassword').scroll();
     },
 
     login:function () {
@@ -96,3 +85,9 @@ window.LoginView = Backbone.View.extend({
         window.ViewNavigatorUtil.pushView( view );
     }*/
 });
+
+
+
+
+
+

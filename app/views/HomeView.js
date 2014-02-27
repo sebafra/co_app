@@ -43,7 +43,8 @@ window.HomeView = Backbone.View.extend({
             self.headerButtonClick(event);
         } );
 
-
+        App.persistUser();
+        
         return this;
     },
 

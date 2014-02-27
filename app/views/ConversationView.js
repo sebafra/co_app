@@ -160,3 +160,14 @@ function clickSendNewMessage(){
 	view.sendNewMessageExternal(msg);
     $('#messageMessageExternal').val('');
 }
+
+
+function moveMessageMessageExternal(){
+	//alert($('.ftr').css('top'));
+	//$('.ftr').css('top',"50%");
+}
+function relocateMessageMessageExternal(){
+//	$('.ftr').css('top',"");
+//	$('.ftr').css('bottom',"0");
+}
+

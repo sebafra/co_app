@@ -122,12 +122,12 @@ ViewNavigator.prototype.updateView = function( viewDescriptor ) {
 	
 	
 	this.contentPendingRemove = this.contentViewHolder;
-	this.headerContentPendingRemove = this.headerContent;
+		this.headerContentPendingRemove = this.headerContent;
 	
-	this.headerContent = $('<div class="viewNavigator_headerContent"></div>');
+		this.headerContent = $('<div class="viewNavigator_headerContent"></div>');
 	
-	this.headerTitle = $("<div class='viewNavigator_header_title'>" + viewDescriptor.title + "</div>");
-	this.headerContent.append( this.headerTitle );
+		this.headerTitle = $("<div class='viewNavigator_header_title'>" + viewDescriptor.title + "</div>");
+		this.headerContent.append( this.headerTitle );
 	
 	var linkGuid = this.guid();
     if ( viewDescriptor.backLabel ) {
@@ -159,10 +159,10 @@ ViewNavigator.prototype.updateView = function( viewDescriptor ) {
 	if ( this.contentPendingRemove ){ 
         this.contentPendingRemove.stop()
 	}
-	if ( this.headerContentPendingRemove ) {
-        this.headerContentPendingRemove.stop()
-	}
-	this.headerContent.stop()
+		if ( this.headerContentPendingRemove ) {
+		this.headerContentPendingRemove.stop()
+		}
+		this.headerContent.stop()
 	this.contentViewHolder.stop()
 	
 	
@@ -285,9 +285,9 @@ ViewNavigator.prototype.updateView = function( viewDescriptor ) {
 		this.contentViewHolder.css( "opacity", 1 );
     	this.content.append( this.contentViewHolder );
 
-		this.headerContent.css( "left", 0 );
-		this.headerContent.css( "opacity", 1 );
-		this.header.append( this.headerContent );
+    		this.headerContent.css( "left", 0 );
+    		this.headerContent.css( "opacity", 1 );
+    		this.header.append( this.headerContent );
 		this.animating = false;
 		this.resetScroller();
 	}
@@ -326,7 +326,13 @@ ViewNavigator.prototype.resetScroller = function() {
                     var cssString = "translate3d(0px, "+(originalTopMargin).toString()+"px, 0px)";
                     targetDiv.css( "-webkit-transform", cssString );
                 }
+
 			    self.scroller = new iScroll( id ); 
+
+			    
+			    
+                
+                
 			    if ( scrollY != undefined && scrollY != "" ) {
 			        self.scroller.scrollTo( 0, parseInt( scrollY ) );
 			    }

@@ -2,8 +2,8 @@
     <widget xmlns 		= "http://www.w3.org/ns/widgets"
         	xmlns:gap 	= "http://phonegap.com/ns/1.0"
         	id        	= "com.diproach.consorcio.movil"
-        	versionCode	= "5"
-        	version   	= "0.00.05">
+        	versionCode	= "9"
+        	version   	= "0.00.09">
 
     <!-- versionCode is optional and Android only -->
 
@@ -33,7 +33,8 @@
 
 	
 	<plugin name="DatePickerPlugin" value="com.phonegap.plugins.DatePickerPlugin"/>
-
+	<plugin name="SoftKeyBoard" value="com.phonegap.plugins.SoftKeyboard" />
+	
 	
 	<access origin="*" />
 

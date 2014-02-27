@@ -127,33 +127,40 @@ window.App = {
         	this.usersLogged.create(user);
         }, this);
 
-//		this.usersLogged = new UserCollection;
-//		try{
-//			this.country = {
-//					countryId:2
-//				};
-//        _.each(data.users, function (user) {
-//        	this.usersLogged.create(user);
-//
-//        	alert(JSON.stringify(this.usersLogged.getCurrent()));
-//        }, this);
-//		}catch(e){alert(e.message)}
 
+	},
 
+	persistUser:function(){
+    	window.localStorage.setItem("usersLogged", 	JSON.stringify(this.usersLogged));
+    	window.localStorage.setItem("countries", 	JSON.stringify(this.countries));
+    	window.localStorage.setItem("messageOrigin",this.messageOrigin);
+    	window.localStorage.setItem("role", 		this.role);
+    	
+//    	console.log("uuuuuuuuuuuuuuuuu-"+window.localStorage['usersLogged']);
+//    	console.log("ccccccccccccccccc-"+window.localStorage['countries']);
+//    	console.log("mmmmmmmmmmmmmmmmm-"+window.localStorage['messageOrigin']);
+//    	
+	},
 
-	/*
-		this.userId    = data.userId;
-		this.userName  = data.userName;
-		this.password  = data.password;
-		this.role 	   = data.role;
-		if(this.role == Constants.ROLE_USER)
-			this.messageOrigin = Constants.MESSAGE_ORIGIN_USER;
-		else
-			this.messageOrigin = Constants.MESSAGE_ORIGIN_ADMINISTRATOR;
+	isUserPersisted:function(){
 
-			*/
+		if(window.localStorage['usersLogged']){
+			var users = JSON.parse( window.localStorage['usersLogged'] );
+			console.log("isUserPersistedisUserPersisted-"+JSON.stringify(users));
 
+			this.usersLogged = new UserCollection;
 
+	        _.each(users, function (user) {
+	        	this.usersLogged.create(user);
+	        }, this);
+
+	        this.countries		= JSON.parse( window.localStorage['countries'] );
+	    	this.messageOrigin	= window.localStorage['messageOrigin'];
+	    	this.role			= window.localStorage['role'];
+
+			return true;
+		}
+		return false;
 	},
 
 	getUserId:function(){
@@ -178,6 +185,10 @@ window.App = {
 	},
 	logout:function(){
 		App.country = undefined;
+    	window.localStorage.removeItem("usersLogged");
+    	window.localStorage.removeItem("countries");
+    	window.localStorage.removeItem("messageOrigin");
+    	window.localStorage.removeItem("role");
 	}
 
 //	getRole:function(){

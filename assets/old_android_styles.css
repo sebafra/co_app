@@ -9,6 +9,7 @@ select {
 	position: static;
 }
 
+
 /***********************/
 /******* Home View *****/
 /***********************/
@@ -19,3 +20,4 @@ select {
 #homeView .container {
 	position: static;
 }
+
