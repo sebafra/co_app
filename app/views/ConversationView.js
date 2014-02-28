@@ -66,6 +66,8 @@ window.ConversationView = Backbone.View.extend({
         _.each(message.messages, function (message) {
             this.drawMessage(container, message);
         }, this);
+        
+        changeBtnEnviarStandby();
     },
 
     sending:false,
@@ -151,7 +153,6 @@ window.ConversationView = Backbone.View.extend({
     backCallback:function () {
       $(".ftr").css("display","none");
     }
-
 });
 
 function clickSendNewMessage(){
@@ -159,6 +160,14 @@ function clickSendNewMessage(){
 	var msg = $('#messageMessageExternal').val();
 	view.sendNewMessageExternal(msg);
     $('#messageMessageExternal').val('');
+    changeBtnEnviarProcessing();
+}
+
+function changeBtnEnviarProcessing(){
+    $('#enviar').html("<span class='icon ion-loading-b'></span>");
+}
+function changeBtnEnviarStandby(){
+    $('#enviar').html("Enviar");
 }
 
 

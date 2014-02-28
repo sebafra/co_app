@@ -21,9 +21,20 @@ window.HomeView = Backbone.View.extend({
     },
 
     showCallback:function () {
-        //Ejecutar una funcion al pasar al cargar la vista
+    	this.showCountryLogo();
     },
 
+    showCountryLogo:function () {
+		var $countryLogo = this.$el.find("#countryLogo");
+    	if (App.country.countryLogoURL){
+    		try{
+    			$countryLogo.attr("src", "http://www.coterranea.com/images/Newsletter/2009/"+App.country.countryLogoURL);
+    		}catch(e){
+    		}
+    	} else {
+			$countryLogo.attr("src", "assets/images/nocountries.jpg");
+    	}
+    },
     render:function (eventName) {
         var template = _.template(templates.homeView);
         var model = {isTablet:NativeUtil.isTablet()};
@@ -56,8 +67,10 @@ window.HomeView = Backbone.View.extend({
     changeCountry:function () {
         var $countries = this.$el.find("#countries");
         _.each(App.countries, function (country) {
-        	if(country.countryId == $countries.val())
+        	if(country.countryId == $countries.val()){
         		App.country = country;
+        		this.showCountryLogo();
+        	}
         }, this);
     },
     loadAttractions:function () {
