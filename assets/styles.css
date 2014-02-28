@@ -1014,6 +1014,11 @@ font-size: 1em;
 .conversationContainer {
     padding-bottom: 5em;
 }
+.ftr #enviar .icon {
+    color: #f59e01;
+    font-size: 1.5em;
+
+}
 
 }
 /********************************/
