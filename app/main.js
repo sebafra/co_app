@@ -15,6 +15,8 @@ function onDeviceReady() {
     if ( isDeviceOSAndroid() ) {
     	if( isDeviceOSAndroidVersionOld() ) {
         	$('head').append('<link rel="stylesheet" href="assets/old_android_styles.css" type="text/css" />');
+    	} else {
+        	$('head').append('<link rel="stylesheet" href="assets/android_styles.css" type="text/css" />');
     	}
     } else {
        	$('head').append('<link rel="stylesheet" href="assets/ios_styles.css" type="text/css" />');
