@@ -26,14 +26,15 @@ window.HomeView = Backbone.View.extend({
 
     showCountryLogo:function () {
 		var $countryLogo = this.$el.find("#countryLogo");
-    	if (App.country.countryLogoURL){
-    		try{
-    			$countryLogo.attr("src", "http://www.coterranea.com/images/Newsletter/2009/"+App.country.countryLogoURL);
-    		}catch(e){
-    		}
-    	} else {
+		try{
+	    	if (App.country.countryLogoURL){
+	    			$countryLogo.attr("src", "http://www.coterranea.com/images/Newsletter/2009/"+App.country.countryLogoURL);
+	    	} else {
+				$countryLogo.attr("src", "assets/images/nocountries.jpg");
+	    	}
+		}catch(e){
 			$countryLogo.attr("src", "assets/images/nocountries.jpg");
-    	}
+		}
     },
     render:function (eventName) {
         var template = _.template(templates.homeView);

@@ -10,6 +10,7 @@ window.ConversationsItemView = Backbone.View.extend({
     initialize: function(options) {
     	this.conversation = options.conversation;
 
+
     	if(App.messageTypeId == Constants.MESSAGE_TYPE_ID_AUTHORIZATION)
     		this.template = _.template( templates.conversationsItemVisitView);
     	else if(App.messageTypeId == Constants.MESSAGE_TYPE_ID_BOOKING) 

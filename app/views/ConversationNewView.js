@@ -248,7 +248,14 @@ window.ConversationNewView = Backbone.View.extend({
 
       		  	
       	  }
+
     	  
+    	  
+    	  $('#btnNewMessage').html("<span class='icon ion-loading-d'></span>Enviando");
+	  	  $('#btnNewMessage').toggleClass("btn btn-warning btn-lg btn-block loading");
+	  	  $('#btnNewMessage').attr("disabled", "disabled");
+  	
+	  	  
     	  ServiceMessage.register(self.onSendNewMessageOk, self.onSendNewMessageFail, messageMessage, messageSubject, "-1" , userId, messageDateFrom, messageDateTo);
       }
   },

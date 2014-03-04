@@ -11,7 +11,7 @@ window.AboutView = Backbone.View.extend({
     },
 
     events:{
-        "click a":"openExternalLink"
+       // "click a":"openExternalLink"
     },
 
     render:function (eventName) {

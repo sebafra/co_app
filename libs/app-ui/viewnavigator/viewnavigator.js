@@ -75,6 +75,7 @@ ViewNavigator.prototype.replaceView = function( viewDescriptor ) {
 ViewNavigator.prototype.pushView = function( viewDescriptor ) {
 	if (this.animating)
 		return;
+	
 	viewDescriptor.animation = "pushEffect"
 	this.history.push( viewDescriptor );
 	this.updateView( viewDescriptor );
@@ -84,7 +85,7 @@ ViewNavigator.prototype.popView = function() {
 
 	if (this.animating || this.history.length <= 1 )
 		return;
-	
+
 	var currentViewDescriptor = this.history[ this.history.length-1];
 	if ( currentViewDescriptor.backCallback ) {
 		currentViewDescriptor.backCallback();

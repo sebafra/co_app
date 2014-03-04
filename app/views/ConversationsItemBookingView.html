@@ -43,8 +43,8 @@
 					<button type="button" class="btn btn-default btnActive" disabled="disabled"><span class="glyphicon glyphicon-thumbs-down"></span></button>
 
 					<% } else if(messageState == Constants.MESSAGE_STATE_PENDING){ %>
-					<button type="button" class="btn btn-default" onclick="clickAnswerBooking('<%=messageSubject%>', '<%=Constants.MESSAGE_STATE_AUTHORIZED_PATTERN%>', '<%=messageId%>', '<%=messageUserId%>')"><span class="glyphicon glyphicon-thumbs-up"></span></button>
-					<button type="button" class="btn btn-default" onclick="clickAnswerBooking('<%=messageSubject%>', '<%=Constants.MESSAGE_STATE_DENIED_PATTERN%>', '<%=messageId%>', '<%=messageUserId%>')"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+					<button id="btnAnswerBookingAuthorize<%=messageId%>" type="button" class="btn btn-default" onclick="clickAnswerBooking('<%=messageId%>','<%=messageSubject%>', '<%=Constants.MESSAGE_STATE_AUTHORIZED_PATTERN%>', '<%=messageId%>', '<%=messageUserId%>');"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+					<button id="btnAnswerBookingDeny<%=messageId%>" type="button" class="btn btn-default" onclick="clickAnswerBooking('<%=messageId%>','<%=messageSubject%>', '<%=Constants.MESSAGE_STATE_DENIED_PATTERN%>', '<%=messageId%>', '<%=messageUserId%>');"><span class="glyphicon glyphicon-thumbs-down"></span></button>
 					<% } %>
 
 				</div>

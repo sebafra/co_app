@@ -34,7 +34,9 @@ window.ConversationsView = Backbone.View.extend({
 //            $list.append(new ConversationsItemView({conversation:message}).render().el);
 //        }, this);
 //
-        this.headerActions = $("<div style='padding: 5px 5px;'><span class='ion-ios7-plus-outline'></span></div>");
+    	if((App.role == Constants.ROLE_USER) || (App.messageTypeId == Constants.MESSAGE_TYPE_ID_MESSAGE)){
+            this.headerActions = $("<div style='padding: 5px 5px;'><span class='ion-ios7-plus-outline'></span></div>");
+    	}
 //
 //        var self = this;
 //        this.headerActions.on( "click", function(event){
@@ -45,7 +47,6 @@ window.ConversationsView = Backbone.View.extend({
     },
 
     showCallback:function(){
-
         var template = _.template(templates.conversationsView);
         // this.$el.css("background", "#333");
         this.$el.html(template( {conversations:App.messages} ));
@@ -55,10 +56,12 @@ window.ConversationsView = Backbone.View.extend({
             $list.append(new ConversationsItemView({conversation:message}).render().el);
         }, this);
 
-        var self = this;
-        this.headerActions.on( "click", function(event){
-            self.headerButtonClick(event);
-        } );
+        if((App.role == Constants.ROLE_USER) || (App.messageTypeId == Constants.MESSAGE_TYPE_ID_MESSAGE)){
+	        var self = this;
+	        this.headerActions.on( "click", function(event){
+	            self.headerButtonClick(event);
+	        } );
+    	}
     },
     
     listItemClick: function( event ) {
@@ -122,7 +125,30 @@ window.ConversationsView = Backbone.View.extend({
 });
 
 
-function clickAnswerBooking(subject, answer, messageIdParent, messageUserId){
+function clickAnswerBooking(messageId,subject, answer, messageIdParent, messageUserId){
 	var view = window.viewNavigator.history[ window.viewNavigator.history.length - 1 ];
 	view.answerBookingExternal(subject, answer, messageIdParent, messageUserId);
+	changeBtnAnswerBookingProcessing(messageId,answer);
 }
+
+
+function changeBtnAnswerBookingProcessing(messageId,answer){
+	if(Constants.MESSAGE_STATE_AUTHORIZED_PATTERN == answer){
+	    $('#btnAnswerBookingAuthorize' + messageId).html("<span class='icon ion-loading-b'></span>");
+	} else {
+	    $('#btnAnswerBookingDeny' + messageId).html("<span class='icon ion-loading-b'></span>");
+	}
+	$('#btnAnswerBookingAuthorize' + messageId).attr("disabled", "disabled");
+	$('#btnAnswerBookingDeny' + messageId).attr("disabled", "disabled");
+}
+
+//
+//function changeBtnAnswerBookingProcessing(answer){
+//	if(Constants.MESSAGE_STATE_AUTHORIZED_PATTERN == answer){
+//	    $('#btnAnswerBookingAuthorize').html("<span class='icon ion-loading-b'></span>");
+//	} else {
+//	    $('#btnAnswerBookingDeny').html("<span class='icon ion-loading-b'></span>");
+//	}
+//	$('#btnAnswerBookingAuthorize').attr("disabled", "disabled");
+//	$('#btnAnswerBookingDeny').attr("disabled", "disabled");
+//}
