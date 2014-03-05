@@ -261,8 +261,9 @@ window.ConversationNewView = Backbone.View.extend({
 
     	  
     	  
-    	  $('#btnNewMessage').html("<span class='icon ion-loading-d'></span>Enviando");
-	  	  $('#btnNewMessage').toggleClass("btn btn-warning btn-lg btn-block loading");
+    	  $('#btnNewMessage').html("<span class='icon ion-loading-d' style='color:white'></span>");
+	  	  //$('#btnNewMessage').toggleClass("btn btn-warning btn-lg btn-block loading");
+//    	  $('#btnNewMessage').addClass("loading");
 	  	  $('#btnNewMessage').attr("disabled", "disabled");
   	
 	  	  
