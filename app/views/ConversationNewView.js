@@ -75,6 +75,7 @@ window.ConversationNewView = Backbone.View.extend({
 
             var model = {isTablet:NativeUtil.isTablet()};
             this.$el.html(this.template(model));
+            this.title= "Reserva";
 
             this.messageDateTo 	= this.$('#messageDateTo');
             this.messageDateFrom= this.$('#messageDateFrom');
