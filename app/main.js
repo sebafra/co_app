@@ -63,6 +63,9 @@ function appTemplatesLoaded() {
 
     if(App.isUserPersisted()){
     	view = new HomeView({ model:{} });
+    	if(App.isEnvironmentWeb() == false){
+    		window.setTimeout(enableNotifications,10000);
+    	}
     }
 
     

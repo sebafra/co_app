@@ -66,6 +66,7 @@ function onNotificationAPN(e) {
 // handle GCM notifications for Android
 function onNotificationGCM(e) {
 //    alert('EVENT -> RECEIVED:' + e.event);
+    console.log("========"+e.event);
     
     switch( e.event )
     {
@@ -92,6 +93,7 @@ function onNotificationGCM(e) {
 				my_media.play();
 
 				if(canDrawNewMessage()){
+				    console.log("========Drawmessage");
 					drawNewMessage(e.payload.messageId);
 				} else {
 					alert(e.payload.message);
@@ -158,10 +160,12 @@ function isRightConversation(messageIdParent){
 }
 
 function drawNewMessage(messageId){
+    console.log("========messageId:"+messageId);
 	ServiceMessage.getById(messageId, drawNewMessageOk, drawNewMessageFail);
 }
 
 function drawNewMessageOk(data){
+    console.log("========data:"+JSON.stringify( data));
 	if(viewToDrawMessage){
 		if((isRightConversation(data.messageIdParent)) && (data.messageTypeId == Constants.MESSAGE_TYPE_ID_MESSAGE)){
 			viewToDrawMessage.receiveNewMessage(data);
