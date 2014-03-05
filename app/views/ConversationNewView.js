@@ -46,6 +46,7 @@ window.ConversationNewView = Backbone.View.extend({
 	    '	</div>' +
     	'</div>';
 
+    	this.$('#nvtxt').val("");
     	this.$('#newVisitor').after(newVisitorHTML);
     	this.visitorCount++;
     	window.viewNavigator.refreshScroller();
@@ -176,12 +177,20 @@ window.ConversationNewView = Backbone.View.extend({
           			  if((txt != undefined) && ($.trim(txt) != '' ) ){
           				  if( visitorAdded ) messageMessage += "; "; 
           				  //messageMessage += this.$('#nvtxt' + i.toString()).val();
-          				  messageMessage += txt;
+          				  //messageMessage += txt;
+          				  messageMessage += $.trim(txt);
           				  visitorAdded = true;
           			  }
           		  }catch(e){        	
           		  }
       		  }	
+
+  			  var txt = this.$('#nvtxt').val();
+  			  if((txt != undefined) && ($.trim(txt) != '' ) ){
+  				  if(visitorAdded) messageMessage += "; ";
+  				  messageMessage += $.trim(txt);
+  				  visitorAdded = true;
+      		  }
       		  
     		  if(!visitorAdded){
     			  alert("Debe ingresar el nombre de un visitante.");
