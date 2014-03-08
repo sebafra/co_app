@@ -82,6 +82,7 @@ ViewNavigator.prototype.pushView = function( viewDescriptor ) {
 }
 
 ViewNavigator.prototype.popView = function() {
+	console.log("******************************vn.popview");
 
 	if (this.animating || this.history.length <= 1 )
 		return;
@@ -98,6 +99,9 @@ ViewNavigator.prototype.popView = function() {
 }
 
 ViewNavigator.prototype.logoutView = function() {
+
+	if (this.animating || this.history.length <= 1 )
+		return;
 
 	var currentViewDescriptor = this.history[ this.history.length-1];
 	if ( currentViewDescriptor.logoutCallback ) {

@@ -69,7 +69,7 @@ ViewNavigatorUtil = {
     		return;
     	}
 		if(window.viewNavigator.animating){
-			if(times > 0){
+			if(this.times > 0){
 
 				var self = this;
 		        this.onPushViewPerform = function(){
@@ -85,6 +85,7 @@ ViewNavigatorUtil = {
 		}
     },
     popView: function( ){
+    	console.log("******************************vnu.popview");
 		window.viewNavigator.popView();
     },
     removeView: function() {

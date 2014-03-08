@@ -18,11 +18,11 @@ window.MessageView = Backbone.View.extend({
     },
 
     // función cuando se ejecuta el botón volver
-    backCallback:function () {
-        try{
-        	showInputs();
-        }catch(e){}
-    },
+//    backCallback:function () {
+//        try{
+//        	showInputs();
+//        }catch(e){}
+//    },
 
     render:function (eventName) {
         var template = _.template(templates.messageView);

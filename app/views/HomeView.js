@@ -129,11 +129,11 @@ window.HomeView = Backbone.View.extend({
         window.viewNavigator.pushView( view );
     },
     logoutCallback:function () {
+    	console.log("logoutttttttttttttttttttttttttt");
+    	
     	App.logout();
         var view = new LoginView();
         ViewNavigatorUtil.replaceView( view );
-        showInputs();
-
     }
 
 });
