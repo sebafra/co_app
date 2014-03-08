@@ -21,12 +21,24 @@ window.ConversationNewView = Backbone.View.extend({
 
     events:{
         "click #btnNewMessage":"sendNewMessage",
-        "click #btnAddVisitor":"addVisitor"
+        "click #btnAddVisitor":"addVisitor",
+        "click #btnUsers":"selectUser",
+        "click #btnAmenities":"selectAmenities"
     },
 
     visitorCount:0,
     
     addingVisitor: false,
+
+    selectUser:function () {
+	    var view = new SelectView({selectType:Constants.SELECT_TYPE_USERS});
+	    window.ViewNavigatorUtil.pushView( view );
+    },
+
+    selectAmenities:function () {
+	    var view = new SelectView({selectType:Constants.SELECT_TYPE_AMENITIES});
+	    window.ViewNavigatorUtil.pushView( view );
+    },
     
     addVisitor:function () {
     	if(this.addingVisitor)return;
@@ -80,11 +92,15 @@ window.ConversationNewView = Backbone.View.extend({
             this.messageDateTo 	= this.$('#messageDateTo');
             this.messageDateFrom= this.$('#messageDateFrom');
 
-            this.amenities = this.$el.find("#amenities");
-	        _.each(App.country.amenities, function (amenity) {
-	        	this.amenities.append("<option value=" + amenity.amenityId + ">" + amenity.amenityName + "</option>");
-	        }, this);
+//            this.amenities = this.$el.find("#amenities");
+//	        _.each(App.country.amenities, function (amenity) {
+//	        	this.amenities.append("<option value=" + amenity.amenityId + ">" + amenity.amenityName + "</option>");
+//	        }, this);
 
+	        if(App.country.amenities != undefined && App.country.amenities.length > 0){
+    	        App.amenityIdSelected = App.country.amenities[0].amenityId;
+	        }
+	        
     	} else {
 
     		this.template = _.template( templates.conversationNewView);
@@ -96,10 +112,9 @@ window.ConversationNewView = Backbone.View.extend({
             this.messageMessage = this.$('#messageMessage');
 
             if(App.role == Constants.ROLE_ADMINISTRATOR){
-    	        this.users = this.$el.find("#users");
-    	        _.each(App.users, function (user) {
-    	        	this.users.append("<option value=" + user.userId + ">" + user.name + "</option>");
-    	        }, this);
+    	        if(App.users != undefined && App.users.length > 0){
+        	        App.userIdSelected = App.users[0].userId;
+    	        }
         	} 
 
     	}
@@ -122,7 +137,8 @@ window.ConversationNewView = Backbone.View.extend({
     	  this.sending = true;
     	  var userId = App.getUserId();
     	  if(App.role == Constants.ROLE_ADMINISTRATOR)
-    		userId = self.users.val();  
+    		  userId = App.userIdSelected;
+//    		userId = self.users.val();  
 
     	 
     	  var messageMessage;
@@ -153,6 +169,7 @@ window.ConversationNewView = Backbone.View.extend({
     		  var dateFrom = new Date(from[0], from[1] - 1, from[2]);
     		  var to = messageDateTo.split("-");
     		  var dateTo = new Date(to[0], to[1] - 1, to[2]);
+    		  
     		  if(dateTo.toLocaleString() < dateFrom.toLocaleString()) {
     			  alert("La fecha hasta debe ser mayor o igual a la fecha desde.");
     	    	  this.sending = false;
@@ -163,7 +180,6 @@ window.ConversationNewView = Backbone.View.extend({
     		  dateNow.setHours(0);
     		  dateNow.setMilliseconds(0);
     		  dateNow.setMinutes(0);
-    		  dateNow.setMonth(0);
     		  dateNow.setSeconds(0);
     		  if(dateFrom.toLocaleString() < dateNow.toLocaleString()) {
     			  alert("La fecha desde debe ser mayor o igual a la fecha actual.");
@@ -203,8 +219,12 @@ window.ConversationNewView = Backbone.View.extend({
     		  messageDateFrom = self.messageDateFrom.val();
     		  messageDateTo   = self.messageDateTo.val();	
       		  messageSubject  = "Reserva";
-      		  messageMessage  = $.trim(this.$('#amenities option:selected').text());
-      		  
+//      		  messageMessage  = $.trim(this.$('#amenities option:selected').text());
+      		  _.each(App.country.amenities, function (amenity) {
+      			  if(App.amenityIdSelected == amenity.amenityId)
+      				messageMessage = amenity.amenityName;
+      		  }, this);
+
     		  if($.trim(messageDateFrom) == ''){
     			  alert("Debe ingresar la fecha desde.");
     	    	  this.sending = false;
@@ -221,6 +241,7 @@ window.ConversationNewView = Backbone.View.extend({
     		  var dateFrom = new Date(from[0], from[1] - 1, from[2]);
     		  var to = messageDateTo.split("-");
     		  var dateTo = new Date(to[0], to[1] - 1, to[2]);
+
     		  if(dateTo.toLocaleString() < dateFrom.toLocaleString()) {
     			  alert("La fecha hasta debe ser mayor o igual a la fecha desde.");
     	    	  this.sending = false;
@@ -231,8 +252,12 @@ window.ConversationNewView = Backbone.View.extend({
     		  dateNow.setHours(0);
     		  dateNow.setMilliseconds(0);
     		  dateNow.setMinutes(0);
-    		  dateNow.setMonth(0);
     		  dateNow.setSeconds(0);
+
+//    		  alert("dateTo:"+dateTo.toLocaleString());
+//    		  alert("dateFrom:"+dateFrom.toLocaleString());
+//    		  alert("dateNow:"+dateNow.toLocaleString());
+    		  
     		  if(dateFrom.toLocaleString() < dateNow.toLocaleString()) {
     			  alert("La fecha desde debe ser mayor o igual a la fecha actual.");
     	    	  this.sending = false;
@@ -280,6 +305,22 @@ window.ConversationNewView = Backbone.View.extend({
 	  alert(message);
   },
   showCallback:function(){
+  	if(App.messageTypeId == Constants.MESSAGE_TYPE_ID_MESSAGE){
+        if(App.role == Constants.ROLE_ADMINISTRATOR){
+	        _.each(App.users, function (user) {
+	        	if(user.userId == App.userIdSelected){
+	    	        this.$('#selectUsers').html(user.name);
+	        	}
+	        }, this);
+        }
+    } else if(App.messageTypeId == Constants.MESSAGE_TYPE_ID_BOOKING) {
+        if(App.role == Constants.ROLE_USER){
+		  _.each(App.country.amenities, function (amenity) {
+  			  if(App.amenityIdSelected == amenity.amenityId)
+    	        this.$('#selectAmenities').html(amenity.amenityName);
+  		  }, this);
+        }
+    }
   }
 
 });

@@ -1,0 +1,17 @@
+    <div class="liContainer liContainerNormal">
+		<%
+        if(this.selectType == Constants.SELECT_TYPE_USERS){
+		%>
+    	<strong id="name"><%= name %></strong>
+		<%
+        } else if(this.selectType == Constants.SELECT_TYPE_COUNTRIES) {
+		%>
+    	<strong id="name"><%= countryName %></strong>
+		<%
+        } else if(this.selectType == Constants.SELECT_TYPE_AMENITIES) {
+		%>
+    	<strong id="name"><%= amenityName %></strong>
+		<%
+        }
+		%>
+    </div>

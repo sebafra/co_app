@@ -8,10 +8,14 @@ window.LoginView = Backbone.View.extend({
     initialize: function(options) {
         this.render();
         this.view = this.$el;
+        
+        App.role = Constants.ROLE_USER;
     },
 
     events:{
         "click #btnLogin":"login",
+        "click #btnSelectConsorcista":"selectConsorcista",
+        "click #btnSelectAdministrador":"selectAdministrador",
         "click #inputPhone":"clickInputPhone",
         "click #inputEmail":"clickInputEmail",
         "click #inputPassword":"clickInputPassword"
@@ -27,16 +31,25 @@ window.LoginView = Backbone.View.extend({
         this.inputPassword 	= this.$('#inputPassword');
 
 
-/*		if( isDeviceOSAndroidVersionOld() ) {
-	        var container = this.$el.find(".container")
-	        container.append("<div class='form-group'><div class='col-sm-12'><select class='form-control' name='roles' id='roles' style='z-index: 1000'></select><hr></div></div>");
-		} */
-
-	        this.selectRoles	= this.$("#roles");
-	        this.selectRoles.append("<option value=" + Constants.ROLE_USER + ">Consorcista</option>");
-	        this.selectRoles.append("<option value=" + Constants.ROLE_ADMINISTRATOR + ">Administrador</option>");
+//	        this.selectRoles	= this.$("#roles");
+//	        this.selectRoles.append("<option value=" + Constants.ROLE_USER + ">Consorcista</option>");
+//	        this.selectRoles.append("<option value=" + Constants.ROLE_ADMINISTRATOR + ">Administrador</option>");
         
         return this;
+    },
+
+    selectConsorcista:function () {
+        this.$('#btnSelectConsorcista').addClass("active");
+        this.$('#btnSelectAdministrador').removeClass("active");
+
+        App.role = Constants.ROLE_USER;
+    },
+
+    selectAdministrador:function () {
+        this.$('#btnSelectConsorcista').removeClass("active");
+        this.$('#btnSelectAdministrador').addClass("active");
+
+        App.role = Constants.ROLE_ADMINISTRATOR;
     },
 
     clickInputPhone:function(){
@@ -59,13 +72,14 @@ window.LoginView = Backbone.View.extend({
 
     login:function () {
 
-    	App.role = this.selectRoles.val();
+//    	App.role = this.selectRoles.val();
     	if(App.role == Constants.ROLE_USER)
 			App.messageOrigin = Constants.MESSAGE_ORIGIN_USER;
 		else
 			App.messageOrigin = Constants.MESSAGE_ORIGIN_ADMINISTRATOR;
 
-        var view = new LoadHomeView({ usuario:this.inputEmail.val(), phone:this.inputPhone.val(), password:this.inputPassword.val(), role:this.selectRoles.val() });
+        //var view = new LoadHomeView({ usuario:this.inputEmail.val(), phone:this.inputPhone.val(), password:this.inputPassword.val(), role:this.selectRoles.val() });
+    	var view = new LoadHomeView({ usuario:this.inputEmail.val(), phone:this.inputPhone.val(), password:this.inputPassword.val(), role:App.role });
         window.ViewNavigatorUtil.pushView( view );
 
         this.inputPassword.val("");

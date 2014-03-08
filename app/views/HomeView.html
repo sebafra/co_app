@@ -1,12 +1,21 @@
 <div id="homeView">
 	<div class="homeSelect">
-        <select class="form-control" name="barrio" id="countries">
-        </select>
+<!--         <select class="form-control" name="barrio" id="countries"> -->
+<!--         </select> -->
+
+<!-- 	      <div class="form-group"> -->
+<!-- 	        <div class="col-sm-12"> -->
+				<button id="btnCountries" type="button" class="btn btn-default btn-block selectAvatar">
+		        	<span id="selectCountries" class="selectAvatarText"></span>
+		           	<div class="pull-right">
+		           		<span class="icon ion-ios7-arrow-right"></span>
+		           	</div>
+		        </button>
+<!-- 	    	</div> -->
+<!-- 	    </div> -->
         <div class="imgHomeSelect">
-       
-        <img id="countryLogo" class="img-thumbnail" src="assets/images/nocountries.jpg" onerror="this.onerror=null;this.src='assets/images/nocountries.jpg';">
-       
-       </div>
+ 	       <img id="countryLogo" class="img-thumbnail" src="assets/images/nocountries.jpg" onerror="this.onerror=null;this.src='assets/images/nocountries.jpg';">
+        </div>
     </div>
 	<div class="container">
     <% if(App.role == Constants.ROLE_USER){ %>

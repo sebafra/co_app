@@ -12,10 +12,21 @@
       <hr>
 
 	  <% if(App.role == Constants.ROLE_ADMINISTRATOR){ %>
+<!--       <div class="form-group"> -->
+<!--         <div class="col-sm-12"> -->
+<!-- 	        <select class="form-control" id="users"> -->
+<!-- 	        </select> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--       <hr> -->
       <div class="form-group">
         <div class="col-sm-12">
-	        <select class="form-control" id="users">
-	        </select>
+			<button id="btnUsers" type="button" class="btn btn-default btn-block selectAvatar">
+            	<span id="selectUsers" class="selectAvatarText"></span>
+            	<div class="pull-right">
+            		<span class="icon ion-ios7-arrow-right"></span>
+            	</div>
+            </button>
         </div>
       </div>
       <hr>

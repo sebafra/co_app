@@ -960,6 +960,24 @@ body {
     width: 100%;
 }*/
 
+/* Agregados Selects */
+
+.selectAvatar {
+    text-align: left;
+    padding-left: .5em;
+    padding-right: 1em;
+}
+.selectAvatar .icon{
+    font-size: 1.5em;
+}
+.selectAvatarText {
+      width: 90%;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+}
+
 /*Home View*/
 
 .imgHomeSelect {

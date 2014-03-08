@@ -17,11 +17,26 @@ window.HomeView = Backbone.View.extend({
         "click .visitClick":"loadVisits",
         "click .deliveryClick":"loadDeliverys",
         "click .administradorClick":"loadConversations",
-        "change #countries":"changeCountry"
+        "change #countries":"changeCountry",
+        "click #btnCountries":"selectCountry"
     },
 
+    selectCountry:function () {
+	    var view = new SelectView({selectType:Constants.SELECT_TYPE_COUNTRIES});
+	    window.ViewNavigatorUtil.pushView( view );
+    },
+
+    
     showCallback:function () {
-    	this.showCountryLogo();
+	    _.each(App.countries, function (country) {
+	    	if(country.countryId == App.countryIdSelected){
+		        this.$('#selectCountries').html(country.countryName);
+		        App.country = country;
+	    	}
+	    }, this);
+
+	    this.showCountryLogo();
+    	
     },
 
     showCountryLogo:function () {
@@ -36,17 +51,24 @@ window.HomeView = Backbone.View.extend({
 			$countryLogo.attr("src", "assets/images/nocountries.jpg");
 		}
     },
+
     render:function (eventName) {
         var template = _.template(templates.homeView);
         var model = {isTablet:NativeUtil.isTablet()};
         this.$el.html(template(model));
-        var $countries = this.$el.find("#countries");
-        var idx = 0;
-        _.each(App.countries, function (country) {
-        	if(idx == 0) App.country = country;
-            $countries.append("<option value=" + country.countryId + ">" + country.countryName + "</option>");
-        	idx++;
-        }, this);
+
+//        var $countries = this.$el.find("#countries");
+//        var idx = 0;
+//        _.each(App.countries, function (country) {
+//        	if(idx == 0) App.country = country;
+//            $countries.append("<option value=" + country.countryId + ">" + country.countryName + "</option>");
+//        	idx++;
+//        }, this);
+
+        if(App.countries != undefined && App.countries.length > 0){
+	        App.countryIdSelected = App.countries[0].countryId;
+	        App.country = App.countries[0];
+        }
 
         this.headerActions = $("<div style='padding: 5px 5px;'><span class='icon ion-ios7-information-outline'></span></div>");
 

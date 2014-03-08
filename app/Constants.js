@@ -29,6 +29,13 @@ window.Constants = {
 		MESSAGE_STATE_DENIED_PATTERN 	: "no",
 
 		LOGIN_ERROR_MESSAGE_GENERIC: "No puede ingresar. Por favor intentar mas tarde.",
-		AJAX_JSON_ERROR_MESSAGE_GENERIC: "Error de comunicacion. Por favor verifique su conexion de Internet."
+		AJAX_JSON_ERROR_MESSAGE_GENERIC: "Error de comunicacion. Por favor verifique su conexion de Internet.",
+		
+		SELECT_TYPE_USERS: "users",
+		SELECT_TYPE_USERS_TITLE: "Consorcistas",
+		SELECT_TYPE_COUNTRIES: "countries",
+		SELECT_TYPE_COUNTRIES_TITLE: "Countries",
+		SELECT_TYPE_AMENITIES: "amenities",
+		SELECT_TYPE_AMENITIES_TITLE: "Amenities"
 
 };

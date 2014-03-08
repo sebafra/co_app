@@ -118,6 +118,10 @@ window.App = {
 	lastMessage: 	undefined,
 	lastMessageRoot:undefined,
 	usersLogged:	undefined,
+	
+	userIdSelected: undefined,
+	countryIdSelected: undefined,
+	amenityIdSelected: undefined,
 
 	saveUser:function(data){
 

@@ -2,17 +2,22 @@
 	<div class="container">
 		<div class="panel panel-default col-sm-8">
 			<div class="panel-body">
-			<% if( !isDeviceOSAndroidVersionOld() ) { %>
 				<img class="logo" src="assets/images/logo.png" alt="">
-			<% } %>
 
 				<form class="form-horizontal" role="form">
+<!-- 					<div class="form-group"> -->
+<!-- 						<div class="col-sm-12"> -->
+<!-- 							<select class="form-control" name="roles" id="roles"> -->
+<!-- 							</select> -->
+<!-- 							<hr> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 					<div class="form-group">
 						<div class="col-sm-12">
-							<select class="form-control" name="roles" id="roles">
-							</select>
-							<!-- <select class="form-control" name="roles" id="roles" data-native-menu="false" style="z-index: 1000; -webkit-appearance: listbox;">
-							</select> -->
+							<div class="btn-group">
+							  <button type="button" id="btnSelectConsorcista" class="btn btn-default active">Consorcista</button>
+							  <button type="button" id="btnSelectAdministrador" class="btn btn-default">Administrador</button>
+							</div>
 							<hr>
 						</div>
 					</div>
@@ -25,13 +30,13 @@
 					<div class="form-group">
 						<div class="col-sm-12">
 							<input type="email" class="form-control" id="inputEmail"
-							placeholder="Usuario" value="">
+							placeholder="Usuario" value="AdminConsorcio">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-12">
 							<input type="text" class="form-control" id="inputPassword"
-							placeholder="Passowrd" value="">
+							placeholder="Passowrd" value="demo">
 						</div>
 					</div>
 
