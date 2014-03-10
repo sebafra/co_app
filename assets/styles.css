@@ -1082,15 +1082,17 @@ font-size: 1em;
     }
 }
 
-/* Agregados Avatar Selects Android 2.3 */
+/* Agregados Selects */
 
 .selectAvatar {
     text-align: left;
     padding-left: .5em;
     padding-right: 1em;
+    margin-bottom: .5em;
 }
 .selectAvatar .icon{
-    font-size: 1.5em;
+    font-size: 1.5em !important;
+    color: #999 !important;
 }
 .selectAvatarText {
       width: 90%;
