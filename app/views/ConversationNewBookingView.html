@@ -9,16 +9,13 @@
 <!-- 							</select> -->
 <!-- 						</div> -->
 <!-- 					</div> -->
-				      <div class="form-group">
-				        <div class="col-sm-12">
 							<button id="btnAmenities" type="button" class="btn btn-default btn-block selectAvatar">
 				            	<span id="selectAmenities" class="selectAvatarText"></span>
 				            	<div class="pull-right">
 				            		<span class="icon ion-ios7-arrow-right"></span>
 				            	</div>
 				            </button>
-				        </div>
-				      </div>
+
 					<div class="row">
 						<div class="col-xs-6 col-sm-6">
 							<div class="form-group fromInput">
@@ -28,7 +25,7 @@
                                 <% } else { %>
                                 <input type="text" class="form-control" id="messageDateFrom">
                                 <% }%>
-                                    
+
                             </div>
 						</div>
 						<div class="col-xs-6 col-sm-6">
@@ -71,11 +68,11 @@ $('#messageDateFrom').focus(function(event) {
 	pickDate($(this));
 });
 function pickDate(currentField){
-	
+
    var myNewDate = new Date();
    if(currentField.val() != "")
 	   myNewDate = getDateFromString(currentField.val()) ;
-   
+
    // Same handling for iPhone and Android
    window.plugins.datePicker.show({
        date : myNewDate,
@@ -87,7 +84,7 @@ function pickDate(currentField){
 		   currentField.text(returnDate);
 	}catch(e){
 	}
-	   
+
 	   currentField.blur();
 
 	   // This fixes the problem you mention at the bottom of this script with it not working a second/third time around, because it is in focus.
