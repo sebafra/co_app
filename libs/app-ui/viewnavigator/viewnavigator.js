@@ -100,8 +100,13 @@ ViewNavigator.prototype.popView = function() {
 
 ViewNavigator.prototype.logoutView = function() {
 
-	if (this.animating || this.history.length <= 1 )
+	console.log("---->>>>>>>>>logout??");
+	console.log("---->>>>>>>>>logout?? - this.animating:"+this.animating);
+	console.log("---->>>>>>>>>logout?? - this.history.length:"+this.history.length);
+
+	if (this.animating )
 		return;
+	console.log("---->>>>>>>>>logout:sii");
 
 	var currentViewDescriptor = this.history[ this.history.length-1];
 	if ( currentViewDescriptor.logoutCallback ) {
