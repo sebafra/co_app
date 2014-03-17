@@ -22,7 +22,14 @@ window.DeliveriesView = Backbone.View.extend({
         var $list = this.$el.find("#list");
 
         _.each(App.deliveries, function (delivery) {
-            $list.append(new DeliveriesItemView({delivery:delivery}).render().el);
+               if(delivery.deliverySponsor != undefined && delivery.deliverySponsor == Constants.YES){
+                  $list.append(new DeliveriesItemView({delivery:delivery}).render().el);
+               }
+        }, this);
+                                             
+        _.each(App.deliveries, function (delivery) {
+            if(delivery.deliverySponsor == undefined || delivery.deliverySponsor != Constants.YES)
+               $list.append(new DeliveriesItemView({delivery:delivery}).render().el);
         }, this);
 
         return this;
