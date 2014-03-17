@@ -42,18 +42,20 @@ window.ConversationView = Backbone.View.extend({
     drawMessageIdx:0,
     drawMessage:function(container, message){
 
+        var msg = HTMLUtil.formatAnchor(message.messageMessage);
+                                               
 		//alert("<div class='row' id='msg_" + this.drawMessageIdx.toString() + "'>");
     	if(App.role == Constants.ROLE_USER){
 	    	if(message.messageOrigin == Constants.MESSAGE_ORIGIN_USER){
-	            container.append("<div class='row' id='msg_" + this.drawMessageIdx.toString() + "'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageUser'>Yo</div><div class='messageText'>" + message.messageMessage + "</div></div></div>");
+	            container.append("<div class='row' id='msg_" + this.drawMessageIdx.toString() + "'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageUser'>Yo</div><div class='messageText'>" + msg + "</div></div></div>");
 	    	} else {
-	            container.append("<div class='row' id='msg_" + this.drawMessageIdx.toString() + "'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageUser'>Administrador</div><div class='messageText'>" + message.messageMessage + "</div></div><div class='col-xs-2'></div></div>");
+	            container.append("<div class='row' id='msg_" + this.drawMessageIdx.toString() + "'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageUser'>Administrador</div><div class='messageText'>" + msg + "</div></div><div class='col-xs-2'></div></div>");
 	    	}
     	} else {
 	    	if(message.messageOrigin == Constants.MESSAGE_ORIGIN_USER){
-	            container.append("<div class='row' id='msg_" + this.drawMessageIdx.toString() + "'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageUser'>" + message.messageUserName + "</div><div class='messageText'>" + message.messageMessage + "</div></div><div class='col-xs-2'></div></div>");
+	            container.append("<div class='row' id='msg_" + this.drawMessageIdx.toString() + "'><div class='col-xs-10 messageContainer messageContainerLeft'><div class='messageUser'>" + message.messageUserName + "</div><div class='messageText'>" + msg + "</div></div><div class='col-xs-2'></div></div>");
 	    	} else {
-	            container.append("<div class='row' id='msg_" + this.drawMessageIdx.toString() + "'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageUser'>Yo</div><div class='messageText'>" + message.messageMessage + "</div></div></div>");
+	            container.append("<div class='row' id='msg_" + this.drawMessageIdx.toString() + "'><div class='col-xs-2'></div><div class='col-xs-10 messageContainer messageContainerRight'><div class='messageUser'>Yo</div><div class='messageText'>" + msg + "</div></div></div>");
 	    	}
     	}
     	window.viewNavigator.refreshScroller();
