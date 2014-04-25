@@ -12,27 +12,32 @@ window.AboutView = Backbone.View.extend({
 
     events:{
        // "click a":"openExternalLink"
-    },
+       "click #termsLink":"loadTerms"
+   },
 
-    render:function (eventName) {
-        this.$el.html(templates.aboutView);
-        return this;
-    },
+   render:function (eventName) {
+    this.$el.html(templates.aboutView);
+    return this;
+},
 
-    openExternalLink:function (event) {
+openExternalLink:function (event) {
 
-    	if ( !this.lastTimestamp || (new Date().getTime()-this.lastTimestamp) > 500) {
+   if ( !this.lastTimestamp || (new Date().getTime()-this.lastTimestamp) > 500) {
 
-	        var target = $( event.target )
-	        var href = target.attr("href");
-	        NativeUtil.openExternalURL( href );
-	    }
+       var target = $( event.target );
+       var href = target.attr("href");
+       NativeUtil.openExternalURL( href );
+   }
 
-        this.lastTimestamp = new Date().getTime();
-        event.stopPropagation();
-        event.stopImmediatePropagation();
-        event.preventDefault();
-        event.cancelBubble();
-        return false;
-    }
+   this.lastTimestamp = new Date().getTime();
+   event.stopPropagation();
+   event.stopImmediatePropagation();
+   event.preventDefault();
+   event.cancelBubble();
+   return false;
+},
+loadTerms:function () {
+    var view = new  TermsView();
+    ViewNavigatorUtil.pushView( view );
+}
 });
